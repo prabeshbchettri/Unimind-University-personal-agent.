@@ -1,0 +1,134 @@
+{
+  "total": 20,
+  "passed": 20,
+  "failed": [],
+  "indexed_documents": [
+    {
+      "file": "syllabus-dbms.pdf",
+      "status": 200,
+      "document_id": "315f6391-6f8d-48c4-93ff-4a1d60bd85ac",
+      "document_type": "syllabus",
+      "chunk_count": 4,
+      "collections": {
+        "university_docs": 4
+      },
+      "graph": {
+        "document_id": "315f6391-6f8d-48c4-93ff-4a1d60bd85ac",
+        "nodes": 4,
+        "relationships": 3,
+        "status": "ok"
+      }
+    },
+    {
+      "file": "syllabus-dsa.pdf",
+      "status": 200,
+      "document_id": "985ff8d4-dd1a-4733-b962-d586f58c645c",
+      "document_type": "syllabus",
+      "chunk_count": 5,
+      "collections": {
+        "university_docs": 5
+      },
+      "graph": {
+        "document_id": "985ff8d4-dd1a-4733-b962-d586f58c645c",
+        "nodes": 5,
+        "relationships": 4,
+        "status": "ok"
+      }
+    },
+    {
+      "file": "regulations-exam.pdf",
+      "status": 200,
+      "document_id": "6eb6056e-b1d8-4448-8558-cac4c8ba8a97",
+      "document_type": "rules_regulations",
+      "chunk_count": 1,
+      "collections": {
+        "university_docs": 1
+      },
+      "graph": {
+        "document_id": "6eb6056e-b1d8-4448-8558-cac4c8ba8a97",
+        "nodes": 0,
+        "relationships": 0,
+        "status": "ok"
+      }
+    },
+    {
+      "file": "pastpaper-dbms-2080.pdf",
+      "status": 200,
+      "document_id": "a9bc0f22-7e31-4d4f-87c7-7b9632fdc558",
+      "document_type": "past_question",
+      "chunk_count": 1,
+      "collections": {
+        "past_questions": 1
+      },
+      "graph": {
+        "document_id": "a9bc0f22-7e31-4d4f-87c7-7b9632fdc558",
+        "nodes": 4,
+        "relationships": 6,
+        "status": "ok"
+      }
+    },
+    {
+      "file": "book-dbms-concepts.pdf",
+      "status": 200,
+      "document_id": "98101423-8a8a-45e0-8e58-0171537ebe36",
+      "document_type": "library_book",
+      "chunk_count": 4,
+      "collections": {
+        "library_books": 4
+      },
+      "graph": {
+        "document_id": "98101423-8a8a-45e0-8e58-0171537ebe36",
+        "nodes": 0,
+        "relationships": 0,
+        "status": "ok"
+      }
+    },
+    {
+      "file": "notice-attendance.pdf",
+      "status": 200,
+      "document_id": "19ccc4a7-5781-42c5-be01-e5a41c813c14",
+      "document_type": "notice",
+      "chunk_count": 1,
+      "collections": {
+        "university_docs": 1
+      },
+      "graph": {
+        "document_id": "19ccc4a7-5781-42c5-be01-e5a41c813c14",
+        "nodes": 0,
+        "relationships": 0,
+        "status": "ok"
+      }
+    },
+    {
+      "file": "calendar-2024.pdf",
+      "status": 200,
+      "document_id": "8e3f8c5e-9e6b-4f05-875f-95af9172bdea",
+      "document_type": "academic_calendar",
+      "chunk_count": 1,
+      "collections": {
+        "university_docs": 1
+      },
+      "graph": {
+        "document_id": "8e3f8c5e-9e6b-4f05-875f-95af9172bdea",
+        "nodes": 1,
+        "relationships": 0,
+        "status": "ok"
+      }
+    }
+  ],
+  "graph_summary": {
+    "status": "ok",
+    "backend": "InMemoryGraphRepository",
+    "nodes": {
+      "Subject": 2,
+      "Topic": 7,
+      "PastQuestion": 6,
+      "Semester": 1
+    },
+    "relationships": {
+      "HAS_TOPIC": 7,
+      "HAS_QUESTION": 6
+    }
+  },
+  "elapsed_seconds": 1.47
+}

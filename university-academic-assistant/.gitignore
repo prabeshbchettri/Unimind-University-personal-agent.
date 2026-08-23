@@ -1,0 +1,36 @@
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Environment / secrets -------------------------------------------------
+.env
+.env.local
+*.pem
+
+# --- Node ------------------------------------------------------------------
+node_modules/
+dist/
+.vite/
+
+# --- Data ------------------------------------------------------------------
+data/raw/*
+data/processed/*
+data/test/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/test/.gitkeep
+
+# --- Editors / OS ----------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

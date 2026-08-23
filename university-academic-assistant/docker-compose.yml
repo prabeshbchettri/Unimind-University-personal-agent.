@@ -1,0 +1,110 @@
+# Full-stack deployment for the University Academic Assistant.
+#
+#   docker compose up -d            # full stack, hermetic backends
+#   docker compose --profile llm up -d   # + local Ollama (CPU, no GPU assumed)
+#
+# With the "llm" profile enabled, also export
+#   LLM_BACKEND=ollama EMBEDDER_BACKEND=ollama
+# (defaults are deterministic/stub so the stack works without a model server).
+#
+# Secrets: nothing hard-coded; database/model passwords come from the
+# environment (NEO4J_PASSWORD, POSTGRES_PASSWORD) and default to local-dev
+# values. Override them in production.
+
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.13.2
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    ports:
+      - "6333:6333"
+
+  neo4j:
+    image: neo4j:5.26-community
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:-assistant}
+      # Keep the footprint small enough for a laptop; the app only needs a
+      # modest graph (syllabus structure, course dependencies).
+      NEO4J_server_memory_heap_max__size: 512M
+      NEO4J_server_memory_pagecache_size: 256M
+    volumes:
+      - neo4j_data:/data
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: assistant
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-assistant}
+      POSTGRES_DB: academic_assistant
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U assistant -d academic_assistant"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD:-assistant}
+      GRAPH_BACKEND: auto
+      DATABASE_URL: postgresql+psycopg://assistant:${POSTGRES_PASSWORD:-assistant}@postgres:5432/academic_assistant
+      DATABASE_BACKEND: postgres
+      # Hermetic by default so `docker compose up` works with zero model
+      # servers; flip to "ollama" when running with --profile llm.
+      LLM_BACKEND: ${LLM_BACKEND:-stub}
+      EMBEDDER_BACKEND: ${EMBEDDER_BACKEND:-deterministic}
+      OLLAMA_BASE_URL: http://ollama:11434
+      ROUTER_CLASSIFIER: rules
+      # Browser dev origin kept for local Vite usage; production requests are
+      # same-origin through nginx and need no CORS entry.
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+    depends_on:
+      - qdrant
+      - neo4j
+      - postgres
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  # Local LLM + embedding server. CPU-only by design (no device reservations,
+  # no GPU assumption): usable but slow on a laptop. Pre-pull models with:
+  #   docker compose --profile llm exec ollama ollama pull llama3.1:8b
+  #   docker compose --profile llm exec ollama ollama pull bge-m3
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["llm"]
+    volumes:
+      - ollama_models:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
+
+volumes:
+  qdrant_storage:
+  neo4j_data:
+  postgres_data:
+  ollama_models:
