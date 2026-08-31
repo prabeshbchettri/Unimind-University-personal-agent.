@@ -34,3 +34,8 @@ data/test/*
 *.swp
 .DS_Store
 Thumbs.db
+
+# --- Logs ---
+backend/*.log
+*.log
+
