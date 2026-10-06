@@ -1,0 +1,176 @@
+{
+  "description": "Manual evaluation dataset for the Adaptive University RAG Assistant. Expectations state what a grounded answer must contain, not exact wording: several phrasings are valid. Cases are grounded in scripts/generate_demo_corpus.py so 'relevant source' is checkable factually.",
+  "how_to_run": "cd backend && python ../scripts/run_evaluation.py",
+  "note": "Signals marked measured are computed by the runner; judgment fields are labeled manual in the report.",
+  "cases": [
+    {
+      "id": "fact-01",
+      "category": "simple factual",
+      "question": "What is the minimum attendance requirement?",
+      "expected_strategy": "normal",
+      "relevant_source": "attendance_policy.pdf",
+      "answer_must_mention": ["75", "percent"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "fact-02",
+      "category": "simple factual",
+      "question": "How many books can an undergraduate borrow from the library?",
+      "expected_strategy": "normal",
+      "relevant_source": "library_policy.pdf",
+      "answer_must_mention": ["six"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "fact-03",
+      "category": "simple factual",
+      "question": "What are the library opening hours on teaching days?",
+      "expected_strategy": "normal",
+      "relevant_source": "library_policy.pdf",
+      "answer_must_mention": ["08:00", "22:00"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "sem-04",
+      "category": "semantic",
+      "question": "What happens if a student cannot attend classes because of illness?",
+      "expected_strategy": "normal",
+      "relevant_source": "attendance_policy.pdf",
+      "answer_must_mention_any": ["medical", "certificate", "condonation"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "sem-05",
+      "category": "semantic",
+      "question": "How does the university handle cheating during an exam?",
+      "expected_strategy": "normal",
+      "relevant_source": "examination_rules.pdf",
+      "answer_must_mention_any": ["integrity", "committee", "unauthorized"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "sem-06",
+      "category": "semantic",
+      "question": "What is the purpose of continuous assessment?",
+      "expected_strategy": "normal",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "note": "Corpus describes CS201 assessment components but never states a purpose of continuous assessment; a grounded system must decline."
+    },
+    {
+      "id": "term-07",
+      "category": "exact terminology",
+      "question": "What is the re-evaluation procedure after examination scores are released?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "examination_rules.pdf",
+      "answer_must_mention_any": ["ten working days", "re-evaluation", "fee"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "term-08",
+      "category": "exact terminology",
+      "question": "Under what conditions can a library loan be renewed?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "library_policy.pdf",
+      "answer_must_mention_any": ["twice", "reservation"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "course-09",
+      "category": "course code",
+      "question": "What are the credit requirements for CS201?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "cs201_syllabus.pdf",
+      "answer_must_mention_any": ["four", "4", "credit"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "course-10",
+      "category": "course code",
+      "question": "What is the prerequisite for CS201?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "cs201_syllabus.pdf",
+      "answer_must_mention_any": ["CS101"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "course-11",
+      "category": "course code",
+      "question": "What are the attendance requirements for ENCT 353?",
+      "expected_strategy": "hybrid",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "note": "ENCT 353 does not exist in the corpus. The general 75 percent rule exists, but no course-specific requirement; declining is the honest behavior. Router may legitimately still route hybrid via the course-code signal."
+    },
+    {
+      "id": "multi-12",
+      "category": "multi-concept",
+      "question": "What is the examination schedule and the assessment split for CS201?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "cs201_syllabus.pdf",
+      "answer_must_mention_any": ["40 percent", "midterm", "assignment"],
+      "insufficient_evidence_expected": false,
+      "note": "Partial grounding: CS201 assessment split exists, a date schedule does not. Either a grounded split-only answer or a decline naming the missing part is acceptable; fabrication of dates is not."
+    },
+    {
+      "id": "multi-13",
+      "category": "multi-concept",
+      "question": "How do attendance and fee payment affect exam eligibility?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "examination_rules.pdf",
+      "answer_must_mention_any": ["attendance", "fees", "registration"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "multisrc-14",
+      "category": "multiple sources",
+      "question": "What can stop a student from sitting the final examination?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "examination_rules.pdf",
+      "also_acceptable_source": "attendance_policy.pdf",
+      "answer_must_mention_any": ["attendance", "fees", "good standing"],
+      "insufficient_evidence_expected": false,
+      "note": "Fully grounded answers can draw on examination_rules (registration, fees, attendance) and/or attendance_policy (75 percent threshold)."
+    },
+    {
+      "id": "multisrc-15",
+      "category": "multiple sources",
+      "question": "What rules apply to identity cards and entering the examination hall?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "examination_rules.pdf",
+      "answer_must_mention_any": ["identity card", "fifteen minutes", "thirty minutes"],
+      "insufficient_evidence_expected": false
+    },
+    {
+      "id": "none-16",
+      "category": "no answer in corpus",
+      "question": "Who won the football world cup?",
+      "expected_strategy": "normal",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true
+    },
+    {
+      "id": "none-17",
+      "category": "no answer in corpus",
+      "question": "What is the tuition fee for the master's program in computer science?",
+      "expected_strategy": "hybrid",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "note": "Fees appear only as an eligibility condition, never as amounts; 'fee' is policy vocabulary so hybrid routing is expected and fine - but no amount may be invented."
+    },
+    {
+      "id": "amb-18",
+      "category": "ambiguous",
+      "question": "Tell me about examinations.",
+      "expected_strategy": "hybrid",
+      "relevant_source": "examination_rules.pdf",
+      "answer_must_mention_any": ["eligibility", "identity", "scores", "re-evaluation", "integrity"],
+      "insufficient_evidence_expected": false,
+      "note": "Broad query; any accurate summary of examination rules is acceptable."
+    }
+  ]
+}

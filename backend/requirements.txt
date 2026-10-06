@@ -1,0 +1,17 @@
+# Runtime dependencies (versions verified in Phase 2)
+fastapi==0.142.2
+uvicorn[standard]==0.54.0
+pydantic-settings==2.15.0
+
+# Document ingestion
+pymupdf==1.28.2
+
+# Embeddings (local, in-process)
+fastembed==0.8.1
+
+# Vector store
+qdrant-client==1.19.1
+
+# Test dependencies
+pytest==9.1.1
+httpx==0.28.1
