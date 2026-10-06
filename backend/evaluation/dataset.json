@@ -1,176 +1,1623 @@
 {
-  "description": "Manual evaluation dataset for the Adaptive University RAG Assistant. Expectations state what a grounded answer must contain, not exact wording: several phrasings are valid. Cases are grounded in scripts/generate_demo_corpus.py so 'relevant source' is checkable factually.",
-  "how_to_run": "cd backend && python ../scripts/run_evaluation.py",
-  "note": "Signals marked measured are computed by the runner; judgment fields are labeled manual in the report.",
-  "cases": [
+  "dataset_name": "Adaptive University RAG Evaluation Dataset",
+  "version": "1.1-notes-format",
+  "total_questions": 78,
+  "questions": [
     {
       "id": "fact-01",
-      "category": "simple factual",
-      "question": "What is the minimum attendance requirement?",
-      "expected_strategy": "normal",
-      "relevant_source": "attendance_policy.pdf",
-      "answer_must_mention": ["75", "percent"],
-      "insufficient_evidence_expected": false
+      "category": "factual lookup",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "How many lecture hours are allotted to the Methods of Economic Analysis chapter in Engineering Economics?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "12"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
     },
     {
       "id": "fact-02",
-      "category": "simple factual",
-      "question": "How many books can an undergraduate borrow from the library?",
-      "expected_strategy": "normal",
-      "relevant_source": "library_policy.pdf",
-      "answer_must_mention": ["six"],
-      "insufficient_evidence_expected": false
+      "category": "factual lookup",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Which chapter of Engineering Economics covers risk analysis?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "7",
+        "Risk Analysis"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
     },
     {
       "id": "fact-03",
-      "category": "simple factual",
-      "question": "What are the library opening hours on teaching days?",
-      "expected_strategy": "normal",
-      "relevant_source": "library_policy.pdf",
-      "answer_must_mention": ["08:00", "22:00"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "sem-04",
-      "category": "semantic",
-      "question": "What happens if a student cannot attend classes because of illness?",
-      "expected_strategy": "normal",
-      "relevant_source": "attendance_policy.pdf",
-      "answer_must_mention_any": ["medical", "certificate", "condonation"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "sem-05",
-      "category": "semantic",
-      "question": "How does the university handle cheating during an exam?",
-      "expected_strategy": "normal",
-      "relevant_source": "examination_rules.pdf",
-      "answer_must_mention_any": ["integrity", "committee", "unauthorized"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "sem-06",
-      "category": "semantic",
-      "question": "What is the purpose of continuous assessment?",
-      "expected_strategy": "normal",
-      "relevant_source": null,
-      "answer_must_mention_any": [],
-      "insufficient_evidence_expected": true,
-      "note": "Corpus describes CS201 assessment components but never states a purpose of continuous assessment; a grounded system must decline."
-    },
-    {
-      "id": "term-07",
-      "category": "exact terminology",
-      "question": "What is the re-evaluation procedure after examination scores are released?",
+      "category": "factual lookup",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Which three textbooks are listed as references for Engineering Economics?",
       "expected_strategy": "hybrid",
-      "relevant_source": "examination_rules.pdf",
-      "answer_must_mention_any": ["ten working days", "re-evaluation", "fee"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "term-08",
-      "category": "exact terminology",
-      "question": "Under what conditions can a library loan be renewed?",
-      "expected_strategy": "hybrid",
-      "relevant_source": "library_policy.pdf",
-      "answer_must_mention_any": ["twice", "reservation"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "course-09",
-      "category": "course code",
-      "question": "What are the credit requirements for CS201?",
-      "expected_strategy": "hybrid",
-      "relevant_source": "cs201_syllabus.pdf",
-      "answer_must_mention_any": ["four", "4", "credit"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "course-10",
-      "category": "course code",
-      "question": "What is the prerequisite for CS201?",
-      "expected_strategy": "hybrid",
-      "relevant_source": "cs201_syllabus.pdf",
-      "answer_must_mention_any": ["CS101"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "course-11",
-      "category": "course code",
-      "question": "What are the attendance requirements for ENCT 353?",
-      "expected_strategy": "hybrid",
-      "relevant_source": null,
-      "answer_must_mention_any": [],
-      "insufficient_evidence_expected": true,
-      "note": "ENCT 353 does not exist in the corpus. The general 75 percent rule exists, but no course-specific requirement; declining is the honest behavior. Router may legitimately still route hybrid via the course-code signal."
-    },
-    {
-      "id": "multi-12",
-      "category": "multi-concept",
-      "question": "What is the examination schedule and the assessment split for CS201?",
-      "expected_strategy": "hybrid",
-      "relevant_source": "cs201_syllabus.pdf",
-      "answer_must_mention_any": ["40 percent", "midterm", "assignment"],
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "Mankiw",
+        "Park",
+        "McConnell"
+      ],
       "insufficient_evidence_expected": false,
-      "note": "Partial grounding: CS201 assessment split exists, a date schedule does not. Either a grounded split-only answer or a decline naming the missing part is acceptable; fabrication of dates is not."
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-04",
+      "category": "specific detail",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Which depreciation calculation methods are covered in the syllabus?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "straight line",
+        "declining balance",
+        "sinking fund",
+        "sum of the year",
+        "MACRS",
+        "modified accelerated cost recovery"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-05",
+      "category": "specific detail",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What types of cash flow are covered under Time Value of Money?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "uniform",
+        "gradient",
+        "single",
+        "irregular"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-06",
+      "category": "specific detail",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "How many final-exam marks are assigned to Chapter 8 of Engineering Economics?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "8"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-07",
+      "category": "specific detail",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What aspects of unemployment are listed in Chapter 9?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "measurement",
+        "job search",
+        "minimum wage"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-08",
+      "category": "specific detail",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What does Tutorial 8 of Engineering Economics deal with?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "price variation",
+        "price escalation"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-09",
+      "category": "exact term",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What does WACC stand for and which section covers it?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "weighted average cost of capital",
+        "WACC",
+        "5.4"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-10",
+      "category": "exact term",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Which section covers the repeatability assumption and co-terminated assumptions?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "5.5",
+        "repeatability",
+        "co-terminated"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-11",
+      "category": "exact term",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Under which cost-classification group does \"element of cost\" appear?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "3.1.4",
+        "sunk cost",
+        "opportunity cost",
+        "life-cycle cost"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "sem-12",
+      "category": "semantic paraphrase",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Which topics deal with situations where markets fail to give socially efficient outcomes?",
+      "expected_strategy": "normal",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "externality",
+        "market failure",
+        "market inefficiency"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
     },
     {
       "id": "multi-13",
-      "category": "multi-concept",
-      "question": "How do attendance and fee payment affect exam eligibility?",
+      "category": "multi-part",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Which techniques are used for risk analysis of projects, and under which section are they listed?",
       "expected_strategy": "hybrid",
-      "relevant_source": "examination_rules.pdf",
-      "answer_must_mention_any": ["attendance", "fees", "registration"],
-      "insufficient_evidence_expected": false
-    },
-    {
-      "id": "multisrc-14",
-      "category": "multiple sources",
-      "question": "What can stop a student from sitting the final examination?",
-      "expected_strategy": "hybrid",
-      "relevant_source": "examination_rules.pdf",
-      "also_acceptable_source": "attendance_policy.pdf",
-      "answer_must_mention_any": ["attendance", "fees", "good standing"],
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "sensitivity",
+        "breakeven",
+        "scenario"
+      ],
       "insufficient_evidence_expected": false,
-      "note": "Fully grounded answers can draw on examination_rules (registration, fees, attendance) and/or attendance_policy (75 percent threshold)."
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
     },
     {
-      "id": "multisrc-15",
-      "category": "multiple sources",
-      "question": "What rules apply to identity cards and entering the examination hall?",
+      "id": "multi-14",
+      "category": "multi-part",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Which equivalent worth methods and which rate of return types does the syllabus list?",
       "expected_strategy": "hybrid",
-      "relevant_source": "examination_rules.pdf",
-      "answer_must_mention_any": ["identity card", "fifteen minutes", "thirty minutes"],
-      "insufficient_evidence_expected": false
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "net present",
+        "annual",
+        "future",
+        "capitalized",
+        "internal",
+        "external"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
     },
     {
-      "id": "none-16",
-      "category": "no answer in corpus",
-      "question": "Who won the football world cup?",
-      "expected_strategy": "normal",
-      "relevant_source": null,
-      "answer_must_mention_any": [],
-      "insufficient_evidence_expected": true
+      "id": "chap-15",
+      "category": "chapter lookup",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What topics are covered in Chapter 6 Replacement Analysis?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "replacement strategies",
+        "economic service life",
+        "planning horizon"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "chap-16",
+      "category": "chapter lookup",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What are the sections of Chapter 9, Measurement of Nation Income?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+      "answer_must_mention_any": [
+        "GDP",
+        "unemployment",
+        "inflation",
+        "exchange rate",
+        "fiscal budget",
+        "monetary policy",
+        "financial statement"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
     },
     {
       "id": "none-17",
       "category": "no answer in corpus",
-      "question": "What is the tuition fee for the master's program in computer science?",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What is the current policy interest rate set by Nepal Rastra Bank?",
+      "expected_strategy": "normal",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "none-18",
+      "category": "no answer in corpus",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "What is the minimum passing mark for the Engineering Economics final exam?",
       "expected_strategy": "hybrid",
       "relevant_source": null,
       "answer_must_mention_any": [],
       "insufficient_evidence_expected": true,
-      "note": "Fees appear only as an eligibility condition, never as amounts; 'fee' is policy vocabulary so hybrid routing is expected and fine - but no amount may be invented."
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
     },
     {
-      "id": "amb-18",
-      "category": "ambiguous",
-      "question": "Tell me about examinations.",
+      "id": "none-19",
+      "category": "no answer in corpus",
+      "course": "Engineering Economics",
+      "course_code": "ENCE 356",
+      "question": "Explain how the Black-Scholes model prices a European call option.",
       "expected_strategy": "hybrid",
-      "relevant_source": "examination_rules.pdf",
-      "answer_must_mention_any": ["eligibility", "identity", "scores", "re-evaluation", "integrity"],
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "hard",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "fact-20",
+      "category": "factual lookup",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Which chapter of Simulation and Modeling covers Markov chains?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "5",
+        "Markov"
+      ],
       "insufficient_evidence_expected": false,
-      "note": "Broad query; any accurate summary of examination rules is acceptable."
-    }
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "def-21",
+      "category": "definition",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What is Monte-Carlo simulation?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "chapter_1",
+      "answer_must_mention_any": [
+        "random sampling",
+        "random numbers",
+        "Monte-Carlo",
+        "repeated",
+        "probabilistic"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "def-22",
+      "category": "definition",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What is discrete-event system simulation?",
+      "expected_strategy": "either",
+      "relevant_source": "chapter_1",
+      "answer_must_mention_any": [
+        "discrete-event",
+        "events",
+        "state changes",
+        "event",
+        "queue"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "def-23",
+      "category": "definition",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What is Kendall's notation in queuing systems?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "chapter_4",
+      "answer_must_mention_any": [
+        "Kendall",
+        "A/B/c",
+        "arrival",
+        "service",
+        "servers",
+        "queue"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "def-24",
+      "category": "definition",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What are pseudo-random numbers and how are they generated?",
+      "expected_strategy": "either",
+      "relevant_source": "chapter_6",
+      "answer_must_mention_any": [
+        "pseudo-random",
+        "congruential",
+        "generate",
+        "algorithm",
+        "deterministic"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "detail-25",
+      "category": "specific detail",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Which tests for random numbers are listed in the syllabus?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "Kolmogorov-Smirnov",
+        "Chi-Square",
+        "gap test",
+        "poker",
+        "auto correlation",
+        "autocorrelation"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-26",
+      "category": "specific detail",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Which methods are named in 6.6 for generating random variates?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "inversion",
+        "rejection",
+        "composition",
+        "convolution"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-27",
+      "category": "specific detail",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Which programming languages or tools are named for simulation in Chapter 9?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "Java",
+        "GPSS",
+        "Python"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-28",
+      "category": "exact term",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What does CSSL stand for in Simulation of Continuous Systems?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "continuous system simulation language",
+        "CSSL"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-29",
+      "category": "exact term",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Which chapter discusses the Naylor and Finger validation process?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "7",
+        "Naylor",
+        "Finger",
+        "validation"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-30",
+      "category": "exact term",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Where is Poker's method covered and what is it used for?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "chapter_6",
+      "answer_must_mention_any": [
+        "poker",
+        "hand",
+        "digits",
+        "pattern",
+        "random numbers"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "sem-31",
+      "category": "semantic paraphrase",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "How can I check whether a sequence of generated numbers behaves like truly random numbers?",
+      "expected_strategy": "normal",
+      "relevant_source": "chapter_6",
+      "answer_must_mention_any": [
+        "uniformity",
+        "independence",
+        "Kolmogorov-Smirnov",
+        "Chi-Square",
+        "gap test",
+        "poker",
+        "autocorrelation"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "sem-32",
+      "category": "semantic paraphrase",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "How do you deal with start-up effects in a simulation run before collecting results?",
+      "expected_strategy": "normal",
+      "relevant_source": "chapter_8",
+      "answer_must_mention_any": [
+        "initial bias",
+        "warm-up",
+        "transient",
+        "deletion",
+        "steady state"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "cmp-33",
+      "category": "comparison",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Compare continuous systems and discrete systems.",
+      "expected_strategy": "either",
+      "relevant_source": "chapter_1",
+      "answer_must_mention_any": [
+        "continuous",
+        "discrete",
+        "state variables",
+        "change"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "cmp-34",
+      "category": "comparison",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Compare static physical models and dynamic physical models.",
+      "expected_strategy": "either",
+      "relevant_source": "chapter_2",
+      "answer_must_mention_any": [
+        "static",
+        "dynamic",
+        "physical model",
+        "time"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "cmp-35",
+      "category": "comparison",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Compare verification and validation of simulation models.",
+      "expected_strategy": "either",
+      "relevant_source": "chapter_7",
+      "answer_must_mention_any": [
+        "verification",
+        "validation",
+        "calibration",
+        "model",
+        "conceptual"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "proc-36",
+      "category": "procedure",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What are the steps in a simulation study?",
+      "expected_strategy": "normal",
+      "relevant_source": "chapter_1",
+      "answer_must_mention_any": [
+        "problem formulation",
+        "model",
+        "data collection",
+        "validation",
+        "experiment",
+        "analysis",
+        "steps"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "proc-37",
+      "category": "procedure",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Explain how the linear congruential method generates random numbers.",
+      "expected_strategy": "hybrid",
+      "relevant_source": "chapter_6",
+      "answer_must_mention_any": [
+        "linear congruential",
+        "multiplier",
+        "modulus",
+        "increment",
+        "seed",
+        "x_n",
+        "mod"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "multi-38",
+      "category": "multi-part",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Which sections of the queuing chapter deal with performance measurement and networks of queues?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "performance",
+        "utilization",
+        "waiting time",
+        "queue length",
+        "network of queues"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "chap-39",
+      "category": "chapter lookup",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What topics are covered in Chapter 8, Analysis of simulation output?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "confidence interval",
+        "hypothesis testing",
+        "estimation",
+        "replication",
+        "initial bias",
+        "run statistics"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "chap-40",
+      "category": "chapter lookup",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What is Chapter 3 of Simulation and Modeling about and what does it include?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20__1_.pdf",
+      "answer_must_mention_any": [
+        "continuous system",
+        "analog computer",
+        "hybrid simulation",
+        "CSSL",
+        "feedback"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "sum-41",
+      "category": "summary",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Give a short summary of the Introduction to Simulation chapter.",
+      "expected_strategy": "normal",
+      "relevant_source": "chapter_1",
+      "answer_must_mention_any": [
+        "system",
+        "model",
+        "simulation",
+        "Monte-Carlo",
+        "discrete-event",
+        "advantages",
+        "disadvantages"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "sum-42",
+      "category": "summary",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Explain Markov chains in about 100 words.",
+      "expected_strategy": "normal",
+      "relevant_source": "chapter_5",
+      "answer_must_mention_any": [
+        "Markov",
+        "state",
+        "transition",
+        "probability",
+        "memoryless"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "hard-43",
+      "category": "difficult",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "How does the Kolmogorov-Smirnov test differ from the Chi-Square test when testing random numbers?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "chapter_6",
+      "answer_must_mention_any": [
+        "Kolmogorov-Smirnov",
+        "Chi-Square",
+        "empirical",
+        "cumulative",
+        "goodness-of-fit",
+        "intervals",
+        "classes"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "none-44",
+      "category": "no answer in corpus",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What is the average salary of a simulation engineer?",
+      "expected_strategy": "normal",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "easy",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "none-45",
+      "category": "no answer in corpus",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "Explain how generative adversarial networks are trained.",
+      "expected_strategy": "hybrid",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "none-46",
+      "category": "no answer in corpus",
+      "course": "Simulation and Modeling",
+      "course_code": "ENCT 353",
+      "question": "What is the submission deadline for the Simulation and Modeling practical reports?",
+      "expected_strategy": "either",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "fact-47",
+      "category": "factual lookup",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Which chapter covers Software Configuration Management?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "8",
+        "configuration management"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "def-48",
+      "category": "definition",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What is legacy software?",
+      "expected_strategy": "either",
+      "relevant_source": "ch_1_slide",
+      "answer_must_mention_any": [
+        "legacy software",
+        "older",
+        "maintenance",
+        "existing"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "def-49",
+      "category": "definition",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What are the roles, artifacts and ceremonies of the Scrum framework?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ch_2_slide",
+      "answer_must_mention_any": [
+        "Scrum",
+        "product owner",
+        "scrum master",
+        "sprint",
+        "backlog",
+        "daily"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "def-50",
+      "category": "definition",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What are cohesion and coupling in modular design?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ch_4_slide",
+      "answer_must_mention_any": [
+        "cohesion",
+        "coupling",
+        "module",
+        "modular"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "def-51",
+      "category": "definition",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What is a code walkthrough?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ch_6_slide",
+      "answer_must_mention_any": [
+        "walkthrough",
+        "review",
+        "author",
+        "peer"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "detail-52",
+      "category": "specific detail",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Which traditional process models are listed in the syllabus?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "waterfall",
+        "incremental",
+        "prototyping",
+        "spiral",
+        "evolutionary"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "detail-53",
+      "category": "specific detail",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Which levels of testing are listed under software testing fundamentals?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "unit",
+        "integration",
+        "system",
+        "acceptance"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-54",
+      "category": "exact term",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What does TDD stand for and under which section is it listed?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "test-driven development",
+        "TDD",
+        "6.5.1",
+        "tests first"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-55",
+      "category": "exact term",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What does IaC stand for in the Recent Trends chapter?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "infrastructure as code",
+        "IaC"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-56",
+      "category": "exact term",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Which topic in the quality chapter mentions CMMI levels?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "CMMI",
+        "ISO",
+        "7.4"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "term-57",
+      "category": "exact term",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Where does the syllabus mention Git-flow?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "Git-flow",
+        "branching",
+        "8.4"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "sem-58",
+      "category": "semantic paraphrase",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "How can a team deliver software in short iterations with frequent customer feedback?",
+      "expected_strategy": "normal",
+      "relevant_source": "ch_2_slide",
+      "answer_must_mention_any": [
+        "agile",
+        "iteration",
+        "sprint",
+        "incremental",
+        "customer feedback",
+        "Scrum"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "sem-59",
+      "category": "semantic paraphrase",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "How can several developers work on the same code without overwriting each other?",
+      "expected_strategy": "normal",
+      "relevant_source": "ch_8_slide",
+      "answer_must_mention_any": [
+        "version control",
+        "branch",
+        "merge",
+        "git",
+        "repository"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "cmp-60",
+      "category": "comparison",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Compare agile and plan-driven development.",
+      "expected_strategy": "either",
+      "relevant_source": "ch_2_slide",
+      "answer_must_mention_any": [
+        "agile",
+        "plan-driven",
+        "iterative",
+        "documentation",
+        "change",
+        "waterfall"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "cmp-61",
+      "category": "comparison",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Compare functional and non-functional requirements.",
+      "expected_strategy": "either",
+      "relevant_source": "ch_3_slide",
+      "answer_must_mention_any": [
+        "functional",
+        "non-functional",
+        "performance",
+        "security",
+        "requirements"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "cmp-62",
+      "category": "comparison",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Compare black-box and white-box testing.",
+      "expected_strategy": "either",
+      "relevant_source": "ch_6_slide",
+      "answer_must_mention_any": [
+        "black-box",
+        "white-box",
+        "internal structure",
+        "specification",
+        "test cases"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "proc-63",
+      "category": "procedure",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What steps make up the requirements engineering process?",
+      "expected_strategy": "normal",
+      "relevant_source": "ch_3_slide",
+      "answer_must_mention_any": [
+        "elicitation",
+        "analysis",
+        "specification",
+        "validation",
+        "requirements"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "multi-64",
+      "category": "multi-part",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What topics does agile requirements engineering include?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "user stories",
+        "acceptance criteria",
+        "product backlog",
+        "story mapping",
+        "backlog grooming"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "chap-65",
+      "category": "chapter lookup",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What topics are covered in Chapter 5, System Modeling?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "DFD",
+        "data flow",
+        "use-case",
+        "activity diagram",
+        "class-based",
+        "abstraction"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "chap-66",
+      "category": "chapter lookup",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Which recent trends does Chapter 9 of Software Engineering cover?",
+      "expected_strategy": "either",
+      "relevant_source": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+      "answer_must_mention_any": [
+        "DevOps",
+        "CI/CD",
+        "microservices",
+        "IaC",
+        "AI-assisted",
+        "low-code",
+        "green software"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "easy",
+      "note": "Syllabus-derived question; answer is checked against the course syllabus document."
+    },
+    {
+      "id": "sum-67",
+      "category": "summary",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Summarize the main ideas of the Coding and Testing chapter.",
+      "expected_strategy": "normal",
+      "relevant_source": "ch_6_slide",
+      "answer_must_mention_any": [
+        "coding standards",
+        "code review",
+        "unit testing",
+        "integration testing",
+        "black-box",
+        "white-box",
+        "TDD",
+        "refactoring"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "sum-68",
+      "category": "summary",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Give short notes on the Agile manifesto and its principles.",
+      "expected_strategy": "normal",
+      "relevant_source": "ch_2_slide",
+      "answer_must_mention_any": [
+        "agile manifesto",
+        "12 principles",
+        "individuals and interactions",
+        "working software",
+        "customer collaboration",
+        "responding to change"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "hard-69",
+      "category": "difficult",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "How do code inspection and cleanroom technique differ from test-driven development as ways of improving code quality?",
+      "expected_strategy": "hybrid",
+      "relevant_source": "ch_6_slide",
+      "answer_must_mention_any": [
+        "inspection",
+        "cleanroom",
+        "TDD",
+        "test-driven",
+        "review",
+        "defect"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "detail-70",
+      "category": "specific detail",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What factors should be considered when selecting a software process model?",
+      "expected_strategy": "normal",
+      "relevant_source": "ch_2_slide",
+      "answer_must_mention_any": [
+        "project size",
+        "requirements",
+        "team",
+        "risk",
+        "agile",
+        "plan-driven",
+        "selection"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "medium",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "none-71",
+      "category": "no answer in corpus",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "How does Kubernetes schedule pods onto nodes?",
+      "expected_strategy": "hybrid",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "none-72",
+      "category": "no answer in corpus",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "Which Git hosting platform must students use for the term project?",
+      "expected_strategy": "either",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "none-73",
+      "category": "no answer in corpus",
+      "course": "Software Engineering",
+      "course_code": "ENCT 352",
+      "question": "What is the difference between TCP and UDP?",
+      "expected_strategy": "normal",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "easy",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "xdoc-74",
+      "category": "cross-document",
+      "course": "Cross-document",
+      "course_code": "MULTI",
+      "question": "How does verification and validation appear in Simulation and Modeling compared with Software Engineering?",
+      "expected_strategy": "hybrid",
+      "relevant_source": [
+        "chapter_7",
+        "ch_6_slide"
+      ],
+      "answer_must_mention_any": [
+        "verification",
+        "validation",
+        "simulation model",
+        "testing",
+        "software"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "xdoc-75",
+      "category": "cross-document",
+      "course": "Cross-document",
+      "course_code": "MULTI",
+      "question": "Which diagram types are named across the Engineering Economics and Software Engineering syllabi?",
+      "expected_strategy": "hybrid",
+      "relevant_source": [
+        "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+        "ch_5_slide"
+      ],
+      "answer_must_mention_any": [
+        "cash flow diagram",
+        "DFD",
+        "use-case",
+        "activity",
+        "class"
+      ],
+      "insufficient_evidence_expected": false,
+      "difficulty": "hard",
+      "note": "Notes-based question; expected evidence is the chapter slide/notes for this unit. Keywords are syllabus-named terms; extend after reading the notes."
+    },
+    {
+      "id": "none-76",
+      "category": "no answer in corpus",
+      "course": "Cross-document",
+      "course_code": "MULTI",
+      "question": "What is the current tuition fee for the engineering programme at the university?",
+      "expected_strategy": "normal",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "none-77",
+      "category": "no answer in corpus",
+      "course": "Cross-document",
+      "course_code": "MULTI",
+      "question": "Who won the 2026 FIFA World Cup?",
+      "expected_strategy": "normal",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "easy",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+      "id": "none-78",
+      "category": "no answer in corpus",
+      "course": "Cross-document",
+      "course_code": "MULTI",
+      "question": "What are the library opening hours and exam seating rules of the campus?",
+      "expected_strategy": "hybrid",
+      "relevant_source": null,
+      "answer_must_mention_any": [],
+      "insufficient_evidence_expected": true,
+      "difficulty": "medium",
+      "note": "No answer expected in corpus; system must abstain and not invent a value."
+    },
+    {
+    "id": "boot-01",
+    "category": "single-fact lookup",
+    "course": "Bootcamp Notice",
+    "course_code": "BOOT",
+    "question": "On what date is the final day of the AI Engineering Bootcamp?",
+    "expected_strategy": "keyword",
+    "relevant_source": "bootcamp_final_day_notice.pdf",
+    "answer_must_mention_any": ["October 7, 2026", "Wednesday"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "easy",
+    "note": "Direct fact from the notice."
+  },
+  {
+    "id": "boot-02",
+    "category": "single-fact lookup",
+    "course": "Bootcamp Notice",
+    "course_code": "BOOT",
+    "question": "How early must participants arrive before the session?",
+    "expected_strategy": "keyword",
+    "relevant_source": "bootcamp_final_day_notice.pdf",
+    "answer_must_mention_any": ["15 minutes"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "easy",
+    "note": "Reporting time row."
+  },
+  {
+    "id": "boot-03",
+    "category": "list extraction",
+    "course": "Bootcamp Notice",
+    "course_code": "BOOT",
+    "question": "What items should participants bring on the final day?",
+    "expected_strategy": "semantic",
+    "relevant_source": "bootcamp_final_day_notice.pdf",
+    "answer_must_mention_any": ["college ID", "laptop", "final project"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "medium",
+    "note": "Answer should cover ID, laptop and project readiness."
+  },
+  {
+    "id": "boot-04",
+    "category": "condition lookup",
+    "course": "Bootcamp Notice",
+    "course_code": "BOOT",
+    "question": "Who is eligible to receive a certificate at the end of the bootcamp?",
+    "expected_strategy": "semantic",
+    "relevant_source": "bootcamp_final_day_notice.pdf",
+    "answer_must_mention_any": ["attendance", "project requirements"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "medium",
+    "note": "Must state both conditions."
+  },
+  {
+    "id": "hol-01",
+    "category": "single-fact lookup",
+    "course": "Holiday Notice",
+    "course_code": "HOL",
+    "question": "Why is the university closed on October 7, 2026?",
+    "expected_strategy": "keyword",
+    "relevant_source": "holiday_notice_october_7.pdf",
+    "answer_must_mention_any": ["Foundation Day"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "easy",
+    "note": "Reason field."
+  },
+  {
+    "id": "hol-02",
+    "category": "single-fact lookup",
+    "course": "Holiday Notice",
+    "course_code": "HOL",
+    "question": "When do university operations resume after the holiday?",
+    "expected_strategy": "keyword",
+    "relevant_source": "holiday_notice_october_7.pdf",
+    "answer_must_mention_any": ["October 8", "Thursday"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "easy",
+    "note": "Resumes at regular hours."
+  },
+  {
+    "id": "hol-03",
+    "category": "detail lookup",
+    "course": "Holiday Notice",
+    "course_code": "HOL",
+    "question": "Which services stay open during the Foundation Day closure?",
+    "expected_strategy": "semantic",
+    "relevant_source": "holiday_notice_october_7.pdf",
+    "answer_must_mention_any": ["security", "health center"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "medium",
+    "note": "Emergency services exception."
+  },
+  {
+    "id": "rules-01",
+    "category": "single-fact lookup",
+    "course": "Rules and Regulations",
+    "course_code": "RULES",
+    "question": "What minimum attendance is required to sit the final examination?",
+    "expected_strategy": "keyword",
+    "relevant_source": "university_rules_and_regulations.pdf",
+    "answer_must_mention_any": ["75%"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "easy",
+    "note": "Section 2."
+  },
+  {
+    "id": "rules-02",
+    "category": "single-fact lookup",
+    "course": "Rules and Regulations",
+    "course_code": "RULES",
+    "question": "How long do students have to appeal a disciplinary decision?",
+    "expected_strategy": "keyword",
+    "relevant_source": "university_rules_and_regulations.pdf",
+    "answer_must_mention_any": ["14 days"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "easy",
+    "note": "Section 13; appeal must be in writing."
+  },
+  {
+    "id": "rules-03",
+    "category": "policy interpretation",
+    "course": "Rules and Regulations",
+    "course_code": "RULES",
+    "question": "Can students use AI tools for assessed work?",
+    "expected_strategy": "semantic",
+    "relevant_source": "university_rules_and_regulations.pdf",
+    "answer_must_mention_any": ["unless the instructor permits", "academic misconduct"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "medium",
+    "note": "Conditional rule; answer must not be a flat yes or no."
+  },
+  {
+    "id": "multi-01",
+    "category": "cross-document reasoning",
+    "course": "Cross-document",
+    "course_code": "MULTI",
+    "question": "If a bootcamp participant arrives 20 minutes after the session starts, could they be marked absent, and does that affect their certificate?",
+    "expected_strategy": "hybrid",
+    "relevant_source": [
+      "bootcamp_final_day_notice.pdf",
+      "university_rules_and_regulations.pdf"
+    ],
+    "answer_must_mention_any": ["15 minutes", "instructor's discretion", "attendance"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "hard",
+    "note": "Combine the 15-minute lateness rule with the certificate attendance condition. Must hedge: the rules apply to courses and the bootcamp's own attendance policy is not stated."
+  },
+  {
+    "id": "multi-02",
+    "category": "conflicting information",
+    "course": "Cross-document",
+    "course_code": "MULTI",
+    "question": "Is the campus open on October 7, 2026, given the bootcamp and the holiday notice?",
+    "expected_strategy": "hybrid",
+    "relevant_source": [
+      "bootcamp_final_day_notice.pdf",
+      "holiday_notice_october_7.pdf"
+    ],
+    "answer_must_mention_any": ["conflict", "Foundation Day", "bootcamp"],
+    "insufficient_evidence_expected": false,
+    "difficulty": "hard",
+    "note": "Notices are from different issuers (Techspire College vs. a university). System should flag the apparent conflict, not silently pick one."
+  },
+  {
+    "id": "none-01",
+    "category": "no answer in corpus",
+    "course": "Bootcamp Notice",
+    "course_code": "BOOT",
+    "question": "In which hall or lab is the bootcamp final day being held?",
+    "expected_strategy": "keyword",
+    "relevant_source": null,
+    "answer_must_mention_any": [],
+    "insufficient_evidence_expected": true,
+    "difficulty": "hard",
+    "note": "Notice says venue is 'to be confirmed'; system must abstain and not invent a room."
+  },
+  {
+    "id": "none-02",
+    "category": "no answer in corpus",
+    "course": "Bootcamp Notice",
+    "course_code": "BOOT",
+    "question": "What time does the final day session begin?",
+    "expected_strategy": "hybrid",
+    "relevant_source": null,
+    "answer_must_mention_any": [],
+    "insufficient_evidence_expected": true,
+    "difficulty": "medium",
+    "note": "Only 'arrive 15 minutes before' is given; no start time exists."
+  },
+  {
+    "id": "none-03",
+    "category": "no answer in corpus",
+    "course": "Rules and Regulations",
+    "course_code": "RULES",
+    "question": "What time is the hostel curfew?",
+    "expected_strategy": "keyword",
+    "relevant_source": null,
+    "answer_must_mention_any": [],
+    "insufficient_evidence_expected": true,
+    "difficulty": "medium",
+    "note": "Section 9 mentions curfew but gives no timing; must not invent one."
+  },
+  {
+    "id": "none-04",
+    "category": "no answer in corpus",
+    "course": "Rules and Regulations",
+    "course_code": "RULES",
+    "question": "How much is the fine for overdue library books?",
+    "expected_strategy": "keyword",
+    "relevant_source": null,
+    "answer_must_mention_any": [],
+    "insufficient_evidence_expected": true,
+    "difficulty": "medium",
+    "note": "Rules say fines apply but give no amount."
+  },
+  {
+    "id": "none-05",
+    "category": "no answer in corpus",
+    "course": "Holiday Notice",
+    "course_code": "HOL",
+    "question": "What is the revised exam timetable for papers cancelled on October 7?",
+    "expected_strategy": "hybrid",
+    "relevant_source": null,
+    "answer_must_mention_any": [],
+    "insufficient_evidence_expected": true,
+    "difficulty": "hard",
+    "note": "Notice says revised timetable will be announced by departments; no dates given."
+  }
   ]
 }

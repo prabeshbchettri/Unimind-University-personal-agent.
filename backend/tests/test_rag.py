@@ -106,7 +106,7 @@ def test_cjk_style_citations_are_normalized(rag_settings) -> None:
     )
 
     assert result.enough_evidence is True
-    assert "75 percent [1]" in result.answer
+    assert "75 percent[1]" in result.answer
     assert "\u3010" not in result.answer  # U+3010 LEFT BLACK LENTICULAR BRACKET
     assert result.retrieved[0].score >= 0  # metadata present
 

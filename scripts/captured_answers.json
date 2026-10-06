@@ -1,0 +1,74 @@
+{
+  "simple_factual": {
+    "question": "What is Chapter 1 of Simulation?",
+    "answer": "**Chapter 1 of the Simulation course is titled “Introduction to Simulation.”**  \nIt provides an overview of what simulation is, why it is useful, and outlines the key steps involved in conducting a simulation study (e.g., problem definition, model design, verification, validation, experimentation, and analysis) [1][4].",
+    "provider": "groq",
+    "strategy": "normal",
+    "enough_evidence": true,
+    "latency_s": 1.4
+  },
+  "definition": {
+    "question": "What is Monte Carlo simulation?",
+    "answer": "**Monte Carlo simulation** is a computational technique that uses random sampling to model and analyze systems with uncertain variables. By repeatedly generating random values for uncertain inputs, running the model many times, and then aggregating the results, it approximates the behavior of the system when analytical solutions are difficult or impossible to obtain. This stochastic approach allows one to estimate numerical outcomes, assess risk, and explore a range of possible results rather than a single deterministic answer. [1][2][4]",
+    "provider": "groq",
+    "strategy": "normal",
+    "enough_evidence": true,
+    "latency_s": 0.7
+  },
+  "summary": {
+    "question": "Give me a summary of Chapter 1 of Simulation.",
+    "answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+    "provider": "groq",
+    "strategy": "hybrid",
+    "enough_evidence": true,
+    "latency_s": 0.5
+  },
+  "detailed": {
+    "question": "Explain Monte Carlo simulation in detail.",
+    "answer": "## Monte Carlo Simulation – A Detailed Overview\n\nMonte Carlo simulation is a computational technique that uses random sampling to model complex systems and estimate numerical outcomes when analytical solutions are hard or impossible to obtain. It is a form of **stochastic simulation** that relies on random numbers to explore the behavior of a system under uncertainty.  \n\n### 1. Core Idea\n- **Random sampling** of uncertain variables according to their probability distributions.  \n- Repeating this sampling many times (often thousands or millions of iterations) to build a statistical picture of possible outcomes.  \n- The results are approximate but become increasingly accurate as the number of runs grows.  \n  *[2]*\n\n### 2. Step‑by‑Step Process\n1. **Define the Problem**  \n   - Identify all variables that carry uncertainty.  \n   - Assign appropriate probability distributions to each variable.  \n   *[1]*\n2. **Generate Random Values**  \n   - Use random‑number generators to create a random sample for each uncertain variable in a given iteration.  \n   *[1]*\n3. **Run the Simulation**  \n   - Compute the outcome of interest using the sampled values.  \n   - Repeat the process for a large number of iterations, each time using a new set of random samples.  \n   *[1]*\n4. **Analyze Results**  \n   - Collect all outcomes from every iteration.  \n   - Calculate descriptive statistics (mean, standard deviation, percentiles).  \n   - Visualize the distribution of results to understand variability and risk.  \n   *[1]*\n\n### 3. Illustrative Example\nA classic example is estimating the value of π by randomly dropping points in a unit square and counting how many land inside the inscribed quarter‑circle. As the number of points increases, the estimate converges to the true value of π:\n\n| Points | π ≈ |\n|--------|-----|\n| 10 | 3.2 |\n| 100 | 3.16 |\n| 1,000 | 3.142 |\n| 10,000 | 3.1416 |\n| 1,000,000 | 3.141592… |  \n*[4]*\n\n### 4. Advantages\n- **Handles Uncertainty** – Models problems with uncertain inputs such as demand, cost, or failure rates.  \n- **Applicable to Complex Problems** – Solves mathematical and real‑world problems that are analytically intractable.  \n- **Provides Multiple Outcomes** – Generates a range of possible results with associated probabilities.  \n- **Risk Analysis** – Helps identify and evaluate risks by estimating outcome probabilities.  \n- **Flexibility** – Useful across engineering, finance, healthcare, business, and science.  \n- **What‑If Analysis** – Allows decision‑makers to see how changes in inputs affect outcomes.  \n*[5]*\n\n### 5. Disadvantages\n- **Computationally Expensive** – Requires many simulation runs, which can be time‑consuming and resource‑intensive for complex models.  \n- **Accuracy Depends on Input Data** – Incorrect assumptions or inaccurate probability distributions can mislead results.  \n- **No Guaranteed Exact Solution** – Provides approximate results rather than exact mathematical solutions.  \n- **Requires Expertise** – Building a reliable model demands knowledge of probability, statistics, and the specific domain.  \n- **Random Variation** – Different simulation runs may yield slightly different results due to inherent randomness.  \n*[4]*\n\n---\n\n**In summary**, Monte Carlo simulation is a powerful, flexible tool for exploring uncertain systems by repeatedly sampling random inputs, running the model, and statistically analyzing the outcomes. Its strengths lie in handling complexity and uncertainty, while its limitations revolve around computational cost and the need for accurate input data.",
+    "provider": "groq",
+    "strategy": "normal",
+    "enough_evidence": true,
+    "latency_s": 1.3
+  },
+  "unanswerable": {
+    "question": "Who won the football World Cup?",
+    "answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+    "provider": "groq",
+    "strategy": "normal",
+    "enough_evidence": true,
+    "latency_s": 0.6
+  },
+  "greeting": {
+    "question": "Hello",
+    "answer": "Hello! How can I help you with your university materials today?",
+    "provider": "none",
+    "strategy": "greeting",
+    "enough_evidence": true,
+    "latency_s": 0.0
+  },
+  "word_limit_100": {
+    "question": "Explain Monte Carlo simulation in about 100 words.",
+    "answer": "Monte Carlo simulation is a stochastic technique that uses random sampling to model complex systems when analytical solutions are hard or impossible. The process begins by defining the problem and identifying uncertain variables, assigning each a probability distribution [3]. Random values are then generated from these distributions—often with a random‑number generator—and used to compute outcomes for each iteration [1]. Thousands or millions of such iterations are run, each with a different set of random inputs, producing a distribution of results [1]. Finally, the results are analyzed by calculating statistics such as mean, standard deviation, and percentiles, and visualizing the outcome distribution [1].",
+    "provider": "groq",
+    "strategy": "normal",
+    "enough_evidence": true,
+    "latency_s": 1.3
+  },
+  "comparison": {
+    "question": "Compare vector and hybrid retrieval.",
+    "answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+    "provider": "groq",
+    "strategy": "hybrid",
+    "enough_evidence": true,
+    "latency_s": 0.8
+  },
+  "syllabus_lookup": {
+    "question": "What are the main topics covered in Chapter 1 of Simulation?",
+    "answer": "**Chapter 1 Topics**\n\nChapter 1 of Simulation covers two main topics: the introduction to simulation and the steps in a simulation study.\n\n* The introduction to simulation is discussed on page 3 of Chapter 1.pdf [1]. This section provides a general overview of simulation.\n* The steps in a simulation study are outlined on page 40 of Chapter 1.pdf [4]. These steps include:\n\t1. Problem definition\n\t2. Model formulation\n\t3. Model solution\n\t4. Output analysis\n\nThese topics provide a foundation for understanding the simulation process.",
+    "provider": "ollama_fallback",
+    "strategy": "hybrid",
+    "enough_evidence": true,
+    "latency_s": 50.7
+  }
+}

@@ -32,6 +32,8 @@ data/raw/
 data/index/
 data/qdrant_storage/
 backend/.models/
+# RAGAS judge/embedding cache (regenerable; may contain many MB)
+backend/.ragas_cache/
 .DS_Store
 .idea/
 .vscode/

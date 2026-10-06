@@ -22,6 +22,13 @@ export class ApiError extends Error {
   }
 }
 
+function isAbort(error) {
+  return (
+    (error instanceof DOMException && (error.name === 'AbortError' || error.name === 'TimeoutError')) ||
+    (error instanceof Error && error.name === 'AbortError')
+  )
+}
+
 /** Extract a useful, user-safe message from a FastAPI error body. */
 async function describeHttpError(response) {
   let detail = ''
@@ -64,7 +71,7 @@ export async function sendChatMessage(message) {
       signal: AbortSignal.timeout(CHAT_TIMEOUT_MS),
     })
   } catch (error) {
-    if (error instanceof DOMException && (error.name === 'TimeoutError' || error.name === 'AbortError')) {
+    if (isAbort(error)) {
       throw new ApiError(
         'The assistant took too long to answer and the request was stopped. Please try again.',
         'timeout',
@@ -91,4 +98,90 @@ export async function sendChatMessage(message) {
     throw new ApiError('The assistant returned an empty answer. Please try again.', 'server')
   }
   return data
+}
+
+/**
+ * Stream one grounded answer from POST /api/chat/stream (SSE).
+ *
+ * Calls, as the backend emits them:
+ *   onMeta({strategy, strategy_reason, provider, model})  -- once, first
+ *   onDelta(text)                                          -- repeatedly
+ * and resolves with the final `done` payload (same shape as sendChatMessage).
+ *
+ * Throws ApiError on network/server problems and on a terminal backend
+ * `error` event. User-initiated aborts rethrow the AbortError untouched.
+ */
+export async function sendChatMessageStream(message, { signal, onMeta, onDelta, onDone } = {}) {
+  let response
+  try {
+    response = await fetch(`${API_BASE}/api/chat/stream`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+      signal,
+    })
+  } catch (error) {
+    if (isAbort(error)) throw error
+    throw new ApiError(
+      'Cannot reach the assistant backend. Make sure the API server is running.',
+      'network',
+    )
+  }
+
+  if (!response.ok) {
+    throw new ApiError(await describeHttpError(response), 'server')
+  }
+  if (!response.body) {
+    // No streaming available (old browser/proxy): degrade gracefully.
+    const data = await sendChatMessage(message)
+    onMeta?.({ strategy: data.strategy, strategy_reason: data.strategy_reason, provider: data.provider, model: data.model })
+    onDone?.(data)
+    return data
+  }
+
+  const reader = response.body.getReader()
+  const decoder = new TextDecoder()
+  let buffer = ''
+  let final = null
+
+  const handleEvent = (event) => {
+    if (event.type === 'meta') onMeta?.(event)
+    else if (event.type === 'delta' && typeof event.text === 'string') onDelta?.(event.text)
+    else if (event.type === 'done') final = event
+    else if (event.type === 'error') throw new ApiError(event.message || 'The assistant reported an error.', 'server')
+  }
+
+  while (true) {
+    let chunk
+    try {
+      chunk = await reader.read()
+    } catch (error) {
+      if (isAbort(error)) throw error
+      throw new ApiError('The connection to the assistant was interrupted. Please try again.', 'network')
+    }
+    if (chunk.done) break
+    buffer += decoder.decode(chunk.value, { stream: true })
+
+    let boundary = buffer.indexOf('\n\n')
+    while (boundary !== -1) {
+      const rawEvent = buffer.slice(0, boundary)
+      buffer = buffer.slice(boundary + 2)
+      const dataLine = rawEvent.split('\n').find((line) => line.startsWith('data: '))
+      if (dataLine) {
+        try {
+          handleEvent(JSON.parse(dataLine.slice(6)))
+        } catch (error) {
+          if (error instanceof ApiError) throw error
+          // Malformed JSON event: skip it rather than killing the stream.
+        }
+      }
+      boundary = buffer.indexOf('\n\n')
+    }
+  }
+
+  if (!final) {
+    throw new ApiError('The assistant returned an empty answer. Please try again.', 'server')
+  }
+  onDone?.(final)
+  return final
 }

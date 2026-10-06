@@ -1,0 +1,138 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+Dataset: dataset.json (v1.1-notes-format) -> 95 question(s) [FULL mode]
+Judge:   llama3.1 @ http://localhost:11434/v1  (context_precision=with-reference, strictness=3, concurrency=2)
+Building pipeline (provider=auto, store=local)...
+Running 95 question(s) through the real RAG pipeline...
+  [  1/95] fact-01    hybrid/groq            5 ctx, 1378 ms
+  [  2/95] fact-02    normal/groq            5 ctx, 1643 ms
+  [  3/95] fact-03    normal/groq            5 ctx, 1560 ms
+  [  4/95] detail-04  hybrid/groq            5 ctx, 718 ms
+  [  5/95] detail-05  hybrid/groq            5 ctx, 3298 ms
+  [  6/95] detail-06  hybrid/ollama_fallback 5 ctx, 85117 ms
+  [  7/95] detail-07  hybrid/groq            5 ctx, 1825 ms
+  [  8/95] detail-08  declined               5 ctx, 1269 ms
+  [  9/95] term-09    declined               5 ctx, 687 ms
+  [ 10/95] term-10    hybrid/groq            5 ctx, 741 ms
+  [ 11/95] term-11    hybrid/groq            5 ctx, 865 ms
+  [ 12/95] sem-12     hybrid/groq            5 ctx, 854 ms
+  [ 13/95] multi-13   hybrid/ollama_fallback 5 ctx, 45660 ms
+  [ 14/95] multi-14   hybrid/groq            5 ctx, 1326 ms
+  [ 15/95] chap-15    hybrid/groq            5 ctx, 2208 ms
+  [ 16/95] chap-16    hybrid/groq            5 ctx, 963 ms
+  [ 17/95] none-17    declined               5 ctx, 617 ms
+  [ 18/95] none-18    hybrid/ollama_fallback 5 ctx, 65267 ms
+  [ 19/95] none-19    declined               5 ctx, 895 ms
+  [ 20/95] fact-20    hybrid/groq            5 ctx, 444 ms
+  [ 21/95] def-21     normal/groq            5 ctx, 786 ms
+  [ 22/95] def-22     normal/groq            5 ctx, 786 ms
+  [ 23/95] def-23     normal/groq            5 ctx, 699 ms
+  [ 24/95] def-24     hybrid/groq            5 ctx, 946 ms
+  [ 25/95] detail-25  hybrid/groq            5 ctx, 729 ms
+  [ 26/95] detail-26  hybrid/ollama_fallback 5 ctx, 20488 ms
+  [ 27/95] detail-27  hybrid/groq            5 ctx, 1071 ms
+  [ 28/95] term-28    hybrid/groq            5 ctx, 1470 ms
+  [ 29/95] term-29    hybrid/ollama_fallback 5 ctx, 29378 ms
+  [ 30/95] term-30    hybrid/groq            5 ctx, 855 ms
+  [ 31/95] sem-31     hybrid/groq            5 ctx, 1080 ms
+  [ 32/95] sem-32     hybrid/groq            5 ctx, 1244 ms
+  [ 33/95] cmp-33     hybrid/groq            5 ctx, 1078 ms
+  [ 34/95] cmp-34     hybrid/ollama_fallback 5 ctx, 62170 ms
+  [ 35/95] cmp-35     hybrid/groq            5 ctx, 2227 ms
+  [ 36/95] proc-36    normal/groq            5 ctx, 748 ms
+  [ 37/95] proc-37    normal/groq            5 ctx, 1365 ms
+  [ 38/95] multi-38   hybrid/groq            5 ctx, 770 ms
+  [ 39/95] chap-39    hybrid/groq            5 ctx, 933 ms
+  [ 40/95] chap-40    hybrid/ollama_fallback 5 ctx, 18947 ms
+  [ 41/95] sum-41     hybrid/groq            5 ctx, 786 ms
+  [ 42/95] sum-42     normal/ollama_fallback 5 ctx, 21890 ms
+  [ 43/95] hard-43    hybrid/groq            5 ctx, 732 ms
+  [ 44/95] none-44    declined               5 ctx, 576 ms
+  [ 45/95] none-45    declined               5 ctx, 897 ms
+  [ 46/95] none-46    hybrid/ollama_fallback 5 ctx, 19664 ms
+  [ 47/95] fact-47    normal/groq            5 ctx, 673 ms
+  [ 48/95] def-48     normal/groq            5 ctx, 439 ms
+  [ 49/95] def-49     hybrid/ollama_fallback 5 ctx, 69443 ms
+  [ 50/95] def-50     hybrid/groq            5 ctx, 1656 ms
+  [ 51/95] def-51     hybrid/groq            5 ctx, 656 ms
+  [ 52/95] detail-52  hybrid/groq            5 ctx, 1071 ms
+  [ 53/95] detail-53  declined               5 ctx, 1134 ms
+  [ 54/95] term-54    hybrid/groq            5 ctx, 1030 ms
+  [ 55/95] term-55    normal/ollama_fallback 5 ctx, 15593 ms
+  [ 56/95] term-56    hybrid/groq            5 ctx, 1630 ms
+  [ 57/95] term-57    hybrid/groq            5 ctx, 772 ms
+  [ 58/95] sem-58     hybrid/ollama_fallback 5 ctx, 49179 ms
+  [ 59/95] sem-59     hybrid/groq            5 ctx, 1576 ms
+  [ 60/95] cmp-60     hybrid/groq            5 ctx, 994 ms
+  [ 61/95] cmp-61     hybrid/groq            5 ctx, 1740 ms
+  [ 62/95] cmp-62     hybrid/groq            5 ctx, 2352 ms
+  [ 63/95] proc-63    hybrid/groq            5 ctx, 1247 ms
+  [ 64/95] multi-64   hybrid/ollama_fallback 5 ctx, 30706 ms
+  [ 65/95] chap-65    hybrid/groq            5 ctx, 1636 ms
+  [ 66/95] chap-66    declined               5 ctx, 707 ms
+  [ 67/95] sum-67     hybrid/groq            5 ctx, 1010 ms
+  [ 68/95] sum-68     hybrid/groq            5 ctx, 1015 ms
+  [ 69/95] hard-69    hybrid/ollama_fallback 5 ctx, 72788 ms
+  [ 70/95] detail-70  hybrid/groq            5 ctx, 1001 ms
+  [ 71/95] none-71    declined               5 ctx, 464 ms
+  [ 72/95] none-72    declined               5 ctx, 1341 ms
+  [ 73/95] none-73    declined               5 ctx, 700 ms
+  [ 74/95] xdoc-74    hybrid/groq            5 ctx, 2279 ms
+  [ 75/95] xdoc-75    hybrid/groq            5 ctx, 1857 ms
+  [ 76/95] none-76    hybrid/ollama_fallback 5 ctx, 18636 ms
+  [ 77/95] none-77    declined               5 ctx, 622 ms
+  [ 78/95] none-78    declined               5 ctx, 1022 ms
+  [ 79/95] boot-01    hybrid/ollama_fallback 5 ctx, 15241 ms
+  [ 80/95] boot-02    normal/groq            5 ctx, 1363 ms
+  [ 81/95] boot-03    hybrid/ollama_fallback 5 ctx, 17126 ms
+  [ 82/95] boot-04    declined               5 ctx, 915 ms
+  [ 83/95] hol-01     declined               5 ctx, 706 ms
+  [ 84/95] hol-02     normal/ollama_fallback 5 ctx, 15760 ms
+  [ 85/95] hol-03     declined               5 ctx, 2289 ms
+  [ 86/95] rules-01   declined               5 ctx, 1216 ms
+  [ 87/95] rules-02   normal/ollama_fallback 5 ctx, 14498 ms
+  [ 88/95] rules-03   declined               5 ctx, 699 ms
+  [ 89/95] multi-01   hybrid/ollama_fallback 5 ctx, 17863 ms
+  [ 90/95] multi-02   declined               5 ctx, 695 ms
+  [ 91/95] none-01    declined               5 ctx, 1743 ms
+  [ 92/95] none-02    declined               5 ctx, 795 ms
+  [ 93/95] none-03    hybrid/ollama_fallback 5 ctx, 14871 ms
+  [ 94/95] none-04    declined               5 ctx, 512 ms
+  [ 95/95] none-05    declined               5 ctx, 1040 ms
+Scoring 95 question(s) with RAGAS (faithfulness, answer_relevancy, context_recall, context_precision)...
+  checkpoint: 1/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 2/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 3/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 4/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 5/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 6/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 7/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 8/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 9/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 10/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 11/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 12/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 13/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 14/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 15/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 16/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 17/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 18/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 19/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 20/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 21/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 22/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 23/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 24/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 25/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 26/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 27/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 28/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 29/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 30/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 31/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 32/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 33/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 34/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 35/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 36/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 37/95 scored -> evaluation\evaluation_results.json

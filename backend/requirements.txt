@@ -12,6 +12,14 @@ fastembed==0.8.1
 # Vector store
 qdrant-client==1.19.1
 
+# Evaluation (official RAGAS metrics) — used by scripts/run_ragas_evaluation.py
+ragas==0.4.3
+# ragas 0.4.3 imports langchain_community.chat_models.vertexai, which
+# langchain-community 0.4.x removed; 0.3.31 is the last compatible release.
+langchain-community==0.3.31
+# OpenAI-compatible async client used for the RAGAS judge (Ollama endpoint).
+openai==1.109.1
+
 # Test dependencies
 pytest==9.1.1
 httpx==0.28.1

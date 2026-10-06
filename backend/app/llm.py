@@ -21,6 +21,7 @@ import json
 import logging
 import urllib.error
 import urllib.request
+from collections.abc import Generator, Iterator
 from dataclasses import dataclass
 from typing import Protocol
 
@@ -68,6 +69,36 @@ class LLMResponse:
     model: str
 
 
+class LLMStreamHandle:
+    """Incrementally generated completion (streaming) with final metadata.
+
+    ``tokens`` yields text deltas as they arrive from the provider. After the
+    stream ends, ``provider``/``model`` describe who generated the answer and
+    ``text`` holds the full completion (safety net for chunk loss; normally
+    equal to the concatenation of the deltas).
+    """
+
+    def __init__(self, tokens: Iterator[str], provider: str, model: str) -> None:
+        self._tokens = tokens
+        self.provider = provider
+        self.model = model
+        self._text_parts: list[str] = []
+
+    @property
+    def text(self) -> str:
+        return "".join(self._text_parts)
+
+    def __iter__(self) -> Generator[str, None, None]:
+        for token in self._tokens:
+            self._text_parts.append(token)
+            yield token
+
+
+def _sse_data_payload(raw_line: str) -> str:
+    """Extract the payload of one SSE ``data:`` line (empty when absent)."""
+    return raw_line[5:].strip() if raw_line.startswith("data:") else ""
+
+
 class LLMClient(Protocol):
     """Interface every generation provider satisfies (all the RAG layer needs)."""
 
@@ -80,13 +111,21 @@ class LLMClient(Protocol):
 
 
 def build_user_content(context: str, user_query: str) -> str:
-    """Assemble one user turn: evidence first, question last.
+    """Assemble one user turn: evidence first, question and task last.
 
     Small local models handle this structure far better than several
     consecutive user messages, and it keeps the prompt identical across
-    providers.
+    providers: the same system prompt + this turn drive Groq and Ollama
+    alike, so both providers behave the same way.
     """
-    return f"Evidence:\n{context}\n\nQuestion: {user_query}"
+    return (
+        "Evidence: numbered university sources, cited as [1], [2], ...\n"
+        f"{context}\n\n"
+        f"Question: {user_query}\n\n"
+        "Using only the evidence above, answer the question the user asked: "
+        "match the requested style, length and structure, write naturally in "
+        "your own words, and cite the sources you use."
+    )
 
 
 def _error_body_snippet(exc: urllib.error.HTTPError, limit: int = 200) -> str:
@@ -170,14 +209,14 @@ class OllamaLLMClient:
         self._temperature = temperature
         self._timeout = timeout
 
-    def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
-        payload = {
+    def _payload(self, *, system_prompt: str, user_query: str, context: str, stream: bool) -> dict:
+        return {
             "model": self.model,
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": build_user_content(context, user_query)},
             ],
-            "stream": False,
+            "stream": stream,
             "options": {
                 "temperature": self._temperature,
                 # Stop the model from drifting past the supplied evidence.
@@ -185,30 +224,72 @@ class OllamaLLMClient:
             },
         }
 
-        request = urllib.request.Request(
+    def _request(self, payload: dict) -> urllib.request.Request:
+        return urllib.request.Request(
             f"{self._base_url}/api/chat",
             data=json.dumps(payload).encode("utf-8"),
             headers={"Content-Type": "application/json"},
             method="POST",
         )
+
+    @staticmethod
+    def _wrap_transport_error(exc: Exception) -> LLMError:
+        """Convert a transport-level exception into the matching LLM error."""
+        if isinstance(exc, TimeoutError):
+            return LLMTimeoutError("Ollama request timed out")
+        if isinstance(exc, urllib.error.HTTPError):
+            _raise_http_error(exc, "Ollama")
+            return LLMUnavailableError("Ollama request failed")  # pragma: no cover
+        reason = exc.reason if isinstance(exc, urllib.error.URLError) else exc
+        return LLMUnavailableError(f"Ollama request failed: {reason}")
+
+    def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
+        payload = self._payload(
+            system_prompt=system_prompt, user_query=user_query, context=context, stream=False
+        )
+        request = self._request(payload)
         try:
             with urllib.request.urlopen(request, timeout=self._timeout) as response:
                 body = json.loads(response.read().decode("utf-8"))
-        except urllib.error.HTTPError as exc:
-            _raise_http_error(exc, "Ollama")
-        except TimeoutError as exc:
-            raise LLMTimeoutError("Ollama request timed out") from exc
-        except urllib.error.URLError as exc:
-            reason = exc.reason
-            raise LLMUnavailableError(f"Ollama request failed: {reason}") from exc
-        except OSError as exc:
-            raise LLMUnavailableError(f"Ollama request failed: {exc}") from exc
+        except (urllib.error.HTTPError, TimeoutError, urllib.error.URLError, OSError) as exc:
+            raise self._wrap_transport_error(exc) from exc
         except ValueError as exc:
             raise LLMGenerationError("Ollama returned a non-JSON response") from exc
 
         return LLMResponse(
             text=_extract_chat_text(body, "Ollama"), provider=self.name, model=self.model
         )
+
+    def stream_generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMStreamHandle:
+        """Stream the completion as NDJSON deltas from Ollama's chat API."""
+        payload = self._payload(
+            system_prompt=system_prompt, user_query=user_query, context=context, stream=True
+        )
+        request = self._request(payload)
+        try:
+            response = urllib.request.urlopen(request, timeout=self._timeout)
+        except (urllib.error.HTTPError, TimeoutError, urllib.error.URLError, OSError) as exc:
+            raise self._wrap_transport_error(exc) from exc
+
+        def token_iter() -> Iterator[str]:
+            try:
+                with response:
+                    for raw_line in response:
+                        line = raw_line.decode("utf-8", errors="replace").strip()
+                        if not line:
+                            continue
+                        try:
+                            event = json.loads(line)
+                        except ValueError as exc:
+                            raise LLMGenerationError("Ollama returned a non-JSON stream line") from exc
+                        if not event.get("done"):
+                            token = event.get("message", {}).get("content", "")
+                            if token:
+                                yield token
+            except (TimeoutError, urllib.error.URLError, OSError) as exc:
+                raise LLMUnavailableError(f"Ollama stream failed: {exc}") from exc
+
+        return LLMStreamHandle(token_iter(), provider=self.name, model=self.model)
 
 
 class GroqLLMClient:
@@ -278,6 +359,62 @@ class GroqLLMClient:
             text=_extract_openai_text(body, "Groq"), provider=self.name, model=self.model
         )
 
+    def stream_generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMStreamHandle:
+        """Stream the completion as SSE ``chat.completion.chunk`` events from Groq."""
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": build_user_content(context, user_query)},
+            ],
+            "temperature": self._temperature,
+            "stream": True,
+        }
+        request = urllib.request.Request(
+            f"{self._base_url}/chat/completions",
+            data=json.dumps(payload).encode("utf-8"),
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self._api_key}",
+                "User-Agent": USER_AGENT,
+                "Accept": "text/event-stream",
+            },
+            method="POST",
+        )
+        try:
+            response = urllib.request.urlopen(request, timeout=self._timeout)
+        except urllib.error.HTTPError as exc:
+            _raise_http_error(exc, "Groq")
+        except TimeoutError as exc:
+            raise LLMTimeoutError("Groq request timed out") from exc
+        except (urllib.error.URLError, OSError) as exc:
+            raise LLMUnavailableError(f"Groq request failed: {exc}") from exc
+
+        def token_iter() -> Iterator[str]:
+            try:
+                with response:
+                    for raw_line in response:
+                        line = raw_line.decode("utf-8", errors="replace").strip()
+                        data_payload = _sse_data_payload(line)
+                        if not data_payload:
+                            continue
+                        if data_payload == "[DONE]":
+                            return
+                        try:
+                            event = json.loads(data_payload)
+                        except ValueError as exc:
+                            raise LLMGenerationError("Groq returned a non-JSON stream event") from exc
+                        choices = event.get("choices") or []
+                        if not choices:
+                            continue
+                        token = (choices[0].get("delta") or {}).get("content") or ""
+                        if token:
+                            yield token
+            except (TimeoutError, urllib.error.URLError, OSError) as exc:
+                raise LLMUnavailableError(f"Groq stream failed: {exc}") from exc
+
+        return LLMStreamHandle(token_iter(), provider=self.name, model=self.model)
+
 
 #: Provider failures that justify trying the next provider in the chain.
 _FALLBACK_ERRORS = (LLMUnavailableError, LLMTimeoutError, LLMGenerationError)
@@ -299,6 +436,11 @@ class FallbackLLMClient:
             raise LLMConfigurationError("FallbackLLMClient needs at least one provider")
         self._clients = list(clients)
 
+    @property
+    def stream_provider_label(self) -> str:
+        """Provider label before failover is known (the first client's name)."""
+        return self._clients[0].name
+
     def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
         failures: list[str] = []
         for index, client in enumerate(self._clients):
@@ -316,6 +458,35 @@ class FallbackLLMClient:
                 text=response.text,
                 provider=f"{response.provider}_fallback",
                 model=response.model,
+            )
+        raise LLMUnavailableError("All LLM providers failed: " + "; ".join(failures))
+
+    def stream_generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMStreamHandle:
+        """Stream from the first provider that starts answering.
+
+        A connection-level failure on ``connect`` falls over to the next
+        provider. Once deltas have been emitted to the client, the stream can
+        no longer restart cleanly, so a mid-stream provider error is surfaced
+        as an error (the API sends a terminal error event).
+        """
+        failures: list[str] = []
+        for index, client in enumerate(self._clients):
+            streamer = getattr(client, "stream_generate", None)
+            if streamer is None:
+                failures.append(f"{client.name}: no streaming support")
+                continue
+            try:
+                handle = streamer(system_prompt=system_prompt, user_query=user_query, context=context)
+            except _FALLBACK_ERRORS as exc:
+                failures.append(f"{client.name}: {exc}")
+                continue
+            if index == 0:
+                return handle
+            # Failover happened; label the final metadata observably.
+            return LLMStreamHandle(
+                iter(handle),
+                provider=f"{handle.provider}_fallback",
+                model=handle.model,
             )
         raise LLMUnavailableError("All LLM providers failed: " + "; ".join(failures))
 

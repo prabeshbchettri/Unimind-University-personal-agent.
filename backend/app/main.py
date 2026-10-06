@@ -12,19 +12,22 @@ created lazily once per process and shared across requests.
 
 from __future__ import annotations
 
+import json
 import logging
 import time
+from collections.abc import Iterator
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from app.bm25 import build_bm25_index
 from app.config import get_settings
 from app.embeddings import EmbeddingError, build_embedding_client
 from app.llm import LLMConfigurationError, LLMError, build_llm_client
-from app.rag import RAGResult, answer_question
+from app.rag import RAGResult, answer_question, stream_answer
 from app.retriever import HybridRetriever, RetrievalError, VectorRetriever
 from app.routing import QueryRouter
 from app.vectorstore import QdrantVectorStore, VectorStoreError
@@ -184,12 +187,86 @@ def chat(request: ChatRequest) -> ChatResponse:
         # Structured request log with operational metadata only. The question
         # text is deliberately excluded: chat content is sensitive user data.
         logger.info(
-            "chat request_id=%s strategy=%s retrieval_count=%s provider=%s latency_ms=%d",
+            "chat request_id=%s strategy=%s strategy_reason=%s retrieval_count=%s provider=%s latency_ms=%d",
             request_id,
             result.strategy if result else "-",
+            result.strategy_reason if result else "-",
             len(result.retrieved) if result else "-",
             result.provider if result else "-",
             (time.perf_counter() - started) * 1000,
         )
 
     return ChatResponse(**result.to_api_dict())
+
+
+def _sse_error(message: str) -> str:
+    """One terminal SSE error event (client-presentable text only)."""
+    return f"data: {json.dumps({'type': 'error', 'message': message})}\n\n"
+
+
+@app.post("/api/chat/stream", tags=["chat"])
+def chat_stream(request: ChatRequest) -> StreamingResponse:
+    """Stream a grounded answer as Server-Sent Events (SSE).
+
+    Same pipeline and guarantees as ``POST /api/chat``; the answer deltas
+    stream as they are generated. Event types: ``meta`` (once, before the
+    first delta), ``delta`` (repeated), ``done`` (final API-shaped payload),
+    ``error`` (terminal). Media type is ``text/event-stream``; Vite's proxy
+    and the CORS middleware pass it through unchanged.
+    """
+    request_id = uuid4().hex[:8]
+    if not request.message.strip():
+        raise HTTPException(status_code=422, detail="Message must not be empty")
+
+    def event_stream() -> Iterator[str]:
+        started = time.perf_counter()
+        result: RAGResult | None = None
+        try:
+            pipeline = get_pipeline()
+            events = stream_answer(
+                request.message,
+                settings=settings,
+                retriever=pipeline["retriever"],
+                llm=pipeline["llm"],
+                router=pipeline.get("router"),
+                hybrid_retriever=pipeline.get("hybrid_retriever"),
+            )
+            for event in events:
+                yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"
+                if event["type"] == "done":
+                    result = RAGResult(
+                        answer=event["answer"],
+                        sources=[],
+                        enough_evidence=event["enough_evidence"],
+                        retrieved=[],
+                        provider=event["provider"],
+                        model=event["model"],
+                        strategy=event["strategy"],
+                        strategy_reason=event["strategy_reason"],
+                    )
+        except (RetrievalError, EmbeddingError, VectorStoreError) as exc:
+            logger.exception("Retrieval pipeline failure (stream)")
+            yield _sse_error("The assistant is temporarily unavailable. Please try again shortly.")
+        except LLMConfigurationError as exc:
+            logger.exception("Generation configuration error (stream)")
+            yield _sse_error("The assistant is misconfigured. Please contact the operator.")
+        except LLMError as exc:
+            logger.exception("Generation failure (stream)")
+            yield _sse_error("The assistant backend reported an error while answering.")
+        except ValueError as exc:
+            yield _sse_error(str(exc))
+        finally:
+            if result is not None:
+                logger.info(
+                    "chat_stream request_id=%s strategy=%s provider=%s latency_ms=%d",
+                    request_id,
+                    result.strategy,
+                    result.provider,
+                    (time.perf_counter() - started) * 1000,
+                )
+
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )

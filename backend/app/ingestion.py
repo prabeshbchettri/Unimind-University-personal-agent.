@@ -32,13 +32,14 @@ class Chunk:
 
 
 def discover_pdfs(directory: Path) -> list[Path]:
-    """Return all PDF files in ``directory``, sorted by name.
+    """Return all PDF files under ``directory`` (recursively), sorted by path.
 
-    The scan is non-recursive: the documents directory is flat by convention.
+    The scan is recursive so that a ``books/``, ``syllabus/``-style folder
+    layout is ingested without moving files around.
     """
     if not directory.is_dir():
         raise DocumentIngestionError(f"Documents directory not found: {directory}")
-    pdfs = sorted(directory.glob("*.pdf"))
+    pdfs = sorted(directory.rglob("*.pdf"))
     if not pdfs:
         raise DocumentIngestionError(f"No PDF files found in {directory}")
     return pdfs
