@@ -75,14 +75,14 @@ function record(name, ok, detail) {
 // 1. Header branding.
 const header = await cdp.eval(
   `({
-    h1: document.querySelector('.brand h1')?.textContent ?? '',
+    h1: document.querySelector('.sidebar-brand h1')?.textContent ?? '',
     subtitle: document.querySelector('.subtitle')?.textContent ?? '',
-    mark: !!document.querySelector('.brand .unimind-mark'),
+    mark: !!document.querySelector('.sidebar-brand .unimind-mark'),
     status: document.querySelector('.status')?.textContent ?? '',
   })`,
 )
 record('header UniMind', header.h1 === 'UniMind', header)
-record('header subtitle', /Personal University AI Assistant/i.test(header.subtitle), header.subtitle)
+record('header subtitle', /University Academic Assistant/i.test(header.subtitle), header.subtitle)
 record('header mark', header.mark, header)
 record('backend badge', /connected/i.test(header.status), header.status)
 
@@ -94,7 +94,7 @@ const empty = await cdp.eval(
     suggestions: Array.from(document.querySelectorAll('.suggestion')).map((b) => b.textContent.trim()),
   })`,
 )
-record('empty state title', empty.title === 'Welcome to UniMind', empty)
+record('empty state title', empty.title === 'UniMind', empty)
 record('suggestions present', empty.suggestions.length >= 3, empty.suggestions)
 
 // Send the Monte Carlo suggestion by clicking it.
@@ -110,8 +110,8 @@ await sleep(400)
 // 3. User bubble on the right, assistant area on the left.
 const layout = await cdp.eval(
   `(() => {
-    const user = document.querySelector('.turn-user .message-user')
-    const assistant = document.querySelector('.turn-assistant .message-assistant')
+    const user = document.querySelector('.turn-user .user-bubble')
+    const assistant = document.querySelector('.turn-assistant .assistant-body')
     const chat = document.querySelector('.chat')
     const ur = user.getBoundingClientRect()
     const cr = chat.getBoundingClientRect()
@@ -137,7 +137,7 @@ const growth = await cdp.eval(
     const start = Date.now()
     const timer = setInterval(() => {
       samples.push({ t: Date.now() - start, len: readLen() })
-      const done = document.querySelector('.turn-assistant .metadata')
+      const done = document.querySelector('.turn-assistant .answer-meta')
       if (done || Date.now() - start > 120000) { clearInterval(timer); resolve(samples) }
     }, 250)
   }))()`,
@@ -151,9 +151,9 @@ const finalEntry = await cdp.eval(
   `(() => ({
     answerLen: (document.querySelector('.turn-assistant .markdown')?.textContent ?? '').length,
     hasCursor: !!document.querySelector('.stream-cursor'),
-    metaVisible: !!document.querySelector('.turn-assistant .metadata'),
-    strategy: document.querySelector('.turn-assistant .metadata dd')?.textContent ?? '',
-    sources: Array.from(document.querySelectorAll('.turn-assistant .sources li')).map((li) => li.textContent.trim()),
+    metaVisible: !!document.querySelector('.turn-assistant .answer-meta'),
+    strategy: document.querySelector('.turn-assistant .meta-tags')?.textContent ?? '',
+    sources: Array.from(document.querySelectorAll('.turn-assistant .sources-list li')).map((li) => li.textContent.trim()),
   }))()`,
 )
 record('final answer present', finalEntry.answerLen > 100, finalEntry.answerLen)
@@ -174,7 +174,7 @@ await sleep(1200)
 const history = await cdp.eval(
   `(() => ({
     turns: document.querySelectorAll('.turn').length,
-    userMessages: Array.from(document.querySelectorAll('.message-user p')).map((p) => p.textContent.trim()),
+    userMessages: Array.from(document.querySelectorAll('.turn-user .user-bubble')).map((p) => p.textContent.trim()),
     greeting: Array.from(document.querySelectorAll('.turn-assistant'))
       .map((t) => t.textContent)
       .find((text) => /How can I help you with your university materials/i.test(text)) ?? '',
@@ -190,14 +190,14 @@ await cdp.send('Emulation.setDeviceMetricsOverride', {
 await sleep(600)
 const mobile = await cdp.eval(
   `(() => {
-    const user = document.querySelector('.turn-user .message-user')
+    const user = document.querySelector('.turn-user .user-bubble')
     const chat = document.querySelector('.chat')
     const ur = user.getBoundingClientRect()
     const cr = chat.getBoundingClientRect()
     return {
       overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
       userStillRight: (ur.left + ur.right) / 2 > cr.left + cr.width / 2,
-      assistantVisible: !!document.querySelector('.turn-assistant .message-assistant'),
+      assistantVisible: !!document.querySelector('.turn-assistant .assistant-body'),
       composerVisible: !!document.querySelector('.composer textarea'),
     }
   })()`,

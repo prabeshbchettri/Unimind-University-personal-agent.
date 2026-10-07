@@ -1,6 +1,6 @@
 {
   "run": {
-    "timestamp_utc": "2026-10-06T19:04:11.389015+00:00",
+    "timestamp_utc": "2026-10-06T15:15:31.171414+00:00",
     "metric_framework": "RAGAS",
     "ragas_version": "0.4.3",
     "mode": "full",
@@ -30,7 +30,7 @@
     "concurrency": 2,
     "question_count": 95,
     "estimated_judge_calls": 858,
-    "judge_calls": 709,
+    "judge_calls": 239,
     "run_notes": "final full evaluation",
     "filters": {
       "fast": false,
@@ -43,415 +43,14 @@
       "answerable_only": false,
       "unanswerable_only": false
     },
-    "scoring_seconds": 20933.0
+    "scored": 43
   },
-  "overall": {
-    "faithfulness": 0.5936,
-    "faithfulness_n": 73,
-    "answer_relevancy": 0.6839,
-    "answer_relevancy_n": 77,
-    "context_recall": 0.6512,
-    "context_recall_n": 74,
-    "context_precision": 0.7468,
-    "context_precision_n": 78
-  },
-  "by_course": {
-    "Bootcamp Notice": {
-      "faithfulness": 0.3583,
-      "faithfulness_n": 4,
-      "answer_relevancy": 0.237,
-      "answer_relevancy_n": 4,
-      "context_recall": 0.5,
-      "context_recall_n": 4,
-      "context_precision": 0.5639,
-      "context_precision_n": 4
-    },
-    "Cross-document": {
-      "faithfulness": 0.2857,
-      "faithfulness_n": 2,
-      "answer_relevancy": 0.4519,
-      "answer_relevancy_n": 4,
-      "context_recall": 0.4464,
-      "context_recall_n": 4,
-      "context_precision": 0.5625,
-      "context_precision_n": 4
-    },
-    "Engineering Economics": {
-      "faithfulness": 0.5519,
-      "faithfulness_n": 16,
-      "answer_relevancy": 0.7187,
-      "answer_relevancy_n": 16,
-      "context_recall": 0.6753,
-      "context_recall_n": 16,
-      "context_precision": 0.7552,
-      "context_precision_n": 16
-    },
-    "Holiday Notice": {
-      "faithfulness": 0.1944,
-      "faithfulness_n": 3,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 3,
-      "context_recall": 0.0,
-      "context_recall_n": 3,
-      "context_precision": 0.0,
-      "context_precision_n": 3
-    },
-    "Rules and Regulations": {
-      "faithfulness": 0.2778,
-      "faithfulness_n": 3,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 3,
-      "context_recall": 0.0,
-      "context_recall_n": 3,
-      "context_precision": 0.7056,
-      "context_precision_n": 3
-    },
-    "Simulation and Modeling": {
-      "faithfulness": 0.6466,
-      "faithfulness_n": 23,
-      "answer_relevancy": 0.8477,
-      "answer_relevancy_n": 24,
-      "context_recall": 0.687,
-      "context_recall_n": 22,
-      "context_precision": 0.8572,
-      "context_precision_n": 24
-    },
-    "Software Engineering": {
-      "faithfulness": 0.7368,
-      "faithfulness_n": 22,
-      "answer_relevancy": 0.7851,
-      "answer_relevancy_n": 23,
-      "context_recall": 0.8403,
-      "context_recall_n": 22,
-      "context_precision": 0.7907,
-      "context_precision_n": 24
-    }
-  },
-  "by_category": {
-    "chapter lookup": {
-      "faithfulness": 0.2831,
-      "faithfulness_n": 6,
-      "answer_relevancy": 0.6556,
-      "answer_relevancy_n": 6,
-      "context_recall": 0.5639,
-      "context_recall_n": 6,
-      "context_precision": 0.6954,
-      "context_precision_n": 6
-    },
-    "comparison": {
-      "faithfulness": 0.6595,
-      "faithfulness_n": 6,
-      "answer_relevancy": 0.9264,
-      "answer_relevancy_n": 6,
-      "context_recall": 0.9667,
-      "context_recall_n": 5,
-      "context_precision": 0.9183,
-      "context_precision_n": 6
-    },
-    "condition lookup": {
-      "faithfulness": 0.0,
-      "faithfulness_n": 1,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 1,
-      "context_recall": 0.5,
-      "context_recall_n": 1,
-      "context_precision": 1.0,
-      "context_precision_n": 1
-    },
-    "conflicting information": {
-      "faithfulness": 0.0,
-      "faithfulness_n": 1,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 1,
-      "context_recall": 0.0,
-      "context_recall_n": 1,
-      "context_precision": 0.0,
-      "context_precision_n": 1
-    },
-    "cross-document": {
-      "faithfulness": 0.5714,
-      "faithfulness_n": 1,
-      "answer_relevancy": 0.9039,
-      "answer_relevancy_n": 2,
-      "context_recall": 0.6429,
-      "context_recall_n": 2,
-      "context_precision": 0.9583,
-      "context_precision_n": 2
-    },
-    "cross-document reasoning": {
-      "faithfulness": null,
-      "faithfulness_n": 0,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 1,
-      "context_recall": 0.5,
-      "context_recall_n": 1,
-      "context_precision": 0.3333,
-      "context_precision_n": 1
-    },
-    "definition": {
-      "faithfulness": 0.8564,
-      "faithfulness_n": 8,
-      "answer_relevancy": 0.9254,
-      "answer_relevancy_n": 8,
-      "context_recall": 0.8769,
-      "context_recall_n": 7,
-      "context_precision": 0.8689,
-      "context_precision_n": 8
-    },
-    "detail lookup": {
-      "faithfulness": 0.0,
-      "faithfulness_n": 1,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 1,
-      "context_recall": 0.0,
-      "context_recall_n": 1,
-      "context_precision": 0.0,
-      "context_precision_n": 1
-    },
-    "difficult": {
-      "faithfulness": 0.2583,
-      "faithfulness_n": 2,
-      "answer_relevancy": 0.9308,
-      "answer_relevancy_n": 2,
-      "context_recall": 0.6429,
-      "context_recall_n": 2,
-      "context_precision": 0.9437,
-      "context_precision_n": 2
-    },
-    "exact term": {
-      "faithfulness": 0.5167,
-      "faithfulness_n": 10,
-      "answer_relevancy": 0.598,
-      "answer_relevancy_n": 10,
-      "context_recall": 0.6087,
-      "context_recall_n": 9,
-      "context_precision": 0.8656,
-      "context_precision_n": 10
-    },
-    "factual lookup": {
-      "faithfulness": 1.0,
-      "faithfulness_n": 5,
-      "answer_relevancy": 0.9025,
-      "answer_relevancy_n": 5,
-      "context_recall": 0.6611,
-      "context_recall_n": 5,
-      "context_precision": 0.59,
-      "context_precision_n": 5
-    },
-    "list extraction": {
-      "faithfulness": 0.3333,
-      "faithfulness_n": 1,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 1,
-      "context_recall": 1.0,
-      "context_recall_n": 1,
-      "context_precision": 0.5,
-      "context_precision_n": 1
-    },
-    "multi-part": {
-      "faithfulness": 0.7396,
-      "faithfulness_n": 4,
-      "answer_relevancy": 0.8993,
-      "answer_relevancy_n": 4,
-      "context_recall": 0.8472,
-      "context_recall_n": 4,
-      "context_precision": 0.8153,
-      "context_precision_n": 4
-    },
-    "policy interpretation": {
-      "faithfulness": 0.3333,
-      "faithfulness_n": 1,
-      "answer_relevancy": 0.0,
-      "answer_relevancy_n": 1,
-      "context_recall": 0.0,
-      "context_recall_n": 1,
-      "context_precision": 0.4167,
-      "context_precision_n": 1
-    },
-    "procedure": {
-      "faithfulness": 0.8056,
-      "faithfulness_n": 3,
-      "answer_relevancy": 0.9343,
-      "answer_relevancy_n": 3,
-      "context_recall": 0.7556,
-      "context_recall_n": 3,
-      "context_precision": 0.8611,
-      "context_precision_n": 3
-    },
-    "semantic paraphrase": {
-      "faithfulness": 0.6597,
-      "faithfulness_n": 4,
-      "answer_relevancy": 0.6629,
-      "answer_relevancy_n": 5,
-      "context_recall": 0.7095,
-      "context_recall_n": 5,
-      "context_precision": 0.855,
-      "context_precision_n": 5
-    },
-    "single-fact lookup": {
-      "faithfulness": 0.3639,
-      "faithfulness_n": 6,
-      "answer_relevancy": 0.158,
-      "answer_relevancy_n": 6,
-      "context_recall": 0.0833,
-      "context_recall_n": 6,
-      "context_precision": 0.4093,
-      "context_precision_n": 6
-    },
-    "specific detail": {
-      "faithfulness": 0.7757,
-      "faithfulness_n": 10,
-      "answer_relevancy": 0.7876,
-      "answer_relevancy_n": 11,
-      "context_recall": 0.8111,
-      "context_recall_n": 10,
-      "context_precision": 0.7533,
-      "context_precision_n": 11
-    },
-    "summary": {
-      "faithfulness": 0.3167,
-      "faithfulness_n": 3,
-      "answer_relevancy": 0.7585,
-      "answer_relevancy_n": 3,
-      "context_recall": 0.6667,
-      "context_recall_n": 4,
-      "context_precision": 0.775,
-      "context_precision_n": 4
-    }
-  },
-  "by_difficulty": {
-    "easy": {
-      "faithfulness": 0.554,
-      "faithfulness_n": 23,
-      "answer_relevancy": 0.5347,
-      "answer_relevancy_n": 23,
-      "context_recall": 0.514,
-      "context_recall_n": 23,
-      "context_precision": 0.6482,
-      "context_precision_n": 23
-    },
-    "hard": {
-      "faithfulness": 0.4802,
-      "faithfulness_n": 10,
-      "answer_relevancy": 0.6543,
-      "answer_relevancy_n": 13,
-      "context_recall": 0.6451,
-      "context_recall_n": 13,
-      "context_precision": 0.8234,
-      "context_precision_n": 13
-    },
-    "medium": {
-      "faithfulness": 0.6447,
-      "faithfulness_n": 40,
-      "answer_relevancy": 0.7769,
-      "answer_relevancy_n": 41,
-      "context_recall": 0.7364,
-      "context_recall_n": 38,
-      "context_precision": 0.7771,
-      "context_precision_n": 42
-    }
-  },
-  "abstention": {
-    "unanswerable_questions": 17,
-    "correct_abstentions": 13,
-    "hallucinated_answers": 4,
-    "answerable_questions": 78,
-    "false_abstentions": 10
-  },
-  "failures": [
-    {
-      "id": "none-18",
-      "course": "Engineering Economics",
-      "problems": [
-        "unanswerable question was answered (possible hallucination)"
-      ]
-    },
-    {
-      "id": "def-24",
-      "course": "Simulation and Modeling",
-      "problems": [
-        "context_recall: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "detail-25",
-      "course": "Simulation and Modeling",
-      "problems": [
-        "context_recall: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "sem-31",
-      "course": "Simulation and Modeling",
-      "problems": [
-        "faithfulness: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "none-46",
-      "course": "Simulation and Modeling",
-      "problems": [
-        "unanswerable question was answered (possible hallucination)"
-      ]
-    },
-    {
-      "id": "term-57",
-      "course": "Software Engineering",
-      "problems": [
-        "context_recall: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "cmp-62",
-      "course": "Software Engineering",
-      "problems": [
-        "context_recall: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "sum-68",
-      "course": "Software Engineering",
-      "problems": [
-        "faithfulness: IncompleteOutputException: ",
-        "answer_relevancy: InstructorRetryException: 2 validation errors for AnswerRelevanceOutput\nquestion\n  Field required [type=missing, input_value={'description': 'Structur...tput', 'type': 'object'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nnoncommittal\n  Field required [type=missing, input_value={'description': 'Structur...tput', 'type': 'object'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
-      ]
-    },
-    {
-      "id": "detail-70",
-      "course": "Software Engineering",
-      "problems": [
-        "faithfulness: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "xdoc-74",
-      "course": "Cross-document",
-      "problems": [
-        "faithfulness: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "none-76",
-      "course": "Cross-document",
-      "problems": [
-        "unanswerable question was answered (possible hallucination)"
-      ]
-    },
-    {
-      "id": "multi-01",
-      "course": "Cross-document",
-      "problems": [
-        "faithfulness: IncompleteOutputException: "
-      ]
-    },
-    {
-      "id": "none-03",
-      "course": "Rules and Regulations",
-      "problems": [
-        "unanswerable question was answered (possible hallucination)"
-      ]
-    }
-  ],
+  "overall": {},
+  "by_course": {},
+  "by_category": {},
+  "by_difficulty": {},
+  "abstention": {},
+  "failures": [],
   "per_question": [
     {
       "id": "fact-01",
@@ -2273,10 +1872,10 @@
         "faithfulness": 0.0,
         "answer_relevancy": 0.8460398846048207,
         "context_recall": 0.5,
-        "context_precision": 0.9999999999666667
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "sem-31",
@@ -2336,13 +1935,11 @@
       "pipeline_error": null,
       "scores": {
         "faithfulness": null,
-        "answer_relevancy": 0.0,
-        "context_recall": 1.0,
-        "context_precision": 0.99999999998
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
-      "metric_errors": {
-        "faithfulness": "IncompleteOutputException: "
-      },
+      "metric_errors": {},
       "scored": false
     },
     {
@@ -2400,13 +1997,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5,
-        "answer_relevancy": 0.7737620839735815,
-        "context_recall": 1.0,
-        "context_precision": 0.94999999997625
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "cmp-33",
@@ -2462,13 +2059,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.9200505234830989,
-        "context_recall": 1.0,
-        "context_precision": 0.9166666666361111
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "cmp-34",
@@ -2520,13 +2117,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.8461538461538461,
-        "answer_relevancy": 0.9406361053326696,
-        "context_recall": 1.0,
-        "context_precision": 0.94999999997625
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "cmp-35",
@@ -2579,13 +2176,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.2857142857142857,
-        "answer_relevancy": 0.9133519170401185,
-        "context_recall": 1.0,
-        "context_precision": 0.94999999997625
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "proc-36",
@@ -2644,13 +2241,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5,
-        "answer_relevancy": 0.9999999999999997,
-        "context_recall": 1.0,
-        "context_precision": 0.5833333333041666
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "proc-37",
@@ -2705,13 +2302,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.8194077761039454,
-        "context_recall": 0.26666666666666666,
-        "context_precision": 0.99999999998
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "multi-38",
@@ -2764,13 +2361,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.3333333333333333,
-        "answer_relevancy": 0.826529392225036,
-        "context_recall": 1.0,
-        "context_precision": 0.94999999997625
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "chap-39",
@@ -2828,13 +2425,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.0,
-        "answer_relevancy": 0.7800774148647918,
-        "context_recall": 0.8,
-        "context_precision": 0.8333333332916666
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "chap-40",
@@ -2891,13 +2488,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5,
-        "answer_relevancy": 0.9215076737415409,
-        "context_recall": 0.16666666666666666,
-        "context_precision": 0.9999999999
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "sum-41",
@@ -2956,13 +2553,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.25,
-        "answer_relevancy": 0.7204887333209812,
-        "context_recall": 0.0,
-        "context_precision": 0.699999999965
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "sum-42",
@@ -3019,13 +2616,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5,
-        "answer_relevancy": 0.8371706713694684,
-        "context_recall": 0.6666666666666666,
-        "context_precision": 0.6999999999766667
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "hard-43",
@@ -3084,13 +2681,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.26666666666666666,
-        "answer_relevancy": 0.9027989976892049,
-        "context_recall": 0.2857142857142857,
-        "context_precision": 0.8874999999778125
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "none-44",
@@ -3318,13 +2915,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.9440441777861727,
-        "context_recall": 0.8888888888888888,
-        "context_precision": 0.99999999998
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "def-48",
@@ -3380,13 +2977,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.7692307692307693,
-        "answer_relevancy": 0.8589073477885242,
-        "context_recall": 1.0,
-        "context_precision": 0.9999999999666667
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "def-49",
@@ -3444,13 +3041,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.875,
-        "answer_relevancy": 0.8870044751644391,
-        "context_recall": 1.0,
-        "context_precision": 0.9166666666361111
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "def-50",
@@ -3506,13 +3103,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.8181818181818182,
-        "answer_relevancy": 0.8626402222599969,
-        "context_recall": 1.0,
-        "context_precision": 0.8041666666465626
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "def-51",
@@ -3568,13 +3165,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.9999999999999999,
-        "context_recall": 1.0,
-        "context_precision": 0.8666666666377778
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "detail-52",
@@ -3631,13 +3228,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.9867282359202593,
-        "context_recall": 1.0,
-        "context_precision": 0.94999999997625
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "detail-53",
@@ -3693,13 +3290,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.4777777777618519
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "term-54",
@@ -3755,13 +3352,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.6666666666666666,
-        "answer_relevancy": 0.9293634408070166,
-        "context_recall": 0.8,
-        "context_precision": 0.8874999999778125
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "term-55",
@@ -3815,13 +3412,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.8262983222798769,
-        "context_recall": 1.0,
-        "context_precision": 0.6388888888675925
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "term-56",
@@ -3876,13 +3473,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.957548492760703,
-        "context_recall": 0.75,
-        "context_precision": 0.99999999998
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "term-57",
@@ -3937,14 +3534,12 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.6666666666666666,
-        "answer_relevancy": 0.0,
+        "faithfulness": null,
+        "answer_relevancy": null,
         "context_recall": null,
-        "context_precision": 0.6791666666496875
+        "context_precision": null
       },
-      "metric_errors": {
-        "context_recall": "IncompleteOutputException: "
-      },
+      "metric_errors": {},
       "scored": false
     },
     {
@@ -4003,13 +3598,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.8888888888888888,
-        "answer_relevancy": 0.6757187380818511,
-        "context_recall": 0.7142857142857143,
-        "context_precision": 0.9999999999666667
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "sem-59",
@@ -4066,13 +3661,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.9025643172747264,
-        "context_recall": 0.5,
-        "context_precision": 0.32499999998375
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "cmp-60",
@@ -4130,13 +3725,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.8461538461538461,
-        "answer_relevancy": 0.9361677333247123,
-        "context_recall": 0.8333333333333334,
-        "context_precision": 0.8874999999778125
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "cmp-61",
@@ -4193,13 +3788,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.16666666666666666,
-        "answer_relevancy": 0.9132047989499362,
-        "context_recall": 1.0,
-        "context_precision": 0.8055555555287036
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "cmp-62",
@@ -4256,14 +3851,12 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.8125,
-        "answer_relevancy": 0.9349198689688215,
+        "faithfulness": null,
+        "answer_relevancy": null,
         "context_recall": null,
-        "context_precision": 0.999999999975
+        "context_precision": null
       },
-      "metric_errors": {
-        "context_recall": "IncompleteOutputException: "
-      },
+      "metric_errors": {},
       "scored": false
     },
     {
@@ -4321,13 +3914,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.9166666666666666,
-        "answer_relevancy": 0.9835414783773676,
-        "context_recall": 1.0,
-        "context_precision": 0.99999999998
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "multi-64",
@@ -4384,13 +3977,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 1.0,
-        "answer_relevancy": 0.981330654205249,
-        "context_recall": 1.0,
-        "context_precision": 0.4777777777618519
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "chap-65",
@@ -4448,13 +4041,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.8333333333333334,
-        "answer_relevancy": 0.8143023885831471,
-        "context_recall": 1.0,
-        "context_precision": 0.7555555555303703
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "chap-66",
@@ -4513,13 +4106,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.0,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.0
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "sum-67",
@@ -4579,13 +4172,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.2,
-        "answer_relevancy": 0.7179115802292172,
-        "context_recall": 1.0,
-        "context_precision": 0.6999999999766667
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "sum-68",
@@ -4645,13 +4238,10 @@
       "scores": {
         "faithfulness": null,
         "answer_relevancy": null,
-        "context_recall": 1.0,
-        "context_precision": 0.99999999998
+        "context_recall": null,
+        "context_precision": null
       },
-      "metric_errors": {
-        "faithfulness": "IncompleteOutputException: ",
-        "answer_relevancy": "InstructorRetryException: 2 validation errors for AnswerRelevanceOutput\nquestion\n  Field required [type=missing, input_value={'description': 'Structur...tput', 'type': 'object'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nnoncommittal\n  Field required [type=missing, input_value={'description': 'Structur...tput', 'type': 'object'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
-      },
+      "metric_errors": {},
       "scored": false
     },
     {
@@ -4710,13 +4300,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.25,
-        "answer_relevancy": 0.9588070105552875,
-        "context_recall": 1.0,
-        "context_precision": 0.999999999975
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "detail-70",
@@ -4776,13 +4366,11 @@
       "pipeline_error": null,
       "scores": {
         "faithfulness": null,
-        "answer_relevancy": 0.9869722731335243,
-        "context_recall": 1.0,
-        "context_precision": 0.8041666666465626
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
-      "metric_errors": {
-        "faithfulness": "IncompleteOutputException: "
-      },
+      "metric_errors": {},
       "scored": false
     },
     {
@@ -5015,13 +4603,11 @@
       "pipeline_error": null,
       "scores": {
         "faithfulness": null,
-        "answer_relevancy": 0.9660258499644248,
-        "context_recall": 1.0,
-        "context_precision": 0.99999999998
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
-      "metric_errors": {
-        "faithfulness": "IncompleteOutputException: "
-      },
+      "metric_errors": {},
       "scored": false
     },
     {
@@ -5079,13 +4665,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5714285714285714,
-        "answer_relevancy": 0.8417392866204442,
-        "context_recall": 0.2857142857142857,
-        "context_precision": 0.9166666666361111
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "none-76",
@@ -5313,13 +4899,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.0
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "boot-02",
@@ -5372,13 +4958,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.6,
-        "answer_relevancy": 0.947883643416693,
-        "context_recall": 0.5,
-        "context_precision": 0.7555555555303703
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "boot-03",
@@ -5433,13 +5019,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.3333333333333333,
-        "answer_relevancy": 0.0,
-        "context_recall": 1.0,
-        "context_precision": 0.49999999995
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "boot-04",
@@ -5493,13 +5079,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.0,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.5,
-        "context_precision": 0.9999999999
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "hol-01",
@@ -5552,13 +5138,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.25,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.0
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "hol-02",
@@ -5612,13 +5198,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.3333333333333333,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.0
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "hol-03",
@@ -5672,13 +5258,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.0,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.0
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "rules-01",
@@ -5731,13 +5317,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.0,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.699999999965
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "rules-02",
@@ -5790,13 +5376,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.5,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.9999999999
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "rules-03",
@@ -5850,13 +5436,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.3333333333333333,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.4166666666458333
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "multi-01",
@@ -5912,13 +5498,11 @@
       "pipeline_error": null,
       "scores": {
         "faithfulness": null,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.5,
-        "context_precision": 0.3333333333
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
-      "metric_errors": {
-        "faithfulness": "IncompleteOutputException: "
-      },
+      "metric_errors": {},
       "scored": false
     },
     {
@@ -5974,13 +5558,13 @@
       ],
       "pipeline_error": null,
       "scores": {
-        "faithfulness": 0.0,
-        "answer_relevancy": 0.0,
-        "context_recall": 0.0,
-        "context_precision": 0.0
+        "faithfulness": null,
+        "answer_relevancy": null,
+        "context_recall": null,
+        "context_precision": null
       },
       "metric_errors": {},
-      "scored": true
+      "scored": false
     },
     {
       "id": "none-01",
@@ -6272,5 +5856,6 @@
       "scored": true,
       "abstention_correct": true
     }
-  ]
+  ],
+  "partial": true
 }

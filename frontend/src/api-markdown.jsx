@@ -12,8 +12,22 @@
 
 /** Inline pass: `**bold**`, `*italic*`, `` `code` ``, and plain text -> elements. */
 function renderInline(text, keyPrefix) {
+  // Residual model HTML (e.g. "<br>", "<p>", "<strong>x</strong>") must never
+  // appear as literal text: the prompt forbids HTML, and this is the safety
+  // net for models that emit it anyway.
+  const withoutHtml = String(text)
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/(p|div|li|tr)>/gi, '\n')
+    .replace(/<(p|div|li|ul|ol|tr|table|thead|tbody|h[1-6])[^>]*>/gi, '')
+    .replace(/<strong[^>]*>(.*?)<\/strong>/gis, '**$1**')
+    .replace(/<(b|em|i|code)[^>]*>(.*?)<\/\1>/gis, (_, tag, inner) => {
+      if (tag === 'b') return `**${inner}**`
+      if (tag === 'em' || tag === 'i') return `*${inner}*`
+      return `\`${inner}\``
+    })
+    .replace(/<[^>]*>/g, '')
   const parts = []
-  let rest = text
+  let rest = withoutHtml
   let key = 0
   const pattern = /\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`/g
   while (rest.length > 0) {

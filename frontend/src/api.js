@@ -61,13 +61,13 @@ export async function checkHealth() {
  * (answer, sources, strategy, strategy_reason, provider, ...).
  * Throws ApiError with a user-presentable message on any failure.
  */
-export async function sendChatMessage(message) {
+export async function sendChatMessage(message, history = []) {
   let response
   try {
     response = await fetch(`${API_BASE}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, history }),
       signal: AbortSignal.timeout(CHAT_TIMEOUT_MS),
     })
   } catch (error) {
@@ -111,13 +111,13 @@ export async function sendChatMessage(message) {
  * Throws ApiError on network/server problems and on a terminal backend
  * `error` event. User-initiated aborts rethrow the AbortError untouched.
  */
-export async function sendChatMessageStream(message, { signal, onMeta, onDelta, onDone } = {}) {
+export async function sendChatMessageStream(message, { signal, onMeta, onDelta, onDone, history = [] } = {}) {
   let response
   try {
     response = await fetch(`${API_BASE}/api/chat/stream`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, history }),
       signal,
     })
   } catch (error) {
@@ -133,7 +133,7 @@ export async function sendChatMessageStream(message, { signal, onMeta, onDelta, 
   }
   if (!response.body) {
     // No streaming available (old browser/proxy): degrade gracefully.
-    const data = await sendChatMessage(message)
+    const data = await sendChatMessage(message, history)
     onMeta?.({ strategy: data.strategy, strategy_reason: data.strategy_reason, provider: data.provider, model: data.model })
     onDone?.(data)
     return data

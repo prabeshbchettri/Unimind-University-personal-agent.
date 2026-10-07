@@ -99,13 +99,31 @@ def _sse_data_payload(raw_line: str) -> str:
     return raw_line[5:].strip() if raw_line.startswith("data:") else ""
 
 
+def _history_messages(history: list[dict] | None) -> list[dict]:
+    """Convert sanitized history into provider chat messages."""
+    messages: list[dict] = []
+    for turn in history or []:
+        role = turn.get("role")
+        content = str(turn.get("content", "")).strip()
+        if role not in ("user", "assistant") or not content:
+            continue
+        messages.append({"role": role, "content": content[:2000]})
+    return messages
+
+
+def _limited_history(history: list[dict] | None, *, limit: int = 10) -> list[dict]:
+    return _history_messages(history)[-limit:] if history else []
+
+
 class LLMClient(Protocol):
     """Interface every generation provider satisfies (all the RAG layer needs)."""
 
     #: Short provider label, surfaced in API responses for observability.
     name: str
 
-    def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
+    def generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMResponse:
         """Generate an answer for ``user_query`` grounded in ``context``."""
         ...
 
@@ -124,7 +142,11 @@ def build_user_content(context: str, user_query: str) -> str:
         f"Question: {user_query}\n\n"
         "Using only the evidence above, answer the question the user asked: "
         "match the requested style, length and structure, write naturally in "
-        "your own words, and cite the sources you use."
+        "your own words, and cite the sources you use. If any source above "
+        "contains the requested information -- even briefly, indirectly, or in "
+        "different wording -- answer from it rather than declining. Only use "
+        "facts the evidence states; if the evidence truly does not contain what "
+        "is needed, say so instead of guessing."
     )
 
 
@@ -209,11 +231,14 @@ class OllamaLLMClient:
         self._temperature = temperature
         self._timeout = timeout
 
-    def _payload(self, *, system_prompt: str, user_query: str, context: str, stream: bool) -> dict:
+    def _payload(
+        self, *, system_prompt: str, user_query: str, context: str, stream: bool, history: list[dict] | None = None
+    ) -> dict:
         return {
             "model": self.model,
             "messages": [
                 {"role": "system", "content": system_prompt},
+                *_limited_history(history),
                 {"role": "user", "content": build_user_content(context, user_query)},
             ],
             "stream": stream,
@@ -243,9 +268,12 @@ class OllamaLLMClient:
         reason = exc.reason if isinstance(exc, urllib.error.URLError) else exc
         return LLMUnavailableError(f"Ollama request failed: {reason}")
 
-    def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
+    def generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMResponse:
         payload = self._payload(
-            system_prompt=system_prompt, user_query=user_query, context=context, stream=False
+            system_prompt=system_prompt, user_query=user_query, context=context, stream=False,
+            history=history,
         )
         request = self._request(payload)
         try:
@@ -260,10 +288,13 @@ class OllamaLLMClient:
             text=_extract_chat_text(body, "Ollama"), provider=self.name, model=self.model
         )
 
-    def stream_generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMStreamHandle:
+    def stream_generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMStreamHandle:
         """Stream the completion as NDJSON deltas from Ollama's chat API."""
         payload = self._payload(
-            system_prompt=system_prompt, user_query=user_query, context=context, stream=True
+            system_prompt=system_prompt, user_query=user_query, context=context, stream=True,
+            history=history,
         )
         request = self._request(payload)
         try:
@@ -320,11 +351,14 @@ class GroqLLMClient:
         self._temperature = temperature
         self._timeout = timeout
 
-    def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
+    def generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMResponse:
         payload = {
             "model": self.model,
             "messages": [
                 {"role": "system", "content": system_prompt},
+                *_limited_history(history),
                 {"role": "user", "content": build_user_content(context, user_query)},
             ],
             "temperature": self._temperature,
@@ -359,12 +393,15 @@ class GroqLLMClient:
             text=_extract_openai_text(body, "Groq"), provider=self.name, model=self.model
         )
 
-    def stream_generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMStreamHandle:
+    def stream_generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMStreamHandle:
         """Stream the completion as SSE ``chat.completion.chunk`` events from Groq."""
         payload = {
             "model": self.model,
             "messages": [
                 {"role": "system", "content": system_prompt},
+                *_limited_history(history),
                 {"role": "user", "content": build_user_content(context, user_query)},
             ],
             "temperature": self._temperature,
@@ -441,12 +478,15 @@ class FallbackLLMClient:
         """Provider label before failover is known (the first client's name)."""
         return self._clients[0].name
 
-    def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
+    def generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMResponse:
         failures: list[str] = []
         for index, client in enumerate(self._clients):
             try:
                 response = client.generate(
-                    system_prompt=system_prompt, user_query=user_query, context=context
+                    system_prompt=system_prompt, user_query=user_query, context=context,
+                    history=history,
                 )
             except _FALLBACK_ERRORS as exc:
                 failures.append(f"{client.name}: {exc}")
@@ -461,7 +501,9 @@ class FallbackLLMClient:
             )
         raise LLMUnavailableError("All LLM providers failed: " + "; ".join(failures))
 
-    def stream_generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMStreamHandle:
+    def stream_generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMStreamHandle:
         """Stream from the first provider that starts answering.
 
         A connection-level failure on ``connect`` falls over to the next
@@ -476,7 +518,10 @@ class FallbackLLMClient:
                 failures.append(f"{client.name}: no streaming support")
                 continue
             try:
-                handle = streamer(system_prompt=system_prompt, user_query=user_query, context=context)
+                handle = streamer(
+                    system_prompt=system_prompt, user_query=user_query, context=context,
+                    history=history,
+                )
             except _FALLBACK_ERRORS as exc:
                 failures.append(f"{client.name}: {exc}")
                 continue

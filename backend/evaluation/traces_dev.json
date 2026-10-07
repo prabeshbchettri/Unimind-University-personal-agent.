@@ -1,0 +1,823 @@
+{
+  "traces_version": 1,
+  "created_utc": "2026-10-07T00:47:20.592586+00:00",
+  "dataset": "C:\\Users\\LENOVO\\Desktop\\unimind\\backend\\evaluation\\dataset.json",
+  "dataset_version": "1.1-notes-format",
+  "pipeline_fingerprint": "3e32477d14a4",
+  "records": [
+    {
+      "id": "fact-01",
+      "course": "Engineering Economics",
+      "category": "factual lookup",
+      "difficulty": "easy",
+      "answerable": true,
+      "question": "How many lecture hours are allotted to the Methods of Economic Analysis chapter in Engineering Economics?",
+      "expected_strategy": "either",
+      "generated_answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+      "retrieved_contexts": [
+        "ENGINEERING ECONOMICS ENCE 356 Course Objectives: The objective of this course is to provide concept of economic principles and the economic environment at the project, firm, societal, and national levels, enabling them to analyze cause-and-effect relationships. The course aims to equip students with the ability to apply economic theories and tools for project selection, equipment replacement, property valuation, and price variation. By the end of the course, students will be able to evaluate alternatives and make informed, economically sound decisions in engineering and business contexts. 1 Introduction (2 hours) 1.1 Micro, macro and engineering economics (History, fundamental principle and application) 1.2 Terminology related to engineering economics 1.3 Economic decision and role of engineers in decision making 1.4 Cash flow and cash flow diagram 2 Market Economics (3 hours) 2.1",
+        "analysis 7. Calculation and analysis of gross domestic product, performing equivalence calculations under different inflation scenarios, analyze real and nominal exchange rates 8. Calculation of price variation and price escalation 9. Summarize the fiscal budget Final Exam The questions will cover all the chapters in the syllabus. The evaluation scheme will be as indicated in the table below: Chapter Hours Mark distribution* 1 2 3 2 3 5 3 2 3 4 6 8 5 12 16 6 5 6 7 5 6 8 5 8 9 5 5 Total 45 60 * There may be minor deviation in marks distribution. References 1. Mankiw, N. G. (2017). Principles of economics (8th ed.). Cengage Learning. 2. Park C.S. (2016). Contemporary Engineering Economics: Prentice Hall, lnc. 3. McConnell, C. R., Brue, S. L., Flynn, S. M. (2020). Economics: Principles, problems, and policies (22nd ed.). McGraw-Hill Education.",
+        "economics 1.3 Economic decision and role of engineers in decision making 1.4 Cash flow and cash flow diagram 2 Market Economics (3 hours) 2.1 Market, demand, supply and relationship 2.2 Elasticity, application of elasticity and government policies 2.3 Externality and market inefficiency 2.4 Market failure and firm behavior 3 Cost (8 hours) 3.1 Cost classification 3.1.1 Total, average, fixed, variable, and marginal costs 3.1.2 Direct, indirect, and standard costs 3.1.3 Cash versus book cost, manufacturing and non-manufacturing cost 3.1.4 Sunk cost, opportunity cost, element of cost, life-cycle cost 3.2 Cost estimation and control 4 Time Value of Money (6 hours) 4.1 Money (Type, functions and time value of money) 4.2 Simple and compound interests (Nominal, effective and continuous compounding) Lecture : 3 Year : III Tutorial : 1 Part : II Practical : 0",
+        "4.3 Economic equivalence 4.4 Cash flow types (Single, uniform, linear gradient, geometric gradient and irregular) 5 Methods of Economic Analysis (12 hours) 5.1 Capital budgeting 5.2 Minimum attractive rate of return (MARR) 5.3 Economic analysis of single and multiple projects 5.3.1 Payback period (Simple and discounted) 5.3.2 Equivalent worth (Net present, annual, future and capitalized) 5.3.3 Rate of return (Internal and external) 5.3.4 Public Sector economic analysis (Benefit cost analysis) 5.3.5 Financial and economic analysis 5.4 Weighted average cost of capital (WACC) 5.5 Repeatability assumption and co-Terminated assumptions 5.6 Multiple investment project alternatives (Dependent, independent and contingent) 6 Replacement Analysis (5 hours) 6.1 Replacement strategies (Asset life and selection of challengers over defenders) 6.2 Economic service life of an asset 6.3 Replacement",
+        "(5 hours) 6.1 Replacement strategies (Asset life and selection of challengers over defenders) 6.2 Economic service life of an asset 6.3 Replacement strategy for asset (Project with finite and infinite planning horizon) 7 Risk Analysis (5 hours) 7.1 Origin of risk in projects 7.2 Risk analysis of projects (Sensitivity, breakeven and scenario analyses) 7.3 Decision tree 8 Depreciation and Taxes (5 hours) 8.1 Concept and terminology 8.2 Depreciation calculation (Straight line, declining balance, sinking fund, sum of the year digit and modified accelerated cost recovery methods) 8.3 Tax and corporate income tax 8.4 Economic analysis (After-tax cash flow) 9 Measurement of Nation Income (5 hours) 9.1 Gross domestic product (Components, real and nominal gross domestic product) 9.2 Unemployment (Measurement, job search, minimum wage law)",
+        "SECTION 2: Engineering Economics (CE 655) Paper 1: 2082 Kartik Attempt all questions. 1. [Q1] o (a) Define Engineering Economics. Explain its role in decision-making processes for engineering projects. o (b) Deposit an equal annual amount $A$ for 12 years ($t=1\\dots12$) to withdraw Rs. 3,000 per year for 5 years beginning at the end of the $14^{\\text{th}}$ year ($t=14, 15, 16, 17, 18$). Interest rate $i = 9\\%$ compounded quarterly. Calculate $A$. 2. [Q2] o (a) A loan of Rs. 100,000 is repaid in equal monthly payments of Rs. 5,500 over 24 months. If average monthly inflation rate $f = 0.75\\%$ per month, calculate the inflation-free monthly interest rate ($i'$). o (b) An annual deposit $A = \\text{Rs. } 1,500$ is made at $i = 7\\%$ per year. How many years $n$ will it take to reach a target future sum $F = \\text{Rs. } 25,000$? 3. [Q3] o (a) Monthly deposit $A_1 = \\text{Rs. } 5,000$ is made",
+        "2.1 Differential and partial differential equations Differential Equation • A differential equation is a mathematical equation that relates an unknown function to its derivatives, essentially describing how a quantity changes with respect to another. • These equations are used extensively in science, engineering, and economics to model how things change over time and space—describing everything from fluid dynamics to population growth and financial interest • Differential equations are used to study: i. Population growth ii. Spread of diseases iii. Motion of vehicles iv. Temperature changes"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 1
+        },
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 3
+        },
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 1
+        },
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 2
+        }
+      ],
+      "enough_evidence": true,
+      "declined": true,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 1794,
+      "reference_derived": "A correct answer must include the following information: 12.",
+      "answer_must_mention_any": [
+        "12"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "term-11",
+      "course": "Engineering Economics",
+      "category": "exact term",
+      "difficulty": "medium",
+      "answerable": true,
+      "question": "Under which cost-classification group does \"element of cost\" appear?",
+      "expected_strategy": "hybrid",
+      "generated_answer": "**Element of cost** is listed under the cost‑classification group **“Sunk cost, opportunity cost, element of cost, life‑cycle cost”** (section 3.1.4 of the cost classification chapter)[1].",
+      "retrieved_contexts": [
+        "economics 1.3 Economic decision and role of engineers in decision making 1.4 Cash flow and cash flow diagram 2 Market Economics (3 hours) 2.1 Market, demand, supply and relationship 2.2 Elasticity, application of elasticity and government policies 2.3 Externality and market inefficiency 2.4 Market failure and firm behavior 3 Cost (8 hours) 3.1 Cost classification 3.1.1 Total, average, fixed, variable, and marginal costs 3.1.2 Direct, indirect, and standard costs 3.1.3 Cash versus book cost, manufacturing and non-manufacturing cost 3.1.4 Sunk cost, opportunity cost, element of cost, life-cycle cost 3.2 Cost estimation and control 4 Time Value of Money (6 hours) 4.1 Money (Type, functions and time value of money) 4.2 Simple and compound interests (Nominal, effective and continuous compounding) Lecture : 3 Year : III Tutorial : 1 Part : II Practical : 0",
+        "5. [Q5] Explain the concept of inflation and purchasing power. Differentiate between real cash flows and actual (nominal) cash flows. 6. [Q6] Write short notes on: o (a) Capital recovery factor o (b) Sensitivity analysis in economic decision making Paper 3: 2081 Ashwin Attempt all questions. 1. [Q1] Explain cost concepts in engineering decision making: Fixed cost, Variable cost, Marginal cost, and Sunk cost. 2. [Q2] Describe the Annual Worth (AW) method and Future Worth (FW) method for evaluating investment projects. 3. [Q3] What is Break-Even Analysis? Derive the break-even point formula for quantity produced and chart out fixed, variable, and total revenue curves. 4. [Q4] Explain straight-line depreciation, declining balance depreciation, and unit-ofproduction depreciation methods with formulas. 5. [Q5] Discuss project financing sources: Equity financing vs. Debt financing. Explain",
+        "1.3 Types of models • Static vs. Dynamic Models Static models • Model where time is not a significant variable. • This model represents a system, which does not change with time or represents a system at a particular point in time. • Examples:- Determine the probability of a winning solitaire hand Dynamic models • Represents a system that changes over time. • Model focusing on the evolution of the system under investigation over time • Example: Traffic simulation",
+        "7.1 Quality Concepts The Cost of Quality: The cost of quality includes all costs incurred in the pursuit of quality or in performing quality-related activities and the downstream costs of lack of quality. It can be divided into: 1. Prevention costs: Cost of management activities for planning and coordinating quality control/assurance, added technical activities for complete requirements and design models, test planning costs, and training costs. 2. Appraisal costs: Cost of conducting technical reviews, data collection and metrics evaluation, and testing and debugging. 7",
+        "finance, healthcare, business, and science. 6. What-if Analysis: It allows decision-makers to examine how changes in input variables affect the final result. 7. Cost-Effective: It can reduce the need for expensive physical experiments, prototypes, and real-world testing. 8. Supports Decision-Making: It provides quantitative information that helps managers and engineers make informed decisions under uncertainty. 9. Easy to Automate: With computers, a large number of simulation trials can be performed quickly. 10. Sensitivity Analysis: It helps identify which input variables have the greatest influence on the output.",
+        "3.4 Gathering Requirements Using Use Case Modeling and Scenarios Element Details Exceptions 1. Out of Stock: System displays an \"Out of Stock\" message and suggests similar books. 2. Payment Failure: System notifies the customer and asks them to retry or use a different payment method. Postcondition Order is placed, payment is processed, and confirmation email is sent. Priority Essential 52",
+        "4.3 Taxonomy of Architectural Styles Advantages: It is resource-efficient since thin clients can access powerful server-side processing. Data integrity is maintained at the server. Disadvantages: Server is a single point of failure. Entirely dependent on network connectivity. Server can become a bottleneck under heavy load. Higher infrastructure cost. 32"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 1
+        },
+        {
+          "document": "past_question_economics.pdf",
+          "page": 2
+        },
+        {
+          "document": "Chapter 1.pdf",
+          "page": 23
+        },
+        {
+          "document": "ch_7_slide.pdf",
+          "page": 7
+        },
+        {
+          "document": "Chapter 1.pdf",
+          "page": 58
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 52
+        }
+      ],
+      "enough_evidence": true,
+      "declined": false,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 1024,
+      "reference_derived": "A correct answer must include the following information: 3.1.4; sunk cost; opportunity cost; life-cycle cost.",
+      "answer_must_mention_any": [
+        "3.1.4",
+        "sunk cost",
+        "opportunity cost",
+        "life-cycle cost"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "none-18",
+      "course": "Engineering Economics",
+      "category": "no answer in corpus",
+      "difficulty": "medium",
+      "answerable": false,
+      "question": "What is the minimum passing mark for the Engineering Economics final exam?",
+      "expected_strategy": "hybrid",
+      "generated_answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+      "retrieved_contexts": [
+        "analysis 7. Calculation and analysis of gross domestic product, performing equivalence calculations under different inflation scenarios, analyze real and nominal exchange rates 8. Calculation of price variation and price escalation 9. Summarize the fiscal budget Final Exam The questions will cover all the chapters in the syllabus. The evaluation scheme will be as indicated in the table below: Chapter Hours Mark distribution* 1 2 3 2 3 5 3 2 3 4 6 8 5 12 16 6 5 6 7 5 6 8 5 8 9 5 5 Total 45 60 * There may be minor deviation in marks distribution. References 1. Mankiw, N. G. (2017). Principles of economics (8th ed.). Cengage Learning. 2. Park C.S. (2016). Contemporary Engineering Economics: Prentice Hall, lnc. 3. McConnell, C. R., Brue, S. L., Flynn, S. M. (2020). Economics: Principles, problems, and policies (22nd ed.). McGraw-Hill Education.",
+        "ENGINEERING ECONOMICS ENCE 356 Course Objectives: The objective of this course is to provide concept of economic principles and the economic environment at the project, firm, societal, and national levels, enabling them to analyze cause-and-effect relationships. The course aims to equip students with the ability to apply economic theories and tools for project selection, equipment replacement, property valuation, and price variation. By the end of the course, students will be able to evaluate alternatives and make informed, economically sound decisions in engineering and business contexts. 1 Introduction (2 hours) 1.1 Micro, macro and engineering economics (History, fundamental principle and application) 1.2 Terminology related to engineering economics 1.3 Economic decision and role of engineers in decision making 1.4 Cash flow and cash flow diagram 2 Market Economics (3 hours) 2.1",
+        "SECTION 2: Engineering Economics (CE 655) Paper 1: 2082 Kartik Attempt all questions. 1. [Q1] o (a) Define Engineering Economics. Explain its role in decision-making processes for engineering projects. o (b) Deposit an equal annual amount $A$ for 12 years ($t=1\\dots12$) to withdraw Rs. 3,000 per year for 5 years beginning at the end of the $14^{\\text{th}}$ year ($t=14, 15, 16, 17, 18$). Interest rate $i = 9\\%$ compounded quarterly. Calculate $A$. 2. [Q2] o (a) A loan of Rs. 100,000 is repaid in equal monthly payments of Rs. 5,500 over 24 months. If average monthly inflation rate $f = 0.75\\%$ per month, calculate the inflation-free monthly interest rate ($i'$). o (b) An annual deposit $A = \\text{Rs. } 1,500$ is made at $i = 7\\%$ per year. How many years $n$ will it take to reach a target future sum $F = \\text{Rs. } 25,000$? 3. [Q3] o (a) Monthly deposit $A_1 = \\text{Rs. } 5,000$ is made",
+        "GPSS – Blocks MARK • A MARK Block records the current simulation time for a transaction into its Parameter. MARK A Where, A = Transaction parameter number in which the current simulation clock is stored. • Examples : MARK Beginning • In this example, when a Transaction enters the MARK Block, its Transaction Parameter named Beginning is given a value equal to the value of the absolute system clock.",
+        "economics 1.3 Economic decision and role of engineers in decision making 1.4 Cash flow and cash flow diagram 2 Market Economics (3 hours) 2.1 Market, demand, supply and relationship 2.2 Elasticity, application of elasticity and government policies 2.3 Externality and market inefficiency 2.4 Market failure and firm behavior 3 Cost (8 hours) 3.1 Cost classification 3.1.1 Total, average, fixed, variable, and marginal costs 3.1.2 Direct, indirect, and standard costs 3.1.3 Cash versus book cost, manufacturing and non-manufacturing cost 3.1.4 Sunk cost, opportunity cost, element of cost, life-cycle cost 3.2 Cost estimation and control 4 Time Value of Money (6 hours) 4.1 Money (Type, functions and time value of money) 4.2 Simple and compound interests (Nominal, effective and continuous compounding) Lecture : 3 Year : III Tutorial : 1 Part : II Practical : 0",
+        "test 4. Simulation of queuing system 5. Simulation of Markov chain Final Exam The questions will cover all the chapters in the syllabus. The evaluation scheme will be as indicated in the table below: Chapters Hours Marks distribution* 1, 2 8 10 3 5 7 4 6 8 5 3 5 6 10 13 7 3 4 8 4 5 9, 10 6 8 Total 45 60 * There may be minor deviation in marks distribution.",
+        "TECHSPIRE COLLEGE Office of the Principal | Department of Computing and Technology NOTICE Ref. No.: TSC/EVT/2026/087 Date: October 6, 2026 Subject: Final Day of the AI Engineering Bootcamp on October 7, 2026 This is to inform all participants, students, faculty members, and staff that Techspire College, in association with Cloud AI, will hold the final day of the AI Engineering Bootcamp on Wednesday, October 7, 2026. Event AI Engineering Bootcamp (Final Day) Date Wednesday, October 7, 2026 Organized by Techspire College In association with Cloud AI Venue Techspire College Campus (hall/lab to be confirmed) Reporting Time Participants to arrive 15 minutes before the session The final day will conclude the bootcamp with project presentations and demonstrations, followed by feedback and the distribution of certificates to participants who have met the attendance and project requirements. All"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 3
+        },
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 1
+        },
+        {
+          "document": "past_question_economics.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 9.pdf",
+          "page": 37
+        },
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 1
+        }
+      ],
+      "enough_evidence": true,
+      "declined": true,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 819,
+      "reference_derived": null,
+      "answer_must_mention_any": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "chap-39",
+      "course": "Simulation and Modeling",
+      "category": "chapter lookup",
+      "difficulty": "easy",
+      "answerable": true,
+      "question": "What topics are covered in Chapter 8, Analysis of simulation output?",
+      "expected_strategy": "either",
+      "generated_answer": "According to the provided university materials, Chapter 8, Analysis of Simulation Output, covers the following topics:\n\n* Confidence intervals and hypothesis testing [1, 7]\n* Estimation methods [1, 7]\n* Simulation run statistics [1, 7]\n* Replication of runs [1, 7]\n* Elimination of initial bias [1, 7]\n\nThese topics are listed in the chapter overview in [7] and are also mentioned in [1] as part of the chapter's content.",
+      "retrieved_contexts": [
+        "Chapter 8 Analysis of Simulation Output",
+        "Chapter 7 Verification and Validation of Simulation Models",
+        "Chapter-1 Introduction to Simulation",
+        "composition and convolution 7 Verification and Validation of Simulation Models (3 hours) 7.1 Verification and validation 7.2 Verification of simulation models 7.3 Calibration and validation of models 7.4 Naylor and finger validation process 7.5 Validation: Errors 8 Analysis of simulation output (4 hours) 8.1 Confidence intervals and hypothesis testing 8.2 Estimation methods 8.3 Simulation run statistics 8.4 Replication of runs 8.5 Elimination of initial bias 9 Simulation software (3 hours) 9.1 Simulation in Java",
+        "Chapter 9 Simulation Software",
+        "Experimentation and Statistical-Analysis Tools • Virtually all simulation packages offer support for statistical analysis of simulation output. • In recent years, many packages have added optimization as one of the analysis tools. ⮚Optimization is used to find a “near-optimal” solution. ⮚User must define an objective or fitness function, e.g. cost. ⮚Recent advances in the field of metaheuristics has offered new approaches to simulation optimization. • Products discussed: ⮚Arena’s Output and Process Analyzer ⮚AutoStat ⮚OptQuest ⮚SimRunner",
+        "Overview 8.1 Confidence intervals and hypothesis testing 8.2 Estimation Methods 8.3 Simulation Run Statistics 8.4 Replication of Runs 8.5 Elimination of Initial Bias"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "Chapter 8.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 7.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 1.pdf",
+          "page": 3
+        },
+        {
+          "document": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20 (1).pdf",
+          "page": 2
+        },
+        {
+          "document": "Chapter 9.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 9.pdf",
+          "page": 66
+        },
+        {
+          "document": "Chapter 8.pdf",
+          "page": 2
+        }
+      ],
+      "enough_evidence": true,
+      "declined": false,
+      "strategy": "hybrid",
+      "provider": "ollama_fallback",
+      "model": "llama3.1",
+      "latency_ms": 26729,
+      "reference_derived": "A correct answer must include the following information: confidence interval; hypothesis testing; estimation; replication; initial bias; run statistics.",
+      "answer_must_mention_any": [
+        "confidence interval",
+        "hypothesis testing",
+        "estimation",
+        "replication",
+        "initial bias",
+        "run statistics"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "sum-41",
+      "course": "Simulation and Modeling",
+      "category": "summary",
+      "difficulty": "medium",
+      "answerable": true,
+      "question": "Give a short summary of the Introduction to Simulation chapter.",
+      "expected_strategy": "normal",
+      "generated_answer": "**Introduction to Simulation (Chapter 1)**  \nThe chapter opens by defining simulation and its role in studying systems. It explains key concepts such as system and system‑environment relationships, and distinguishes between continuous and discrete systems. It then surveys the main types of models (physical, mathematical, and simulation models) and outlines the model‑development life cycle. A central part of the chapter is the description of the steps in a simulation study, from problem definition to model validation. Finally, it discusses the advantages and disadvantages of simulation and introduces two common simulation techniques: Monte‑Carlo simulation and discrete‑event system simulation.  \n\n[1] [5] [7]",
+      "retrieved_contexts": [
+        "Chapter-1 Introduction to Simulation",
+        "Chapter 8 Analysis of Simulation Output",
+        "Chapter 9 Simulation Software",
+        "Chapter 7 Verification and Validation of Simulation Models",
+        "1.5 Simulation and steps in simulation study Steps in simulation study",
+        "Chapter 10 Simulation of Computer Systems",
+        "SIMULATION AND MODELING ENCT 353 Course Objectives: The objective of this course is to develop knowledge of modeling and simulation techniques for discrete and continuous systems. It emphasizes the development and analysis of simulation models, generation and testing of random numbers and variables, and application of simulation methods to evaluate the performance of stochastic systems. 1 Introduction to Simulation (4 hours) 1.1 System and system environment concepts 1.2 Continuous and discrete systems 1.3 Types of models 1.4 Model development life cycle 1.5 Simulation and steps in simulation study 1.6 Advantages and disadvantages of simulation 1.7 Monte-Carlo simulation 1.8 Discrete-event system simulation 2 Physical and Mathematical Models (4 hours) 2.1 Differential and partial differential equations 2.2 Static physical model 2.3 Dynamic physical model 2.4 Static mathematical models"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "Chapter 1.pdf",
+          "page": 3
+        },
+        {
+          "document": "Chapter 8.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 9.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 7.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 1.pdf",
+          "page": 40
+        },
+        {
+          "document": "Chapter 10.pdf",
+          "page": 1
+        },
+        {
+          "document": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20 (1).pdf",
+          "page": 1
+        }
+      ],
+      "enough_evidence": true,
+      "declined": false,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 919,
+      "reference_derived": "A correct answer must include the following information: system; model; simulation; Monte-Carlo; discrete-event; advantages; disadvantages.",
+      "answer_must_mention_any": [
+        "system",
+        "model",
+        "simulation",
+        "Monte-Carlo",
+        "discrete-event",
+        "advantages",
+        "disadvantages"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "none-46",
+      "course": "Simulation and Modeling",
+      "category": "no answer in corpus",
+      "difficulty": "medium",
+      "answerable": false,
+      "question": "What is the submission deadline for the Simulation and Modeling practical reports?",
+      "expected_strategy": "either",
+      "generated_answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+      "retrieved_contexts": [
+        "Chapter 9 Simulation Software",
+        "securely. 5. Prepare use case diagram for the given scenario: [4] Case Study: An event management company wants to develop a system to organize and manage various events such as conferences, weddings, and concerts. The system should allow users to view and register for events, select tickets, and make payments. Admin should be able to create and manage event details, track registrations, handle user inquiries, and generate attendance reports. 6. Differentiate between thin client and thick client model. Describe layered architecture for software. [3 + 4] 7. What is real-time system? Explain data acquisition system. [1 + 3] 8. What are the benefits and risks of software reuse? What factors must be considered during reuse planning? [4 + 2] 9. What are provided and required interfaces in a software component? Explain with the help of a suitable example. [4] 10. What is a software inspection",
+        "SIMULATION AND MODELING ENCT 353 Course Objectives: The objective of this course is to develop knowledge of modeling and simulation techniques for discrete and continuous systems. It emphasizes the development and analysis of simulation models, generation and testing of random numbers and variables, and application of simulation methods to evaluate the performance of stochastic systems. 1 Introduction to Simulation (4 hours) 1.1 System and system environment concepts 1.2 Continuous and discrete systems 1.3 Types of models 1.4 Model development life cycle 1.5 Simulation and steps in simulation study 1.6 Advantages and disadvantages of simulation 1.7 Monte-Carlo simulation 1.8 Discrete-event system simulation 2 Physical and Mathematical Models (4 hours) 2.1 Differential and partial differential equations 2.2 Static physical model 2.3 Dynamic physical model 2.4 Static mathematical models",
+        "1.5 Simulation and steps in simulation study Simulation is a very general method of studying problems. No formal procedure can be given for showing how a simulation study will proceed. Above figure shows the general steps involved. 1. Problem Formulation Initial step is to describe the problem to be solved. It should be a clear statement of what questions are being asked and what measurements need to be taken in order to answer these questions. 2. Setting of Objectives The objectives indicate the questions to be answered by simulation. Assuming that the simulation is appropriate, the overall project plan should include a statement of the alternative system to be considered, the cost of study, number of days required, etc. 3. Model Conceptualization It is best to start with a simple model and build towards greater complexity. The art of modeling is enhanced by an ability to abstract",
+        "Practical (22.5 hours) 1. Preparation and organization of software requirements specification (SRS) using standard templates 2. Construction of UML diagrams (Use case, activity, class, and sequence) using modeling tools 3. Design of system architecture and component structure using CASE tools 4. Implementation of key system modules following coding standards and best practices 5. Execution of testing procedures (Unit and integration) and documentation of results 6. Application of version control (Git), CI/CD workflow setup, and containerization using docker 7. Term project Final Exam The questions will cover all the chapters in the syllabus. The evaluation scheme will be as indicated in the table below: Chapter Hours Marks distribution* 1 4 5 2 8 11 3 6 8 4 3 4 5 9 12 6 5 7 7 4 5 8 3 4 9 3 4 Total 45 60 * There may be minor deviation in marks distribution. References 1. Pressman, R. S.,",
+        "9.2 Simulation in GPSS 9.3 Simulation in Python 9.4 Other simulation software 10 Simulation of Computer Systems (3 hours) 10.1 Simulation tools 10.2 High level computer: System simulation 10.3 CPU simulation 10.4 Memory simulation 10.5 Simulation of computer networks Tutorial (15 hours) 1. Poisson process 2. Monte Carlo simulation 3. Queuing system and Markov chains 4. Different methods of random number generation 5. Kolmogorov-Smirnov test, Chi-square test, gap-test, poker and autocorrelation test 6. Modeling continuous and discrete systems 7. Simulation output analysis Practical (22.5 hours) 1. Simulation of the R-C amplifier circuit and mass spring damper system 2. Generation of random number 3. Chi-square goodness-of-fit test and Kolmogorov-Smirnov test 4. Simulation of queuing system 5. Simulation of Markov chain Final Exam The questions will cover all the chapters in the syllabus.",
+        "1.5 Simulation and steps in simulation study 10. More Runs? Given the analysis of runs that have been completed, the analyst determines whether additional runs are needed and what design these additional experiments should follow. 11. Documentation and Reporting There are two types of documentation: Program and Progress. Program documentation is necessary for numerous reasons. It helps to make decisions and helps to modify the program. Progress report provides important written history of a simulation project. The final report should include: a model specification, prototype demonstrations, animations, program documentation, progress report and presentations."
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "Chapter 9.pdf",
+          "page": 1
+        },
+        {
+          "document": "past_question_software.pdf",
+          "page": 2
+        },
+        {
+          "document": "ENCT353SIMULATIONANDMODELI_2026_04_25_10_01_20 (1).pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 1.pdf",
+          "page": 41
+        },
+        {
+          "document": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+          "page": 4
+        }
+      ],
+      "enough_evidence": true,
+      "declined": true,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 1331,
+      "reference_derived": null,
+      "answer_must_mention_any": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "detail-53",
+      "course": "Software Engineering",
+      "category": "specific detail",
+      "difficulty": "easy",
+      "answerable": true,
+      "question": "Which levels of testing are listed under software testing fundamentals?",
+      "expected_strategy": "either",
+      "generated_answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+      "retrieved_contexts": [
+        "6.3 Software Testing Fundamentals 24",
+        "6.3 Software Testing Fundamentals Software testing is the process of executing a program with the intent of finding errors. A good test is one that has a high probability of discovering an as-yetundiscovered error. Testing cannot prove the absence of defects; it can only demonstrate their presence. Exhaustive testing (testing every possible input and path) is practically impossible for any non-trivial program. 23",
+        "6.5.3 Automated unit testing basics 6.5.4 Refactoring for code quality 7 Software Quality, Assurance, Maintenance (4 hours) 7.1 Quality concepts 7.2 Quality attributes 7.3 Reviews, inspections and QA concepts 7.4 ISO standards, CMMI levels 7.5 Software maintenance and its types 7.6 Maintenance effort and lifecycle considerations 8 Software Configuration Management (3 hours) 8.1 Software configuration management 8.2 Version control and continuous integration 8.3 Change management process 8.4 Branching strategies (Git-flow basics) 9 Recent Trends (3 hours) 9.1 DevOps and continuous deployment pipelines 9.2 Continuous integration/continuous delivery (CI/CD) in modern projects 9.3 Cloud-native, microservices architectures and infrastructure as code (IaC) 9.4 AI-assisted software development 9.5 Low-code/no-code, green software engineering Tutorial (15 hours) 1. Analyze the project domain,",
+        "6.3.2 Unit Testing What is tested during unit testing: • Interface: Data flows correctly into and out of the unit (correct parameter types, order, and count). • Local data structures: Variables maintain integrity throughout all steps of the algorithm. • Independent paths: All execution paths through the control structure are exercised at least once. 29",
+        "1.7 Software Engineering Practice: Essence of Practice, General Principles The Essence of Practice 4. Examine the result for accuracy (testing and quality assurance) • Has a reasonable testing strategy been implemented? • Does the solution produce results that conform to requirements? • Has the software been validated against all stakeholder requirements? 38",
+        "6.5.2 Continuous Testing Characteristics: • Tests run automatically on every code commit, not just at the end of a sprint or release cycle. • Provides rapid feedback: developers learn about failures within minutes while the context is still fresh. • Covers multiple levels: unit tests, integration tests, and sometimes acceptance tests are all automated. • Enables the \"shift left\" approach, moving testing earlier in the development process to reduce the cost of defect correction. 67",
+        "6.3.4 System Testing Types of system testing: • Recovery testing: Forces the system to fail and verifies that recovery is properly performed (e.g., automatic restart, data integrity after crash). • Security testing: Attempts to breach the system's protection mechanisms to verify that the system is resistant to unauthorized access. • Stress testing: Pushes the system beyond its normal operating limits to determine how it degrades and at what point it fails. • Performance testing: Tests run-time performance (response time, throughput, resource utilization) under expected and peak conditions. 43"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "ch_6_slide.pdf",
+          "page": 24
+        },
+        {
+          "document": "ch_6_slide.pdf",
+          "page": 23
+        },
+        {
+          "document": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+          "page": 3
+        },
+        {
+          "document": "ch_6_slide.pdf",
+          "page": 29
+        },
+        {
+          "document": "ch_1_slide.pdf",
+          "page": 38
+        },
+        {
+          "document": "ch_6_slide.pdf",
+          "page": 67
+        },
+        {
+          "document": "ch_6_slide.pdf",
+          "page": 43
+        }
+      ],
+      "enough_evidence": true,
+      "declined": true,
+      "strategy": "normal",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 922,
+      "reference_derived": "A correct answer must include the following information: unit; integration; system; acceptance.",
+      "answer_must_mention_any": [
+        "unit",
+        "integration",
+        "system",
+        "acceptance"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "cmp-61",
+      "course": "Software Engineering",
+      "category": "comparison",
+      "difficulty": "medium",
+      "answerable": true,
+      "question": "Compare functional and non-functional requirements.",
+      "expected_strategy": "either",
+      "generated_answer": "**Comparison of Functional and Non-Functional Requirements**\n\nFunctional requirements describe what the system must do, including specific functions, features, services, and behaviors [5]. They define the system's response to specific inputs under specific conditions [5]. Examples of functional requirements include \"User can place an order\" [1] and \"The system shall allow users to search flights by origin, destination, and date\" [5].\n\nNon-functional requirements, on the other hand, describe how well the system must perform, including quality attributes, performance characteristics, security constraints, and general system constraints [4]. They constrain the overall functioning of the system rather than defining specific features [4]. Non-functional requirements are tested by measuring performance, stress, security, etc. [3], and if absent, the system becomes unreliable, slow, or insecure [3].\n\nBoth functional and non-functional requirements are essential for a complete system specification [7]. Meeting functional requirements without delivering non-functional requirements is meaningless [7]. A system may perform all required functions but fail if it is too slow, insecure, or difficult to use [7].\n\n**Key differences:**\n\n* Functional requirements describe what the system must do\n* Non-functional requirements describe how well the system must perform\n* Functional requirements are tested by executing the function directly\n* Non-functional requirements are tested by measuring performance, stress, security, etc.\n\n**References:**\n\n[1] ch_3_slide.pdf, page 32\n[3] ch_3_slide.pdf, page 33\n[4] ch_3_slide.pdf, page 29\n[5] ch_3_slide.pdf, page 28\n[7] ch_3_slide.pdf, page 34",
+      "retrieved_contexts": [
+        "3.3 Functional and Non-Functional Requirements Functional vs. Non-Functional Requirements Functional Requirements Non-Functional Requirements Describe what the system does Describe how well the system performs Specify specific features and behaviors Specify quality attributes and constraints Example: \"User can place an order\" Example: \"Order confirmation within 2 seconds\" 32",
+        "3.3 Functional and Non-Functional Requirements Explain functional and non-functional requirements with examples. [6 marks] (2069 Ashad - IOE - Old Syllabus Relevant) Differentiate functional and non-functional requirements. [7 marks] (2069 Chaitra - IOE - Old Syllabus Relevant) Distinguish between user and system requirements. [2 marks] (2079 Bhadra - IOE - Old Syllabus Relevant) Why should an engineer ensure that functional and non-functional needs are in a requirements specification document? [4 marks] (2079 Bhadra - IOE - Old Syllabus Relevant) 26",
+        "3.3 Functional and Non-Functional Requirements Functional Requirements Non-Functional Requirements Tested by executing the function directly Tested by measuring performance, stress, security, etc. If absent, the system is incomplete because required features are missing If absent, the system becomes unreliable, slow, or insecure Documented as use cases, user stories, or feature lists Documented as quality metrics, constraints, or SLA targets 33",
+        "3.3 Functional and Non-Functional Requirements Non-Functional Requirements (NFRs) Non-functional requirements describe how well the system must perform, including quality attributes, performance characteristics, security constraints, and general system constraints. They constrain the overall functioning of the system rather than defining specific features. 29",
+        "3.3 Functional and Non-Functional Requirements Functional Requirements Functional requirements describe what the system must do, including the specific functions, features, services, and behaviors the software must provide. They define the system's response to specific inputs under specific conditions. Example: \"The system shall allow users to search flights by origin, destination, and date.\" 28",
+        "3.3 Functional and Non-Functional Requirements List and explain functional (any two) and non-functional requirements of an airlines reservation system. [6 marks] (2082 Baishakh - IOE - Old Syllabus Relevant) Explain functional (Order Food, Make Payment) and non-functional (all) requirements of an online food ordering system. [6 marks] (2081 Bhadra - IOE - Old Syllabus Relevant) Prepare functional requirements for an online ticket booking system for a movie theatre. [4 marks] (2082 Bhadra - IOE - Old Syllabus Relevant) List functional and non-functional requirements for a Restaurant Information System. [5 marks] (2068 Chaitra - IOE - Old Syllabus Relevant) 27",
+        "3.3 Functional and Non-Functional Requirements Why Both Must Be in the SRS Functional requirements alone do not guarantee a usable system. A system may perform all required functions but fail if it is too slow, insecure, or difficult to use. Conversely, meeting NFRs without delivering required features is meaningless. Both types are essential for: • Complete system specification ensures that developers know what to build and to what standard. • Testing requires both functional test cases and performance/security benchmarks. 34"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 32
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 26
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 33
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 29
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 28
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 27
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 34
+        }
+      ],
+      "enough_evidence": true,
+      "declined": false,
+      "strategy": "hybrid",
+      "provider": "ollama_fallback",
+      "model": "llama3.1",
+      "latency_ms": 75563,
+      "reference_derived": "A correct answer must include the following information: functional; non-functional; performance; security; requirements.",
+      "answer_must_mention_any": [
+        "functional",
+        "non-functional",
+        "performance",
+        "security",
+        "requirements"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "chap-66",
+      "course": "Software Engineering",
+      "category": "chapter lookup",
+      "difficulty": "easy",
+      "answerable": true,
+      "question": "Which recent trends does Chapter 9 of Software Engineering cover?",
+      "expected_strategy": "either",
+      "generated_answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+      "retrieved_contexts": [
+        "1.5 Software crisis 1.6 Software myths 1.7 Software engineering practice: Essence of practice, general principles 2 The Software Process (8 hours) 2.1 Process framework and umbrella activities 2.2 Traditional (Plan-driven) process models 2.2.1 Waterfall model and its extensions 2.2.2 Incremental process model 2.2.3 Evolutionary process models (Prototyping, spiral) 2.3 Agile and adaptive process models 2.3.1 Agile manifesto and the 12 principles 2.3.2 Agile versus plan-driven development 2.3.3 Scrum framework (Roles, artifacts, ceremonies) 2.3.4 Extreme programming (XP) practices 2.3.5 Lean software development 2.4 Model selection considerations 3 Software Requirements Engineering (6 hours) 3.1 Requirement engineering process Lecture : 3 Year : III Tutorial : 1 Part : II Practical : 3/2",
+        "1.1 Software and Software Engineering 6",
+        "1.5 Software Crisis Solutions: 1. Adoption of systematic software engineering practices (process models, methods, tools). 2. Better requirements gathering and management. 3. Use of formal reviews, inspections, and testing strategies. 4. Standards and quality assurance frameworks. 5. Training and education in software engineering principles. 28",
+        "4 5 2 8 11 3 6 8 4 3 4 5 9 12 6 5 7 7 4 5 8 3 4 9 3 4 Total 45 60 * There may be minor deviation in marks distribution. References 1. Pressman, R. S., Maxim, B. R. (2019). Software engineering: A practitioner’s approach. McGraw-Hill Education. 2. Mall, R. (2018). Fundamentals of software engineering. PHI Learning. 3. Sommerville, I. (2016). Software engineering. Pearson. 4. Martin, R. C. (2009). Clean code: A handbook of agile software craftsmanship. Pearson. 5. Schwaber, K., Beedle, M. (2002). Agile software development with Scrum. Prentice Hall.",
+        "3.5 Agile Requirements Engineering 85",
+        "1.4 Legacy Software Lehman’s Laws of Software Evolution: When maintaining or evolving legacy systems (or any software), Lehman's laws describe how the system behaves: 1. Law of Continuing Change: A system must be continually adapted, or it becomes progressively less useful. 2. Law of Increasing Complexity: As a system evolves, its structure degrades and complexity increases unless work is done to maintain or simplify it. 20",
+        "Chapter 9 Simulation Software"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+          "page": 1
+        },
+        {
+          "document": "ch_1_slide.pdf",
+          "page": 6
+        },
+        {
+          "document": "ch_1_slide.pdf",
+          "page": 28
+        },
+        {
+          "document": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+          "page": 4
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 85
+        },
+        {
+          "document": "ch_1_slide.pdf",
+          "page": 20
+        },
+        {
+          "document": "Chapter 9.pdf",
+          "page": 1
+        }
+      ],
+      "enough_evidence": true,
+      "declined": true,
+      "strategy": "normal",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 1237,
+      "reference_derived": "A correct answer must include the following information: DevOps; CI/CD; microservices; IaC; AI-assisted; low-code; green software.",
+      "answer_must_mention_any": [
+        "DevOps",
+        "CI/CD",
+        "microservices",
+        "IaC",
+        "AI-assisted",
+        "low-code",
+        "green software"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "none-76",
+      "course": "Cross-document",
+      "category": "no answer in corpus",
+      "difficulty": "medium",
+      "answerable": false,
+      "question": "What is the current tuition fee for the engineering programme at the university?",
+      "expected_strategy": "normal",
+      "generated_answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+      "retrieved_contexts": [
+        "Page 4 • Late payment may lead to fines, suspension of services or withholding of results. • Fee refunds follow the university's published refund policy and deadlines. • Scholarship holders must maintain the required GPA and conduct standards to retain funding. 11. Technology and Social Media • Use of university IT resources must comply with the acceptable use policy. • Sharing passwords or accessing another person's account is prohibited. • Recording lectures or sharing course materials without permission is not allowed. • Posting defamatory, threatening or confidential content about the university or its members online is prohibited. 12. Student Activities and Organizations • Clubs and societies must be officially registered and have a faculty advisor. • Events and gatherings on campus require prior approval from student affairs. • Political activities, protests and fundraising must",
+        "SECTION 2: Engineering Economics (CE 655) Paper 1: 2082 Kartik Attempt all questions. 1. [Q1] o (a) Define Engineering Economics. Explain its role in decision-making processes for engineering projects. o (b) Deposit an equal annual amount $A$ for 12 years ($t=1\\dots12$) to withdraw Rs. 3,000 per year for 5 years beginning at the end of the $14^{\\text{th}}$ year ($t=14, 15, 16, 17, 18$). Interest rate $i = 9\\%$ compounded quarterly. Calculate $A$. 2. [Q2] o (a) A loan of Rs. 100,000 is repaid in equal monthly payments of Rs. 5,500 over 24 months. If average monthly inflation rate $f = 0.75\\%$ per month, calculate the inflation-free monthly interest rate ($i'$). o (b) An annual deposit $A = \\text{Rs. } 1,500$ is made at $i = 7\\%$ per year. How many years $n$ will it take to reach a target future sum $F = \\text{Rs. } 25,000$? 3. [Q3] o (a) Monthly deposit $A_1 = \\text{Rs. } 5,000$ is made",
+        "TRIBHUVAN UNIVERSITY — INSTITUTE OF ENGINEERING EXAMINATION CONTROL DIVISION PAST QUESTION COMPILATION SUBJECT: Software Engineering (CT 601) YEAR / PART: III / I PROGRAMME: Computer Engineering (BCT) FULL MARKS: 80 SESSION 1: 2083 Baishakh (Back) 1. What is software crisis? Justify this statement \"Software doesn't wear out\". [3 + 4] 2. Why do we need to perform requirement analysis and refinement during requirement engineering process? Explain the spiral model of software development. Why is it preferred in high-risk projects? [3 + 5] 3. Why do we need to do feasibility study before accepting any project? Differentiate between functional and non-functional requirement with example. [3 + 4] 4. Design Level 0 and Level 1 DFD for the case study given below: [6] Case Study: Suppose a buses garage repairs wants to develop an automation system that helps to maintain their records. In the",
+        "ENGINEERING ECONOMICS ENCE 356 Course Objectives: The objective of this course is to provide concept of economic principles and the economic environment at the project, firm, societal, and national levels, enabling them to analyze cause-and-effect relationships. The course aims to equip students with the ability to apply economic theories and tools for project selection, equipment replacement, property valuation, and price variation. By the end of the course, students will be able to evaluate alternatives and make informed, economically sound decisions in engineering and business contexts. 1 Introduction (2 hours) 1.1 Micro, macro and engineering economics (History, fundamental principle and application) 1.2 Terminology related to engineering economics 1.3 Economic decision and role of engineers in decision making 1.4 Cash flow and cash flow diagram 2 Market Economics (3 hours) 2.1",
+        "3. Software Requirements Engineering (6 hours, 8 marks) By Bidur Sapkota 1",
+        "Page 3 • Students may request a re-evaluation of results within 10 working days of publication, subject to a fee. • A minimum overall GPA (typically 2.0) is required to remain in good academic standing. • Students on academic probation must meet the conditions set by the academic committee. 6. Dress Code and Personal Appearance • Students should dress modestly and appropriately for an academic environment. • Laboratories, workshops and clinical areas may require protective clothing, closed shoes and ID badges. • Clothing with offensive slogans or imagery is not permitted. 7. Campus Facilities and Property • Students must take care of university property; damage, theft or misuse will be charged and may be penalized. • Library: books must be returned on time; fines apply for overdue items; silence must be maintained in reading areas. • Computer labs and the university network may be used",
+        "5. [Q5] Explain the concept of inflation and purchasing power. Differentiate between real cash flows and actual (nominal) cash flows. 6. [Q6] Write short notes on: o (a) Capital recovery factor o (b) Sensitivity analysis in economic decision making Paper 3: 2081 Ashwin Attempt all questions. 1. [Q1] Explain cost concepts in engineering decision making: Fixed cost, Variable cost, Marginal cost, and Sunk cost. 2. [Q2] Describe the Annual Worth (AW) method and Future Worth (FW) method for evaluating investment projects. 3. [Q3] What is Break-Even Analysis? Derive the break-even point formula for quantity produced and chart out fixed, variable, and total revenue curves. 4. [Q4] Explain straight-line depreciation, declining balance depreciation, and unit-ofproduction depreciation methods with formulas. 5. [Q5] Discuss project financing sources: Equity financing vs. Debt financing. Explain"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 4
+        },
+        {
+          "document": "past_question_economics.pdf",
+          "page": 1
+        },
+        {
+          "document": "past_question_software.pdf",
+          "page": 1
+        },
+        {
+          "document": "ENCE356ENGINEERINGECONOMICS_2026_04_21_12_32_29.pdf",
+          "page": 1
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 1
+        }
+      ],
+      "enough_evidence": true,
+      "declined": true,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 852,
+      "reference_derived": null,
+      "answer_must_mention_any": [],
+      "pipeline_error": null
+    },
+    {
+      "id": "boot-01",
+      "course": "Bootcamp Notice",
+      "category": "single-fact lookup",
+      "difficulty": "easy",
+      "answerable": true,
+      "question": "On what date is the final day of the AI Engineering Bootcamp?",
+      "expected_strategy": "keyword",
+      "generated_answer": "The final day of the AI Engineering Bootcamp is scheduled for **Wednesday, October 7, 2026**[1][3].",
+      "retrieved_contexts": [
+        "TECHSPIRE COLLEGE Office of the Principal | Department of Computing and Technology NOTICE Ref. No.: TSC/EVT/2026/087 Date: October 6, 2026 Subject: Final Day of the AI Engineering Bootcamp on October 7, 2026 This is to inform all participants, students, faculty members, and staff that Techspire College, in association with Cloud AI, will hold the final day of the AI Engineering Bootcamp on Wednesday, October 7, 2026. Event AI Engineering Bootcamp (Final Day) Date Wednesday, October 7, 2026 Organized by Techspire College In association with Cloud AI Venue Techspire College Campus (hall/lab to be confirmed) Reporting Time Participants to arrive 15 minutes before the session The final day will conclude the bootcamp with project presentations and demonstrations, followed by feedback and the distribution of certificates to participants who have met the attendance and project requirements. All",
+        "UNIVERSITY NAME Office of the Registrar | Academic Affairs Division NOTICE Ref. No.: UNI/REG/2026/142 Date: October 6, 2026 Subject: Holiday on Wednesday, October 7, 2026 This is to inform all students, faculty members, and staff that the university will remain closed on Wednesday, October 7, 2026, on the occasion of the University Foundation Day. Holiday Date Wednesday, October 7, 2026 Reason University Foundation Day Classes / Exams Suspended for the day Offices, Library & Labs Closed Operations Resume Thursday, October 8, 2026, at regular hours Any classes, assignments, or examinations scheduled for this date will be rescheduled, and the revised timetable will be announced by the respective departments. Emergency services, including campus security and the health center, will continue to function. All concerned are requested to take note of this notice and plan accordingly. Registrar",
+        "demonstrations, followed by feedback and the distribution of certificates to participants who have met the attendance and project requirements. All enrolled participants are requested to attend, carry their college ID and laptops, and ensure that their final projects are ready for submission. Punctuality is strictly expected. For any queries, participants may contact the bootcamp coordinators at the department office. Principal Techspire College",
+        "5. System Modeling (9 hours, 12 marks) By Bidur Sapkota 1",
+        "as code (IaC) 9.4 AI-assisted software development 9.5 Low-code/no-code, green software engineering Tutorial (15 hours) 1. Analyze the project domain, identify challenges, and discuss software myths 2. Select and justify an appropriate software process model 3. Prepare preliminary SRS, including functional and non-functional requirements 4. Elicit and model requirements using use cases (Actors, scenarios, system boundary, diagram, and descriptions) 5. Develop behavioral models (Scenario identification and activity diagrams) 6. Develop a structural model (Class diagram) 7. Propose an architectural style and apply modular design principles 8. Prepare user stories and product backlog; Conduct a mock sprint planning session 9. Define coding standards and perform basic code review/refactoring 10. Design black-box and white-box test cases 11. Apply version control using git (Commit, branch,",
+        "Copy to: All Department Heads, Bootcamp Coordinators, Cloud AI Representatives, Notice Boards, College Website.",
+        "3. Software Requirements Engineering (6 hours, 8 marks) By Bidur Sapkota 1"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "bootcamp_final_day_notice.pdf",
+          "page": 1
+        },
+        {
+          "document": "holiday_notice_october_7.pdf",
+          "page": 1
+        },
+        {
+          "document": "bootcamp_final_day_notice.pdf",
+          "page": 1
+        },
+        {
+          "document": "ch_5_slide.pdf",
+          "page": 1
+        },
+        {
+          "document": "ENCT352SOFTWAREENGINEERING_2026_04_25_10_01_01.pdf",
+          "page": 3
+        },
+        {
+          "document": "bootcamp_final_day_notice.pdf",
+          "page": 2
+        },
+        {
+          "document": "ch_3_slide.pdf",
+          "page": 1
+        }
+      ],
+      "enough_evidence": true,
+      "declined": false,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 656,
+      "reference_derived": "A correct answer must include the following information: October 7, 2026; Wednesday.",
+      "answer_must_mention_any": [
+        "October 7, 2026",
+        "Wednesday"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "hol-01",
+      "course": "Holiday Notice",
+      "category": "single-fact lookup",
+      "difficulty": "easy",
+      "answerable": true,
+      "question": "Why is the university closed on October 7, 2026?",
+      "expected_strategy": "keyword",
+      "generated_answer": "The university will be closed on Wednesday, October 7, 2026 because it is observing the University Foundation Day. [1]",
+      "retrieved_contexts": [
+        "UNIVERSITY NAME Office of the Registrar | Academic Affairs Division NOTICE Ref. No.: UNI/REG/2026/142 Date: October 6, 2026 Subject: Holiday on Wednesday, October 7, 2026 This is to inform all students, faculty members, and staff that the university will remain closed on Wednesday, October 7, 2026, on the occasion of the University Foundation Day. Holiday Date Wednesday, October 7, 2026 Reason University Foundation Day Classes / Exams Suspended for the day Offices, Library & Labs Closed Operations Resume Thursday, October 8, 2026, at regular hours Any classes, assignments, or examinations scheduled for this date will be rescheduled, and the revised timetable will be announced by the respective departments. Emergency services, including campus security and the health center, will continue to function. All concerned are requested to take note of this notice and plan accordingly. Registrar",
+        "TECHSPIRE COLLEGE Office of the Principal | Department of Computing and Technology NOTICE Ref. No.: TSC/EVT/2026/087 Date: October 6, 2026 Subject: Final Day of the AI Engineering Bootcamp on October 7, 2026 This is to inform all participants, students, faculty members, and staff that Techspire College, in association with Cloud AI, will hold the final day of the AI Engineering Bootcamp on Wednesday, October 7, 2026. Event AI Engineering Bootcamp (Final Day) Date Wednesday, October 7, 2026 Organized by Techspire College In association with Cloud AI Venue Techspire College Campus (hall/lab to be confirmed) Reporting Time Participants to arrive 15 minutes before the session The final day will conclude the bootcamp with project presentations and demonstrations, followed by feedback and the distribution of certificates to participants who have met the attendance and project requirements. All",
+        "Page 2 1. General Conduct • Students must treat all members of the university community with respect, courtesy and dignity. • Students must carry their university ID card at all times on campus and show it when asked by staff or security. • Behaviour that disrupts teaching, learning, research or administration is prohibited. • Discrimination, harassment, bullying and intimidation on any basis (gender, race, religion, disability, etc.) are strictly forbidden. • Students must follow lawful instructions from faculty, staff and security personnel. 2. Attendance and Punctuality • A minimum attendance of 75% in each course is required to sit the final examination. • Students arriving more than 15 minutes late may be marked absent at the instructor's discretion. • Absence due to illness or emergency must be supported by documentation submitted within 7 days. • Leave of absence for extended",
+        "security and the health center, will continue to function. All concerned are requested to take note of this notice and plan accordingly. Registrar University Name Copy to: All Deans and Department Heads, Student Affairs, Hostel Wardens, Notice Boards, University Website.",
+        "Page 4 • Late payment may lead to fines, suspension of services or withholding of results. • Fee refunds follow the university's published refund policy and deadlines. • Scholarship holders must maintain the required GPA and conduct standards to retain funding. 11. Technology and Social Media • Use of university IT resources must comply with the acceptable use policy. • Sharing passwords or accessing another person's account is prohibited. • Recording lectures or sharing course materials without permission is not allowed. • Posting defamatory, threatening or confidential content about the university or its members online is prohibited. 12. Student Activities and Organizations • Clubs and societies must be officially registered and have a faculty advisor. • Events and gatherings on campus require prior approval from student affairs. • Political activities, protests and fundraising must",
+        "Page 3 • Students may request a re-evaluation of results within 10 working days of publication, subject to a fee. • A minimum overall GPA (typically 2.0) is required to remain in good academic standing. • Students on academic probation must meet the conditions set by the academic committee. 6. Dress Code and Personal Appearance • Students should dress modestly and appropriately for an academic environment. • Laboratories, workshops and clinical areas may require protective clothing, closed shoes and ID badges. • Clothing with offensive slogans or imagery is not permitted. 7. Campus Facilities and Property • Students must take care of university property; damage, theft or misuse will be charged and may be penalized. • Library: books must be returned on time; fines apply for overdue items; silence must be maintained in reading areas. • Computer labs and the university network may be used",
+        "returned on time; fines apply for overdue items; silence must be maintained in reading areas. • Computer labs and the university network may be used for academic purposes only. Illegal downloads, hacking and accessing inappropriate content are forbidden. • Eating and drinking are not allowed in classrooms, labs and the library unless in designated areas. • Smoking, vaping, alcohol and illegal drugs are prohibited on campus. • Vehicles must be parked only in designated areas and speed limits observed. 8. Health, Safety and Security • Weapons, explosives and hazardous materials are strictly prohibited on campus. • Students must follow all laboratory safety procedures and report accidents or hazards immediately. • Fire exits, alarms and safety equipment must never be blocked, tampered with or misused. • Visitors must register at the gate and remain the responsibility of the host student. •"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "holiday_notice_october_7.pdf",
+          "page": 1
+        },
+        {
+          "document": "bootcamp_final_day_notice.pdf",
+          "page": 1
+        },
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 2
+        },
+        {
+          "document": "holiday_notice_october_7.pdf",
+          "page": 1
+        },
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 4
+        }
+      ],
+      "enough_evidence": true,
+      "declined": false,
+      "strategy": "hybrid",
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "latency_ms": 773,
+      "reference_derived": "A correct answer must include the following information: Foundation Day.",
+      "answer_must_mention_any": [
+        "Foundation Day"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "rules-01",
+      "course": "Rules and Regulations",
+      "category": "single-fact lookup",
+      "difficulty": "easy",
+      "answerable": true,
+      "question": "What minimum attendance is required to sit the final examination?",
+      "expected_strategy": "keyword",
+      "generated_answer": "To sit the final examination, a minimum attendance of 75% in each course is required. [1]\n\nNote: I've kept the answer concise and directly answered the question, citing the relevant source.",
+      "retrieved_contexts": [
+        "Page 2 1. General Conduct • Students must treat all members of the university community with respect, courtesy and dignity. • Students must carry their university ID card at all times on campus and show it when asked by staff or security. • Behaviour that disrupts teaching, learning, research or administration is prohibited. • Discrimination, harassment, bullying and intimidation on any basis (gender, race, religion, disability, etc.) are strictly forbidden. • Students must follow lawful instructions from faculty, staff and security personnel. 2. Attendance and Punctuality • A minimum attendance of 75% in each course is required to sit the final examination. • Students arriving more than 15 minutes late may be marked absent at the instructor's discretion. • Absence due to illness or emergency must be supported by documentation submitted within 7 days. • Leave of absence for extended",
+        "help others commit academic dishonesty. 4. Examination Rules • Students must arrive at the exam hall at least 15 minutes before the start time. • No candidate may enter the hall more than 30 minutes after the exam begins or leave in the first 30 minutes. • Mobile phones, smartwatches, notes and other unauthorized items must be left outside or switched off and stored away. • Talking, sharing materials or looking at another candidate's paper is forbidden. • Students must follow the invigilator's instructions and write only on the answer booklets provided. • Any suspected misconduct will be reported and may lead to disqualification from the paper or course. 5. Assessment and Grading • Assignments must be submitted by the stated deadline; late submissions may incur grade penalties.",
+        "securely. 5. Prepare use case diagram for the given scenario: [4] Case Study: An event management company wants to develop a system to organize and manage various events such as conferences, weddings, and concerts. The system should allow users to view and register for events, select tickets, and make payments. Admin should be able to create and manage event details, track registrations, handle user inquiries, and generate attendance reports. 6. Differentiate between thin client and thick client model. Describe layered architecture for software. [3 + 4] 7. What is real-time system? Explain data acquisition system. [1 + 3] 8. What are the benefits and risks of software reuse? What factors must be considered during reuse planning? [4 + 2] 9. What are provided and required interfaces in a software component? Explain with the help of a suitable example. [4] 10. What is a software inspection",
+        "discretion. • Absence due to illness or emergency must be supported by documentation submitted within 7 days. • Leave of absence for extended periods requires prior written approval from the department head. 3. Academic Integrity • Plagiarism, including copying text, ideas or code without proper citation, is prohibited. • Cheating in examinations, assignments or projects, including use of unauthorized materials or devices, is prohibited. • Fabrication or falsification of data, results or documents is a serious offence. • Impersonation, or allowing another person to impersonate you in an exam, is prohibited. • Unauthorized use of AI tools in assessed work is considered academic misconduct unless the instructor permits it. • Students must not help others commit academic dishonesty. 4. Examination Rules • Students must arrive at the exam hall at least 15 minutes before the start time. • No",
+        "demonstrations, followed by feedback and the distribution of certificates to participants who have met the attendance and project requirements. All enrolled participants are requested to attend, carry their college ID and laptops, and ensure that their final projects are ready for submission. Punctuality is strictly expected. For any queries, participants may contact the bootcamp coordinators at the department office. Principal Techspire College",
+        "Page 3 • Students may request a re-evaluation of results within 10 working days of publication, subject to a fee. • A minimum overall GPA (typically 2.0) is required to remain in good academic standing. • Students on academic probation must meet the conditions set by the academic committee. 6. Dress Code and Personal Appearance • Students should dress modestly and appropriately for an academic environment. • Laboratories, workshops and clinical areas may require protective clothing, closed shoes and ID badges. • Clothing with offensive slogans or imagery is not permitted. 7. Campus Facilities and Property • Students must take care of university property; damage, theft or misuse will be charged and may be penalized. • Library: books must be returned on time; fines apply for overdue items; silence must be maintained in reading areas. • Computer labs and the university network may be used",
+        "TECHSPIRE COLLEGE Office of the Principal | Department of Computing and Technology NOTICE Ref. No.: TSC/EVT/2026/087 Date: October 6, 2026 Subject: Final Day of the AI Engineering Bootcamp on October 7, 2026 This is to inform all participants, students, faculty members, and staff that Techspire College, in association with Cloud AI, will hold the final day of the AI Engineering Bootcamp on Wednesday, October 7, 2026. Event AI Engineering Bootcamp (Final Day) Date Wednesday, October 7, 2026 Organized by Techspire College In association with Cloud AI Venue Techspire College Campus (hall/lab to be confirmed) Reporting Time Participants to arrive 15 minutes before the session The final day will conclude the bootcamp with project presentations and demonstrations, followed by feedback and the distribution of certificates to participants who have met the attendance and project requirements. All"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 2
+        },
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 2
+        },
+        {
+          "document": "past_question_software.pdf",
+          "page": 2
+        },
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 2
+        },
+        {
+          "document": "bootcamp_final_day_notice.pdf",
+          "page": 1
+        }
+      ],
+      "enough_evidence": true,
+      "declined": false,
+      "strategy": "hybrid",
+      "provider": "ollama_fallback",
+      "model": "llama3.1",
+      "latency_ms": 10008,
+      "reference_derived": "A correct answer must include the following information: 75%.",
+      "answer_must_mention_any": [
+        "75%"
+      ],
+      "pipeline_error": null
+    },
+    {
+      "id": "none-03",
+      "course": "Rules and Regulations",
+      "category": "no answer in corpus",
+      "difficulty": "medium",
+      "answerable": false,
+      "question": "What time is the hostel curfew?",
+      "expected_strategy": "keyword",
+      "generated_answer": "I couldn't find enough information about that in the provided university materials. If you like, ask me about a topic covered in the uploaded course materials.",
+      "retrieved_contexts": [
+        "equipment must never be blocked, tampered with or misused. • Visitors must register at the gate and remain the responsibility of the host student. • Students must comply with emergency drills and evacuation procedures. 9. Hostel and Residence Rules (if applicable) • Residents must observe curfew timings and sign in and out as required. • Overnight guests are not allowed without written permission from the warden. • Cooking appliances, loud music and disturbances after quiet hours are prohibited. • Rooms are subject to inspection for safety and cleanliness with prior notice. • Residents are responsible for the condition of their room and furnishings. 10. Fees and Financial Obligations • Tuition and other fees must be paid by the announced due dates.",
+        "returned on time; fines apply for overdue items; silence must be maintained in reading areas. • Computer labs and the university network may be used for academic purposes only. Illegal downloads, hacking and accessing inappropriate content are forbidden. • Eating and drinking are not allowed in classrooms, labs and the library unless in designated areas. • Smoking, vaping, alcohol and illegal drugs are prohibited on campus. • Vehicles must be parked only in designated areas and speed limits observed. 8. Health, Safety and Security • Weapons, explosives and hazardous materials are strictly prohibited on campus. • Students must follow all laboratory safety procedures and report accidents or hazards immediately. • Fire exits, alarms and safety equipment must never be blocked, tampered with or misused. • Visitors must register at the gate and remain the responsibility of the host student. •",
+        "8.3 Change Management Process Configuration Status Reporting (CSR): Status reporting answers: (1) What happened? (2) Who did it? (3) When did it happen? (4) What else will be affected? A CSR entry is made each time an SCI is assigned new or updated identification, each time a change is approved by the CCA, and each time a configuration audit is conducted. CSR output may be placed in an online database or website so that developers and support staff can access change information. 33",
+        "Page 2 1. General Conduct • Students must treat all members of the university community with respect, courtesy and dignity. • Students must carry their university ID card at all times on campus and show it when asked by staff or security. • Behaviour that disrupts teaching, learning, research or administration is prohibited. • Discrimination, harassment, bullying and intimidation on any basis (gender, race, religion, disability, etc.) are strictly forbidden. • Students must follow lawful instructions from faculty, staff and security personnel. 2. Attendance and Punctuality • A minimum attendance of 75% in each course is required to sit the final examination. • Students arriving more than 15 minutes late may be marked absent at the instructor's discretion. • Absence due to illness or emergency must be supported by documentation submitted within 7 days. • Leave of absence for extended",
+        "security and the health center, will continue to function. All concerned are requested to take note of this notice and plan accordingly. Registrar University Name Copy to: All Deans and Department Heads, Student Affairs, Hostel Wardens, Notice Boards, University Website.",
+        "UNIVERSITY NAME Office of the Registrar | Academic Affairs Division NOTICE Ref. No.: UNI/REG/2026/142 Date: October 6, 2026 Subject: Holiday on Wednesday, October 7, 2026 This is to inform all students, faculty members, and staff that the university will remain closed on Wednesday, October 7, 2026, on the occasion of the University Foundation Day. Holiday Date Wednesday, October 7, 2026 Reason University Foundation Day Classes / Exams Suspended for the day Offices, Library & Labs Closed Operations Resume Thursday, October 8, 2026, at regular hours Any classes, assignments, or examinations scheduled for this date will be rescheduled, and the revised timetable will be announced by the respective departments. Emergency services, including campus security and the health center, will continue to function. All concerned are requested to take note of this notice and plan accordingly. Registrar",
+        "Analysis of M/M/1 queue: Customers arrive at a bank according to a Poisson process with a mean interarrival time of 10 minutes. Customers spend an average of 5 minutes receiving service at a single available counter. Assuming an M/M/1 queueing system, answer the following: 1. What is the probability that an arriving customer will not have to wait at the counter? 2. What is the expected number of customers in the bank (including any customer being served)? 3. How much time can a customer expect to spend in the bank, including both waiting time and service time?"
+      ],
+      "retrieved_context_count": 7,
+      "sources": [
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 3
+        },
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 3
+        },
+        {
+          "document": "ch_8_slide.pdf",
+          "page": 33
+        },
+        {
+          "document": "university_rules_and_regulations.pdf",
+          "page": 2
+        },
+        {
+          "document": "holiday_notice_october_7.pdf",
+          "page": 1
+        },
+        {
+          "document": "Chapter 4.pdf",
+          "page": 44
+        }
+      ],
+      "enough_evidence": true,
+      "declined": true,
+      "strategy": "hybrid",
+      "provider": "ollama_fallback",
+      "model": "llama3.1",
+      "latency_ms": 31026,
+      "reference_derived": null,
+      "answer_must_mention_any": [],
+      "pipeline_error": null
+    }
+  ]
+}

@@ -71,7 +71,7 @@ await cdp.eval(
     document.querySelector('.composer button').click()
     const start = Date.now()
     const timer = setInterval(() => {
-      const meta = document.querySelector('.metadata')
+      const meta = document.querySelector('.answer-meta')
       if (meta) { clearInterval(timer); resolve(true) }
       if (Date.now() - start > 120000) { clearInterval(timer); resolve(false) }
     }, 500)

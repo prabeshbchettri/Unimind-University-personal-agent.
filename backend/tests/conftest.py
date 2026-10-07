@@ -126,12 +126,15 @@ class FakeLLM:
         self.text = text
         self.calls: list[dict] = []
 
-    def generate(self, *, system_prompt: str, user_query: str, context: str) -> LLMResponse:
+    def generate(
+        self, *, system_prompt: str, user_query: str, context: str, history: list[dict] | None = None
+    ) -> LLMResponse:
         self.calls.append(
             {
                 "system_prompt": system_prompt,
                 "user_query": user_query,
                 "context": context,
+                "history": list(history or []),
             }
         )
         return LLMResponse(text=self.text, provider=self.name, model="fake-model")
@@ -157,6 +160,7 @@ def make_retrieved(
     index: int = 0,
     chunk_id: str | None = None,
     bm25_score: float | None = None,
+    source_path: str = "",
 ) -> RetrievedChunk:
     """Build one retrieved chunk with full metadata.
 
@@ -172,6 +176,7 @@ def make_retrieved(
         chunk_index=index,
         semantic_score=score,
         bm25_score=bm25_score,
+        source_path=source_path,
     )
 
 

@@ -87,7 +87,7 @@ const asked = await cdp.eval(
     document.querySelector('.composer button').click()
     const start = Date.now()
     const timer = setInterval(() => {
-      const meta = document.querySelector('.metadata')
+      const meta = document.querySelector('.answer-meta')
       if (meta) { clearInterval(timer); resolve({ ok: true, ms: Date.now() - start }) }
       if (Date.now() - start > 90000) { clearInterval(timer); resolve({ ok: false, ms: Date.now() - start }) }
     }, 500)
@@ -101,10 +101,10 @@ const turn = await cdp.eval(
   `(() => {
     const text = (sel) => Array.from(document.querySelectorAll(sel)).map((el) => el.textContent.trim())
     return {
-      questions: text('.message-user'),
-      answers: text('.message-assistant'),
-      strategy: document.querySelector('.metadata dd')?.textContent ?? '',
-      sources: text('.sources li'),
+      questions: text('.turn-user .user-bubble'),
+      answers: text('.turn-assistant .assistant-body'),
+      strategy: document.querySelector('.meta-tags')?.textContent ?? '',
+      sources: text('.turn-assistant .sources-list li'),
     }
   })()`,
 )

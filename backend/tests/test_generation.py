@@ -219,3 +219,37 @@ def test_grounded_answer_keeps_inline_citations(rag_settings) -> None:
     assert result.enough_evidence is True
     assert "75 percent [1]" in result.answer
     assert result.sources[0].document == "attendance_policy.pdf"
+
+
+def test_paraphrased_model_decline_is_normalized(rag_settings) -> None:
+    """A model decline in its own words becomes the controlled sentence."""
+    retriever, _ = build_rag(rag_settings, {"attendance_policy.pdf": "75 percent rule."})
+    llm = FakeLLM(text="I couldn't find any information about that in the provided sources.")
+
+    result = answer_question(
+        "What is the minimum attendance?",
+        settings=rag_settings,
+        retriever=retriever,
+        llm=llm,
+    )
+
+    assert result.answer == INSUFFICIENT_EVIDENCE_ANSWER
+    assert result.enough_evidence is True  # evidence existed; the model chose to decline
+
+
+def test_substantive_answer_is_not_normalized(rag_settings) -> None:
+    """A real answer that merely mentions the sources is left intact."""
+    retriever, _ = build_rag(rag_settings, {"attendance_policy.pdf": "75 percent rule."})
+    llm = FakeLLM(
+        text="The provided materials state the minimum attendance is 75 percent [1]."
+    )
+
+    result = answer_question(
+        "What is the minimum attendance?",
+        settings=rag_settings,
+        retriever=retriever,
+        llm=llm,
+    )
+
+    assert "75 percent" in result.answer
+    assert result.answer != INSUFFICIENT_EVIDENCE_ANSWER

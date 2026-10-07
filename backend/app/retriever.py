@@ -47,6 +47,12 @@ class RetrievedChunk:
     chunk_index: int
     semantic_score: float | None = None
     bm25_score: float | None = None
+    #: Full source path (kept so document-type intent ranking can classify a
+    #: chunk by its folder as well as its filename). Not part of the API shape.
+    source_path: str = ""
+    #: Ranking adjustment applied by document-type intent ranking (0.0 when the
+    #: query shows no document-type intent). For observability only.
+    intent_boost: float = 0.0
 
 
 class VectorRetriever:
@@ -75,6 +81,7 @@ class VectorRetriever:
                 score=result.score,
                 chunk_index=result.chunk_index,
                 semantic_score=result.score,
+                source_path=result.source_path,
             )
             for result in results
         ]
@@ -145,6 +152,7 @@ class HybridRetriever:
                     chunk_index=source.chunk_index,
                     semantic_score=semantic_score,
                     bm25_score=bm25_score,
+                    source_path=getattr(source, "source_path", ""),
                 )
             )
             if len(combined) >= self._top_k:

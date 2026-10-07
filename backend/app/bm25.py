@@ -42,6 +42,9 @@ class LexicalHit:
     document: str
     page: int
     chunk_index: int
+    #: Full source path, carried through so document-type intent ranking can
+    #: classify lexical-only hits by their folder too.
+    source_path: str = ""
 
 
 class BM25Index:
@@ -135,6 +138,7 @@ class BM25Index:
                     document=chunk.document_name,
                     page=chunk.page,
                     chunk_index=chunk.chunk_index,
+                    source_path=chunk.source_path,
                 )
             )
 

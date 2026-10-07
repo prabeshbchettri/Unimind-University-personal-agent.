@@ -28,12 +28,19 @@ class StreamingFakeLLM:
         self.calls: list[dict] = []
         self.fail_stream = False
 
-    def generate(self, *, system_prompt: str, user_query: str, context: str):
+    def generate(self, *, system_prompt: str, user_query: str, context: str, history=None):
         raise AssertionError("stream path must not call generate()")
 
-    def stream_generate(self, *, system_prompt: str, user_query: str, context: str):
+    def stream_generate(
+        self, *, system_prompt: str, user_query: str, context: str, history=None
+    ):
         self.calls.append(
-            {"system_prompt": system_prompt, "user_query": user_query, "context": context}
+            {
+                "system_prompt": system_prompt,
+                "user_query": user_query,
+                "context": context,
+                "history": list(history or []),
+            }
         )
         if self.fail_stream:
             raise LLMUnavailableError("fake stream down")

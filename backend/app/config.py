@@ -53,7 +53,9 @@ class Settings(BaseSettings):
     ollama_embedding_model: str = "nomic-embed-text"
 
     # Retrieval and context construction
-    retrieval_top_k: int = 5
+    # 7 candidates gives slightly better document recall than 5 (measured on the
+    # evaluation set) while keeping the context budget and latency modest.
+    retrieval_top_k: int = 7
     # Chunks below this similarity score are treated as insufficient evidence.
     min_relevance_score: float = 0.45
     # HYBRID-only gate for chunks found lexically but not in the vector top-k:

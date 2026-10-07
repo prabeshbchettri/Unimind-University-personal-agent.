@@ -27,7 +27,7 @@ def test_llm_interface_records_prompts() -> None:
     assert response.text == "answer [1]"
     assert response.provider == "fake"
     assert llm.calls == [
-        {"system_prompt": "SYS", "user_query": "Q", "context": "EVIDENCE"}
+        {"system_prompt": "SYS", "user_query": "Q", "context": "EVIDENCE", "history": []}
     ]
 
 

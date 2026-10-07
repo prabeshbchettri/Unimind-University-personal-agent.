@@ -317,7 +317,7 @@ page, score, chunk_index, semantic_score, bm25_score}`.
   query/passage instruction prefix is applied** (raw text is embedded).
 - **Vector database**: Qdrant, collection `university_docs`, COSINE distance.
 - **Similarity method**: cosine similarity; results returned in rank order.
-- **top-k**: `RETRIEVAL_TOP_K` (default 5).
+- **top-k**: `RETRIEVAL_TOP_K` (default 7).
 - **Filtering**: **none at the retriever** — relevance filtering happens later
   in the context builder.
 - **Metadata**: every hit reconstructs `chunk_id, document_name, page,

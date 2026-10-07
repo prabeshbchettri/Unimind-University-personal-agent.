@@ -68,10 +68,20 @@ class ReadyResponse(BaseModel):
     checks: dict[str, str]
 
 
+class HistoryMessage(BaseModel):
+    """One prior turn supplied by the client for conversational context."""
+
+    role: str = Field(pattern=r"^(user|assistant)$")
+    content: str = Field(min_length=1, max_length=2000)
+
+
 class ChatRequest(BaseModel):
     """Request body of the chat endpoint."""
 
     message: str = Field(min_length=1, max_length=2000)
+    # Prior turns, oldest first. Stateless: the client sends the visible
+    # conversation back with every request; the server keeps nothing.
+    history: list[HistoryMessage] = Field(default_factory=list, max_length=20)
 
 
 class ChatResponse(BaseModel):
@@ -162,6 +172,7 @@ def chat(request: ChatRequest) -> ChatResponse:
     result: RAGResult | None = None
     try:
         pipeline = get_pipeline()
+        history = [item.model_dump() for item in request.history]
         result: RAGResult = answer_question(
             request.message,
             settings=settings,
@@ -169,6 +180,7 @@ def chat(request: ChatRequest) -> ChatResponse:
             llm=pipeline["llm"],
             router=pipeline.get("router"),
             hybrid_retriever=pipeline.get("hybrid_retriever"),
+            history=history,
         )
     except (RetrievalError, EmbeddingError, VectorStoreError) as exc:
         # Infrastructure failures: client-visible 503, details in the server log.
@@ -221,6 +233,7 @@ def chat_stream(request: ChatRequest) -> StreamingResponse:
     def event_stream() -> Iterator[str]:
         started = time.perf_counter()
         result: RAGResult | None = None
+        history = [item.model_dump() for item in request.history]
         try:
             pipeline = get_pipeline()
             events = stream_answer(
@@ -230,6 +243,7 @@ def chat_stream(request: ChatRequest) -> StreamingResponse:
                 llm=pipeline["llm"],
                 router=pipeline.get("router"),
                 hybrid_retriever=pipeline.get("hybrid_retriever"),
+                history=history,
             )
             for event in events:
                 yield f"data: {json.dumps(event, ensure_ascii=False)}\n\n"

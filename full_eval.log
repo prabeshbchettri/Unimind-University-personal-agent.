@@ -136,3 +136,70 @@ Scoring 95 question(s) with RAGAS (faithfulness, answer_relevancy, context_recal
   checkpoint: 35/95 scored -> evaluation\evaluation_results.json
   checkpoint: 36/95 scored -> evaluation\evaluation_results.json
   checkpoint: 37/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 38/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 39/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 40/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 41/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 42/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 43/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 44/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 45/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 46/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 47/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 48/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 49/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 50/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 51/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 52/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 53/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 54/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 55/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 56/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 57/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 58/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 59/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 60/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 61/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 62/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 63/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 64/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 65/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 66/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 67/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 68/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 69/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 70/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 71/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 72/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 73/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 74/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 75/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 76/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 77/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 78/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 79/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 80/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 81/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 82/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 83/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 84/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 85/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 86/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 87/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 88/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 89/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 90/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 91/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 92/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 93/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 94/95 scored -> evaluation\evaluation_results.json
+  checkpoint: 95/95 scored -> evaluation\evaluation_results.json
+
+=== RAGAS RESULTS [FULL] (question-level means; answerable questions) ===
+  faithfulness       0.5936  (n=73)
+  answer_relevancy   0.6839  (n=77)
+  context_recall     0.6512  (n=74)
+  context_precision  0.7468  (n=78)
+
+  abstention: 13/17 unanswerable questions correctly declined; 4 hallucinated
+  judge calls: 709 | scoring 20933s | results -> evaluation\evaluation_results.json

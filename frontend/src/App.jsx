@@ -28,73 +28,68 @@ function UniMindMark() {
   )
 }
 
-/** Strategy, provider and sources of one answer -- exactly what the backend reported. */
+/** Sources + retrieval metadata for one answer, kept compact and collapsible. */
 function AnswerMeta({ meta }) {
+  const hasSources = meta.sources && meta.sources.length > 0
   return (
-    <dl className="metadata">
-      <div>
-        <dt>Strategy</dt>
-        <dd title={meta.strategyReason || undefined}>{strategyLabel(meta.strategy)}</dd>
+    <div className="answer-meta">
+      {hasSources && (
+        <details className="sources-details">
+          <summary>
+            <span>Sources ({meta.sources.length})</span>
+            <span className="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <ol className="sources-list">
+            {meta.sources.map((source) => (
+              <li key={`${source.document}-${source.page}`}>
+                {source.document} · Page {source.page}
+              </li>
+            ))}
+          </ol>
+        </details>
+      )}
+      <div className="meta-tags">
+        <span title={meta.strategyReason || undefined}>Strategy: {strategyLabel(meta.strategy)}</span>
+        <span>Provider: {providerLabel(meta.provider)}</span>
       </div>
-      <div>
-        <dt>Provider</dt>
-        <dd>{providerLabel(meta.provider)}</dd>
-      </div>
-      <div>
-        <dt>Sources</dt>
-        <dd>
-          {meta.sources.length === 0 ? (
-            <span className="muted">None</span>
-          ) : (
-            <ul className="sources">
-              {meta.sources.map((source) => (
-                <li key={`${source.document}-${source.page}`}>
-                  {source.document} · Page {source.page}
-                </li>
-              ))}
-            </ul>
-          )}
-        </dd>
-      </div>
-    </dl>
+    </div>
   )
 }
 
-/** One left- or right-aligned conversation message. */
+/** One user or assistant turn. */
 function Message({ entry }) {
-  const isUser = entry.role === 'user'
+  if (entry.role === 'user') {
+    return (
+      <div className="turn turn-user" id={`turn-${entry.id}`}>
+        <div className="user-bubble">{entry.question}</div>
+      </div>
+    )
+  }
+
   return (
-    <div className={`turn ${isUser ? 'turn-user' : 'turn-assistant'}`}>
-      {isUser ? (
-        <div className="message message-user">
-          <p>{entry.question}</p>
-        </div>
-      ) : (
-        <>
-          <div className="assistant-identity">
-            <UniMindMark />
-            <span className="assistant-name">UniMind</span>
-          </div>
-          <div className="message message-assistant">
-            {entry.answer === null && !entry.error && !entry.stopped && (
-              <p className="streaming-note muted">
-                <span className="thinking-dot" aria-hidden="true" /> UniMind is thinking…
-              </p>
-            )}
-            {entry.error && <p className="error-text">{entry.error}</p>}
-            {entry.answer !== null && entry.answer !== '' && (
-              <>
-                <Markdown text={entry.answer} />
-                {entry.streaming && <span className="stream-cursor" aria-hidden="true" />}
-              </>
-            )}
-            {entry.stopped && !entry.error && (
-              <p className="muted stopped-note">Generation stopped.</p>
-            )}
-            {entry.meta && !entry.streaming && <AnswerMeta meta={entry.meta} />}
-          </div>
-        </>
-      )}
+    <div className="turn turn-assistant" id={`turn-${entry.id}`}>
+      <div className="assistant-avatar">
+        <UniMindMark />
+      </div>
+      <div className="assistant-body">
+        <div className="assistant-name">UniMind</div>
+        {entry.answer === null && !entry.error && !entry.stopped && (
+          <p className="streaming-note muted">
+            <span className="thinking-dot" aria-hidden="true" /> UniMind is thinking…
+          </p>
+        )}
+        {entry.error && <p className="error-text">{entry.error}</p>}
+        {entry.answer !== null && entry.answer !== '' && (
+          <>
+            <Markdown text={entry.answer} />
+            {entry.streaming && <span className="stream-cursor" aria-hidden="true" />}
+          </>
+        )}
+        {entry.stopped && !entry.error && (
+          <p className="muted stopped-note">Generation stopped.</p>
+        )}
+        {entry.meta && !entry.streaming && <AnswerMeta meta={entry.meta} />}
+      </div>
     </div>
   )
 }
@@ -109,8 +104,8 @@ function EmptyState({ onPick }) {
   ]
   return (
     <div className="empty-state">
-      <h2>Welcome to UniMind</h2>
-      <p className="empty-subtitle">How can I help you study today?</p>
+      <h2>UniMind</h2>
+      <p className="empty-subtitle">University Academic Assistant</p>
       <p className="empty-hint muted">
         Ask questions about your courses, notes, syllabus, and university study materials.
       </p>
@@ -136,9 +131,15 @@ export default function App() {
   const [input, setInput] = useState('')
   const [streaming, setStreaming] = useState(false)
   const [backendOnline, setBackendOnline] = useState(null) // null = checking
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const scrollRef = useRef(null)
   const stickToBottomRef = useRef(true)
   const abortRef = useRef(null)
+  const entriesRef = useRef([])
+  const textareaRef = useRef(null)
+  useEffect(() => {
+    entriesRef.current = entries
+  }, [entries])
 
   // Real health check -- no static "Connected" badge.
   useEffect(() => {
@@ -163,6 +164,14 @@ export default function App() {
     }
   }, [entries])
 
+  // Grow the composer with its content, up to the CSS max-height.
+  useEffect(() => {
+    const el = textareaRef.current
+    if (!el) return
+    el.style.height = 'auto'
+    el.style.height = `${Math.min(el.scrollHeight, 180)}px`
+  }, [input])
+
   const handleScroll = useCallback(() => {
     const el = scrollRef.current
     if (!el) return
@@ -173,9 +182,35 @@ export default function App() {
     abortRef.current?.abort()
   }, [])
 
+  // New chat clears the in-session conversation. History is not persisted, so
+  // this simply starts an empty thread.
+  const startNewChat = useCallback(() => {
+    if (abortRef.current) return // do not drop an in-flight answer
+    setEntries([])
+    setSidebarOpen(false)
+    stickToBottomRef.current = true
+  }, [])
+
+  const scrollToEntry = useCallback((id) => {
+    setSidebarOpen(false)
+    const el = document.getElementById(`turn-${id}`)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
   const ask = useCallback(async (question) => {
     const trimmed = question.trim()
     if (!trimmed || abortRef.current) return
+
+    // Stateless multi-turn: send the visible conversation back with every
+    // request (bounded to the most recent turns); the backend keeps nothing.
+    const history = entriesRef.current
+      .slice(-10)
+      .flatMap((entry) => {
+        if (entry.role === 'user') return [{ role: 'user', content: entry.question }]
+        if (entry.role === 'assistant' && entry.answer && !entry.error)
+          return [{ role: 'assistant', content: entry.answer }]
+        return []
+      })
 
     const userEntry = { id: crypto.randomUUID(), role: 'user', question: trimmed }
     const answerEntry = {
@@ -202,6 +237,7 @@ export default function App() {
     try {
       const final = await sendChatMessageStream(trimmed, {
         signal: controller.signal,
+        history,
         onMeta: (meta) =>
           patch({
             meta: {
@@ -251,76 +287,136 @@ export default function App() {
     }
   }, [])
 
+  const askedQuestions = entries.filter((entry) => entry.role === 'user')
+
   return (
     <div className="app">
-      <header className="app-header">
-        <div className="brand">
+      <aside className={`sidebar${sidebarOpen ? ' open' : ''}`}>
+        <div className="sidebar-brand">
           <UniMindMark />
-          <div>
+          <div className="brand-text">
             <h1>UniMind</h1>
-            <p className="subtitle">Your Personal University AI Assistant</p>
+            <p className="subtitle">University Academic Assistant</p>
           </div>
         </div>
-        <p
-          className={`status ${backendOnline === false ? 'status-down' : ''}`}
-          role="status"
-          aria-live="polite"
-        >
-          {backendOnline === null
-            ? 'Checking backend…'
-            : backendOnline
-              ? 'Connected to your university library'
-              : 'Backend unavailable — start it with: cd backend && python -m uvicorn app.main:app'}
-        </p>
-      </header>
 
-      <main className="chat" aria-live="polite" onScroll={handleScroll} ref={scrollRef}>
-        {entries.length === 0 && !streaming && <EmptyState onPick={ask} />}
-        {entries.map((entry) => (
-          <Message key={entry.id} entry={entry} />
-        ))}
-      </main>
+        <button type="button" className="new-chat" onClick={startNewChat} disabled={streaming}>
+          <span aria-hidden="true">+</span> New chat
+        </button>
 
-      <form
-        className="composer"
-        onSubmit={(event) => {
-          event.preventDefault()
-          ask(input)
-        }}
-      >
-        <div className="composer-box">
-          <textarea
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter' && !event.shiftKey) {
-                event.preventDefault()
-                ask(input)
-              }
-            }}
-            placeholder="Ask UniMind anything about your university courses…"
-            aria-label="Question"
-            disabled={streaming}
-            rows={1}
-            maxLength={2000}
-          />
-          {streaming ? (
-            <button type="button" className="stop-button" onClick={stop} aria-label="Stop generating">
-              ■ Stop
-            </button>
+        <div className="sidebar-section">
+          <h2>This session</h2>
+          {askedQuestions.length === 0 ? (
+            <p className="sidebar-empty">No questions yet.</p>
           ) : (
-            <button
-              type="submit"
-              className="send-button"
-              disabled={!input.trim()}
-              aria-label="Send message"
-            >
-              ➤
-            </button>
+            <ul className="session-list">
+              {askedQuestions.map((entry) => (
+                <li key={entry.id}>
+                  <button
+                    type="button"
+                    className="session-item"
+                    title={entry.question}
+                    onClick={() => scrollToEntry(entry.id)}
+                  >
+                    {entry.question}
+                  </button>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
-        <p className="composer-hint muted">Enter to send · Shift + Enter for a new line</p>
-      </form>
+
+        <div className="sidebar-footer">
+          Answers are grounded in your uploaded university materials. History is
+          kept for this browser session only.
+        </div>
+      </aside>
+
+      {sidebarOpen && (
+        <div
+          className="sidebar-backdrop"
+          role="presentation"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <div className="main">
+        <header className="topbar">
+          <button
+            type="button"
+            className="menu-button"
+            onClick={() => setSidebarOpen((open) => !open)}
+            aria-label="Toggle sidebar"
+          >
+            ☰
+          </button>
+          <span className="topbar-title">UniMind</span>
+          <p
+            className={`status${backendOnline === false ? ' status-down' : ''}`}
+            role="status"
+            aria-live="polite"
+          >
+            {backendOnline === null
+              ? 'Checking backend…'
+              : backendOnline
+                ? 'Connected'
+                : 'Backend unavailable — start it with: cd backend && python -m uvicorn app.main:app'}
+          </p>
+        </header>
+
+        <main className="chat" aria-live="polite" onScroll={handleScroll} ref={scrollRef}>
+          <div className="thread">
+            {entries.length === 0 && !streaming && <EmptyState onPick={ask} />}
+            {entries.map((entry) => (
+              <Message key={entry.id} entry={entry} />
+            ))}
+          </div>
+        </main>
+
+        <form
+          className="composer"
+          onSubmit={(event) => {
+            event.preventDefault()
+            ask(input)
+          }}
+        >
+          <div className="composer-inner">
+            <div className="composer-box">
+              <textarea
+                ref={textareaRef}
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && !event.shiftKey) {
+                    event.preventDefault()
+                    ask(input)
+                  }
+                }}
+                placeholder="Ask UniMind anything about your university courses…"
+                aria-label="Question"
+                disabled={streaming}
+                rows={1}
+                maxLength={2000}
+              />
+              {streaming ? (
+                <button type="button" className="stop-button" onClick={stop} aria-label="Stop generating">
+                  Stop
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="send-button"
+                  disabled={!input.trim()}
+                  aria-label="Send message"
+                >
+                  ↑
+                </button>
+              )}
+            </div>
+            <p className="composer-hint muted">Enter to send · Shift + Enter for a new line</p>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
